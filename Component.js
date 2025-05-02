@@ -6,9 +6,9 @@ class DemoForm extends React.Component {
     super();
     this.state = { 
       label: [
-        { value: 'First name' },
-        { value: 'Email address' },
-        { value: 'Mobile number' },
+        { value: 'First Name' },
+        { value: 'Email Address' },
+        { value: 'Mobile Number' },
       ],
       data: {
         name: "",
