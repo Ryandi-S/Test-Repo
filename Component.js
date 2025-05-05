@@ -1,4 +1,3 @@
-
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 class DemoForm extends React.Component {
@@ -6,9 +5,9 @@ class DemoForm extends React.Component {
     super();
     this.state = { 
       label: [
-        { value: 'First Name' },
-        { value: 'Email Address' },
-        { value: 'Mobile Number' },
+        { value: 'First name' },
+        { value: 'Email address' },
+        { value: 'Mobile number' },
       ],
       data: {
         name: "",
@@ -25,8 +24,23 @@ class DemoForm extends React.Component {
       trySubmit: true 
     });
     if (this.state.data.name && this.state.data.email && emailRegex.test(this.state.data.email) && this.state.data.phone){
-      this.setState({ 
-        submitted: true 
+      axios.post('https://68183f135a4b07b9d1ce55e0.mockapi.io/test/user', {
+        "name": this.state.data.name,
+        "email": this.state.data.email,
+        "phone": this.state.data.phone,
+      }, {
+        // headers: {
+        //   'Authorization': 'Bearer YOUR_ACCESS_TOKEN'
+        // },
+      })
+      .then((response) => {
+        console.log('Success:', response.data);
+        this.setState({ 
+          submitted: true 
+        });
+      })
+      .catch(function (error) {
+        console.error('Error:', error);
       });
     }
     else {
@@ -51,8 +65,8 @@ class DemoForm extends React.Component {
     if (!this.state.submitted){
       return (
         <div className="form-block w-form">
-          <p>Prop data : {this.props.username} / {this.props.userid}</p>
-          <form id="email-form" name="email-form" data-name="Email Form" method="get" className="form w-clearfix" data-turnstile-sitekey="0x4AAAAAAAQTptj2So4dx43e" aria-label="Email Form">
+          <TestElement />
+          <form id="email-form" name="email-form" data-name="Email Form" method="get" className="form w-clearfix" aria-label="Email Form">
 
             <label for="name" className="text">{this.state.label[0].value}</label>
             <input 
