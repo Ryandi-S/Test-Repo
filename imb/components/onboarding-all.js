@@ -90,7 +90,7 @@ function SelectButton({ onClick, idx, selected, label, className }) {
 // Attach to window so Webflow can access it
 window.SelectButton = SelectButton;
 
-function SuccessPage({ userData }) {
+function SuccessPage({ userData, reset }) {
   console.log("--- components / SuccessPage ---", userData);
   return (
     <div className="container flex items-center h-full">
@@ -114,8 +114,8 @@ function SuccessPage({ userData }) {
           </p>
 
           <div className="actions sm:flex flex-row mt-9 grid grid-cols-2 gap-6 sm:gap-3">
-            <PrimaryButton label="Let's Begin" onClick={() => null} arrow />
-            <SecondaryButton label="Get the App" onClick={() => null} />
+            <PrimaryButton label="Let's Begin" onClick={reset} arrow />
+            <SecondaryButton label="Get the App" onClick={reset} />
           </div>
         </div>
         {/* <div className="right hidden lg:block">

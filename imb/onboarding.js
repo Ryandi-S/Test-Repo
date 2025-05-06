@@ -21,7 +21,8 @@ function OnboadingForm() {
 
   const step = mapPageToStep(page);
 
-  const jumpPage = React.useCallback(() => setPage(5), [page]);
+  const resetPage = React.useCallback(() => setPage(1), [page]);
+  const jumpPage = React.useCallback(() => setPage(4), [page]);
   const nextPage = React.useCallback(() => setPage(page + 1), [page]);
   const prevPage = React.useCallback(() => setPage(page - 1), [page]);
   const skipNextPage = React.useCallback(() => setPage(page + 2), [page]);
@@ -97,17 +98,17 @@ function OnboadingForm() {
       )}
 
       {page === 4 && (
-        <p>- PersonalDetailsConfirmPage -</p>
-        // <PersonalDetailsConfirmPage
-        //   next={nextPage}
-        //   prev={prevPage}
-        //   edit={personalDetailsPage}
-        // />
+        // <p>- PersonalDetailsConfirmPage -</p>
+        <PersonalDetailsConfirmPage
+          next={nextPage}
+          prev={prevPage}
+          edit={personalDetailsPage}
+        />
       )}
 
       {page === 5 && (
         // <p>- SuccessPage -</p>
-        <SuccessPage userData={userData} />
+        <SuccessPage userData={userData} reset={resetPage} />
       )}
     </div>
   );
