@@ -58,8 +58,7 @@ function OnboadingForm() {
   }, [])
 
   return (
-    <div>TEST
-    {/*<div
+    <div
       className="flex flex-col items-left mx-auto md:px-40 px-6 max-w-[1440px] w-full
             h-[calc(100vh-64px)] overflow-auto no-scrollbar justify-start 2xl:justify-center"
     >
@@ -121,7 +120,6 @@ function OnboadingForm() {
         />
       )}
       {page === 13 && <SuccessPage />}
-    </div>*/}
     </div>
   );
 }
