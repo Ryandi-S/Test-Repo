@@ -102,7 +102,6 @@ function OnboadingForm() {
         <PersonalDetailsConfirmPage
           next={nextPage}
           prev={prevPage}
-          edit={personalDetailsPage}
         />
       )}
 
