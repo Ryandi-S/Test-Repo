@@ -24,23 +24,8 @@ class DemoForm extends React.Component {
       trySubmit: true 
     });
     if (this.state.data.name && this.state.data.email && emailRegex.test(this.state.data.email) && this.state.data.phone){
-      axios.post('https://68183f135a4b07b9d1ce55e0.mockapi.io/test/user', {
-        "name": this.state.data.name,
-        "email": this.state.data.email,
-        "phone": this.state.data.phone,
-      }, {
-        // headers: {
-        //   'Authorization': 'Bearer YOUR_ACCESS_TOKEN'
-        // },
-      })
-      .then((response) => {
-        console.log('Success:', response.data);
-        this.setState({ 
-          submitted: true 
-        });
-      })
-      .catch(function (error) {
-        console.error('Error:', error);
+      this.setState({ 
+        submitted: true 
       });
     }
     else {
@@ -65,7 +50,7 @@ class DemoForm extends React.Component {
     if (!this.state.submitted){
       return (
         <div className="form-block w-form">
-          <TestElement />
+          <TestElement propText1="Lorem ipsum" propText2="Dolor sit amet" />
           <form id="email-form" name="email-form" data-name="Email Form" method="get" className="form w-clearfix" aria-label="Email Form">
 
             <label for="name" className="text">{this.state.label[0].value}</label>
@@ -119,13 +104,23 @@ class DemoForm extends React.Component {
     }
     else {
       return (
-        <div className="w-layout-cell">
-          <p className="text">Form Submitted</p>
-          <p className="text">Name : {this.state.data.name}</p>
-          <p className="text">Email : {this.state.data.email}</p>
-          <p className="text">Phone : {this.state.data.phone}</p>
-          <p>&nbsp;</p>
-          <a className="button__primary w-button"onClick={() => this.submitAgain()}>Submit again</a>
+        <div>
+          <div className="w-layout-cell">
+            <p className="text">Form will be submitted with this data :</p>
+            <p className="text">Name : {this.state.data.name}</p>
+            <p className="text">Email : {this.state.data.email}</p>
+            <p className="text">Phone : {this.state.data.phone}</p>
+          </div>
+          <div className="w-layout-cell">
+            <div className="w-layout-layout quick-stack-2 wf-layout-layout">
+              <div className="w-layout-cell">
+                <a className="button__primary w-button"onClick={() => this.submitAgain()}>Reset Data</a>
+              </div>
+              <div className="w-layout-cell">
+                <a className="button__primary w-button"onClick={() => submitRegistration(this.state.data)}>Submit Data</a>
+              </div>
+            </div>
+          </div>
         </div>
       )
     }
@@ -134,3 +129,53 @@ class DemoForm extends React.Component {
 
 // Attach to window so Webflow can access it
 window.DemoForm = DemoForm;
+
+
+
+class RegisteredData extends React.Component {
+  constructor() {
+    super();
+    this.state = { 
+      data: {
+        name: "-",
+        email: "-",
+        phone: "-"
+      }
+    };
+  }
+
+  componentDidMount(){
+    const urlParams = new URLSearchParams(window.location.search);
+    const id = urlParams.get('id');
+
+    axios.get('https://68183f135a4b07b9d1ce55e0.mockapi.io/test/user/'+id)
+    .then((response) => {
+      console.log('Success get user data:', response.data);
+      this.setState({
+        data: {
+          name: response.data.name,
+          email: response.data.email,
+          phone: response.data.phone
+        }
+      })
+    })
+    .catch(function (error) {
+      console.error('Error:', error);
+    });
+  }
+
+  render() {
+    return (
+      <div>
+        <div className="w-layout-cell">
+          <p className="text">Name : {this.state.data.name}</p>
+          <p className="text">Email : {this.state.data.email}</p>
+          <p className="text">Phone : {this.state.data.phone}</p>
+        </div>
+      </div>
+    )
+  }
+};
+
+// Attach to window so Webflow can access it
+window.RegisteredData = RegisteredData;
