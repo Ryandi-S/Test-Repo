@@ -3203,6 +3203,7 @@
   }
   
   .btn-outline{
+    border-style: solid;
     border-color: currentColor;
     background-color: transparent;
     --tw-text-opacity: 1;

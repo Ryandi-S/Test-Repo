@@ -103,7 +103,7 @@ function GetStartedPage({ next }) {
 
         <div className="actions flex flex-row mt-9 gap-6">
           <PrimaryButton
-            label="Login test"
+            label="Login"
             arrow
             onClick={() => null}
           />
@@ -111,7 +111,6 @@ function GetStartedPage({ next }) {
             label="Sign up now"
             onClick={next}
             className="border-border-highlight-strong hover:border-border-highlight-strong"
-            border={true}
           />
         </div>
       </div>
