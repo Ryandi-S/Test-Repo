@@ -323,7 +323,10 @@ function PersonalDetailsPage({ next, prev, page, skipPrev }) {
     type: "",
   });
 
-  const titleOptions = useMemo(() => ["Mr", "Mrs", "Miss", "Dr", "Prof"], []);
+  const titleOptions = React.useMemo(
+    () => ["Mr", "Mrs", "Miss", "Dr", "Prof"],
+    []
+  );
 
   function handleNext() {
     switch (page) {
