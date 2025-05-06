@@ -106,7 +106,9 @@ function PersonalDetailsConfirmPage({ next, prev, userData }) {
           <div className="info-section mt-10">
             <div className="name mb-6">
               <p className="p4 mb-2 text-fg-greyscale-subtle">Full Name</p>
-              <p className="p2 uppercase">{`${userData.firstName} ${userData.middleName ? userData.middleName+" " : ""}${userData.lastName}`}</p>
+              <p className="p2 uppercase">{`${userData.firstName} ${
+                userData.middleName ? userData.middleName + " " : ""
+              }${userData.lastName}`}</p>
             </div>
             <div className="name mb-6">
               <p className="p4 mb-2 text-fg-greyscale-subtle">Email</p>
@@ -363,6 +365,7 @@ function PersonalDetailsPage({ next, prev, page, skipPrev }) {
   const [firstName, setFirstName] = React.useState("");
   const [middleName, setMiddleName] = React.useState("");
   const [lastName, setLastName] = React.useState("");
+  const [openDropdown, setOpenDropdown] = React.useState(false);
 
   //! --------------------- Error states ---------------------
   const [titleError, setTitleError] = React.useState({
