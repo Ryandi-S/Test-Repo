@@ -90,6 +90,47 @@ function SelectButton({ onClick, idx, selected, label, className }) {
 // Attach to window so Webflow can access it
 window.SelectButton = SelectButton;
 
+function PersonalDetailsConfirmPage({ next, prev }) {
+  return (
+    <div className="container flex flex-row sm:mb-[104px] mb-16 items-center h-full max-h-[680px]">
+      <div className="left sm:w-[654px] w-full sm:mr-10 h-full flex justify-between flex-col">
+        <div>
+          <h5 className="text-fg-highlight-strong mb-2">Personal Details</h5>
+          <h1 className="origination-steps-title">Let's confirm your details</h1>
+          <h6 className="mb-4 text-md">
+            Ensure that your details are accurate and proceed to the next steps.
+          </h6>
+
+          <div className="info-section mt-10">
+            <div className="name mb-6">
+              <p className="p4 mb-2 text-fg-greyscale-subtle">Full Name</p>
+              <p className="p2 uppercase">{`-name-`}</p>
+            </div>
+            <div className="name mb-6">
+              <p className="p4 mb-2 text-fg-greyscale-subtle">Email</p>
+              <p className="p2 uppercase">{`-email-`}</p>
+            </div>
+            <div className="name mb-6">
+              <p className="p4 mb-2 text-fg-greyscale-subtle">Phone</p>
+              <p className="p2 uppercase">{`-phone-`}</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="actions sm:flex flex-row mt-9 grid grid-cols-2 gap-6 sm:gap-3">
+          <SecondaryButton
+            label="Back"
+            onClick={prev}
+          />
+          <PrimaryButton label="Confirm" arrow onClick={next} />
+        </div>
+      </div>
+    </div>
+  );
+}
+// Attach to window so Webflow can access it
+window.PersonalDetailsConfirmPage = PersonalDetailsConfirmPage;
+
 function SuccessPage({ userData, reset }) {
   console.log("--- components / SuccessPage ---", userData);
   return (
