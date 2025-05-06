@@ -494,14 +494,18 @@ function PersonalDetailsPage({ next, prev, page, skipPrev }) {
                   )} */}
                 </div>
 
-                <p className={`mt-4 mb-4 text-xs text-fg-danger-neutral ${titleError.status ? "opacity-100" : "opacity-100"}`}>
+                <p
+                  className={`mt-4 mb-4 text-xs text-fg-danger-neutral ${
+                    titleError.status ? "opacity-100" : "opacity-100"
+                  }`}
+                >
                   {titleError.message ?? "Error"}
                 </p>
 
                 <ul
                   tabIndex={0}
                   className={`dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-40 -mt-4",
-                    ${openDropdown} ? "block" : "hidden"`}
+                    ${openDropdown ? "block" : "hidden"}`}
                 >
                   {titleOptions.map((option, idx) => (
                     <li
