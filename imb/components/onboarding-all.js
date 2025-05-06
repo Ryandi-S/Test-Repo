@@ -355,7 +355,7 @@ window.ContactPage = ContactPage;
 function PersonalDetailsPage({ next, prev, page, skipPrev }) {
   // const { updateOriginationForm, originationForm } = useStore();
 
-  const [title, setTitle] = React.useState(originationForm.name?.title || "");
+  const [title, setTitle] = React.useState("");
   const [firstName, setFirstName] = React.useState("");
   const [middleName, setMiddleName] = React.useState("");
   const [lastName, setLastName] = React.useState("");
