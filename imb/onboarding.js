@@ -49,9 +49,9 @@ function OnboadingForm() {
   //   sessionStorage.setItem("currentPage", page.toString());
   // }, [originationForm, page]);
 
-  if (!isFormLoaded) {
-    return;
-  }
+  // if (!isFormLoaded) {
+  //   return;
+  // }
 
   React.useEffect(() => {
     console.log("--- OINK ---")
