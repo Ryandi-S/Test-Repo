@@ -218,7 +218,7 @@ function GetStartedPage({ next, jump }) {
         </p>
 
         <div className="actions flex flex-row mt-9 gap-6">
-          <PrimaryButton label="Login" arrow onClick={jump} />
+          <PrimaryButton label="Login" arrow onClick={() => null} />
           <SecondaryButton
             label="Sign up now"
             onClick={next}

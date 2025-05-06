@@ -21,7 +21,7 @@ function OnboadingForm() {
 
   const step = mapPageToStep(page);
 
-  const resetPage = React.useCallback(() => setPage(1), [page]);
+  const resetPage = React.useCallback(() => setPage(0), [page]);
   const jumpPage = React.useCallback(() => setPage(4), [page]);
   const nextPage = React.useCallback(() => setPage(page + 1), [page]);
   const prevPage = React.useCallback(() => setPage(page - 1), [page]);
