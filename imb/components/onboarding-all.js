@@ -201,6 +201,12 @@ function PhoneNumberInput({
 }
 window.PhoneNumberInput = PhoneNumberInput;
 
+const PageStep = {
+  Email: 1,
+  Number: 2,
+  Verification: 3,
+};
+
 function ContactPage({ next, prev, skipPrev, page }) {
   // const { updateOriginationForm, originationForm } = useStore();
   const [email, setEmail] = React.useState("");
