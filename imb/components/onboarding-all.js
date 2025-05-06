@@ -332,7 +332,6 @@ function ContactPage({ next, prev, skipPrev, page, userData, setUserData }) {
                 }`}
                 placeholder="Enter phone number"
                 value={phoneNumber}
-                placeholder="Enter phone number"
                 onChange={(event) => {
                   setUserData({
                     ...userData,
