@@ -5,7 +5,7 @@ const TestElement = ({ propText1, propText2 }) => {
 
   return (
   	<div>
-      <p>Compoonent with prop -UPDATED #3-</p>
+      <p>Compoonent with prop -UPDATED #4-</p>
       <p>Prop text 1 : {propText1}</p>
       <p>Prop text 2 : {propText2}</p>
     </div>
