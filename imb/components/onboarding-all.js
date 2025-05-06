@@ -101,11 +101,11 @@ function SuccessPage({ userData }) {
             Welcome to Alphie,{" "}
             <span className="text-fg-highlight-strong">{`--- test ---`}</span>
           </h1>
-          <div className="lg:hidden block mb-10 w-full">
+          {/* <div className="lg:hidden block mb-10 w-full">
             <video width="353" height="283" autoPlay muted loop>
               <source src={videoSrc} type="video/mp4" />
             </video>
-          </div>
+          </div> */}
           <p className="p2 mb-10">
             Congratulations on opening your account with us! We're thrilled to
             have you as a part of our community. We make banking a breeze at
@@ -118,11 +118,11 @@ function SuccessPage({ userData }) {
             <SecondaryButton label="Get the App" onClick={() => {}} />
           </div>
         </div>
-        <div className="right hidden lg:block">
+        {/* <div className="right hidden lg:block">
           <video width="353" height="283" autoPlay muted loop>
             <source src={videoSrc} type="video/mp4" />
           </video>
-        </div>
+        </div> */}
       </div>
     </div>
   );
