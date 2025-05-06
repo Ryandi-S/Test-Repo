@@ -1,8 +1,4 @@
 const TestElement = ({ propText1, propText2 }) => {
-  React.useEffect(() => {
-    console.log("--- OINK ---")
-  }, [])
-
   return (
   	<div>
       <p>Compoonent with prop -UPDATED #5-</p>
