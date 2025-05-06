@@ -504,7 +504,7 @@ function PersonalDetailsPage({ next, prev, page, skipPrev }) {
                 <ul
                   tabIndex={0}
                   className={`dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-40 -mt-4",
-                    ${openDropdown} ? "block" : "hidden`}
+                    ${openDropdown} ? "block" : "hidden"`}
                 >
                   {titleOptions.map((option, idx) => (
                     <li
