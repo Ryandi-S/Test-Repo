@@ -327,6 +327,7 @@ function ContactPage({ next, prev, skipPrev, page }) {
                   numberError.status ? "text-fg-danger-neutral" : ""
                 }`}
                 value={phoneNumber}
+                placeholder="Enter phone number"
                 onChange={(event) => {
                   setPhoneNumber(event.target.value);
                   setNumberError((prev) => ({
