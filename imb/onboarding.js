@@ -102,6 +102,7 @@ function OnboadingForm() {
         <PersonalDetailsConfirmPage
           next={nextPage}
           prev={prevPage}
+          userData={userData}
         />
       )}
 

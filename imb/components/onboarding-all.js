@@ -90,7 +90,7 @@ function SelectButton({ onClick, idx, selected, label, className }) {
 // Attach to window so Webflow can access it
 window.SelectButton = SelectButton;
 
-function PersonalDetailsConfirmPage({ next, prev }) {
+function PersonalDetailsConfirmPage({ next, prev, userData }) {
   return (
     <div className="container flex flex-row sm:mb-[104px] mb-16 items-center h-full max-h-[680px]">
       <div className="left sm:w-[654px] w-full sm:mr-10 h-full flex justify-between flex-col">
@@ -104,15 +104,15 @@ function PersonalDetailsConfirmPage({ next, prev }) {
           <div className="info-section mt-10">
             <div className="name mb-6">
               <p className="p4 mb-2 text-fg-greyscale-subtle">Full Name</p>
-              <p className="p2 uppercase">{`-name-`}</p>
+              <p className="p2 uppercase">{`${userData.firstName} ${userData.middleName ? userData.middleName+" " : ""}${userData.lastName}`}</p>
             </div>
             <div className="name mb-6">
               <p className="p4 mb-2 text-fg-greyscale-subtle">Email</p>
-              <p className="p2 uppercase">{`-email-`}</p>
+              <p className="p2 uppercase">{`${userData.email}`}</p>
             </div>
             <div className="name mb-6">
               <p className="p4 mb-2 text-fg-greyscale-subtle">Phone</p>
-              <p className="p2 uppercase">{`-phone-`}</p>
+              <p className="p2 uppercase">{`${userData.phone}`}</p>
             </div>
           </div>
         </div>
