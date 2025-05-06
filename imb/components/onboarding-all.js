@@ -49,7 +49,7 @@ function SecondaryButton({
       }
       onClick={onClick}
     >
-      {edit ? <Image src="https://cdn.prod.website-files.com/681079166d5ce9a9cd684b2c/6819eec86c94548a98c68e50_edit-square.svg" alt="edit" className="size-6" /> : <></>}
+      {edit ? <Image src="https://cdn.prod.website-files.com/681079166d5ce9a9cd684b2c/6819eec86c94548a98c68e50_edit-square.svg" alt="edit" className="size-6" /> : null}
       {label}
       {/* {plus ? <Plus /> : <></>} */}
     </button>
