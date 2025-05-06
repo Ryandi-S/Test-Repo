@@ -303,7 +303,7 @@ function ContactPage({ next, prev, skipPrev, page }) {
           )}
 
           {page === PageStep.Number && (
-            <>
+            <div>
               <h1 className="origination-steps-title">
                 What’s your phone number?
               </h1>
@@ -338,7 +338,7 @@ function ContactPage({ next, prev, skipPrev, page }) {
                   {numberError.message}
                 </p>
               )}
-            </>
+            </div>
           )}
         </div>
         <div className="actions sm:flex flex-row mt-9 grid grid-cols-2 gap-6 sm:gap-3">
