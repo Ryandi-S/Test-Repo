@@ -61,14 +61,14 @@ function OnboadingForm() {
       className="flex flex-col items-left mx-auto md:px-40 px-6 max-w-[1440px] w-full
             h-[calc(100vh-64px)] overflow-auto no-scrollbar justify-start 2xl:justify-center"
     >
-      {page !== 13 && page !== 0 && (
+      {page < 4 && page !== 0 && (
         <Stepper step={step} maxStep={5} className="mt-20 mb-10" />
       )}
 
       {page === 0 && <GetStartedPage next={nextPage} />}
 
-      {[1, 2, 3].includes(page) && (
-        <p>- ContactPage -</p>
+      {[1, 2].includes(page) && (
+        <p>- ContactPage / email & phone -</p>
         // <ContactPage
         //   next={nextPage}
         //   prev={prevPage}
@@ -77,49 +77,29 @@ function OnboadingForm() {
         // />
       )}
 
+      {page === 3 && (
+        <p>- PersonalDetailsPage / name -</p>
+        // <PersonalDetailsPage
+        //   next={nextPage}
+        //   prev={prevPage}
+        //   page={page}
+        //   skipPrev={skipPrevPage}
+        // />
+      )}
+
       {page === 4 && (
-        <CreatePasswordPage
-          next={nextPage}
-          skipNext={skipNextPage}
-          prev={prevPage}
-        />
+        <p>- PersonalDetailsConfirmPage -</p>
+        // <PersonalDetailsConfirmPage
+        //   next={nextPage}
+        //   prev={prevPage}
+        //   edit={personalDetailsPage}
+        // />
       )}
 
       {page === 5 && (
-        <CreateAccountPage
-          next={nextPage}
-          skipNext={skipNextPage}
-          prev={prevPage}
-        />
+        <p>- SuccessPage -</p>
+        // <SuccessPage />
       )}
-      {page === 6 && <CardCustomizationPage next={nextPage} prev={prevPage} />}
-      {[7, 8, 9].includes(page) && (
-        <PersonalDetailsPage
-          next={nextPage}
-          prev={prevPage}
-          page={page}
-          skipPrev={skipPrevPage}
-        />
-      )}
-      {page === 10 && (
-        <PersonalDetailsConfirmPage
-          next={nextPage}
-          prev={prevPage}
-          edit={personalDetailsPage}
-        />
-      )}
-      {page === 11 && (
-        <IdentityVerificationPage next={nextPage} prev={prevPage} />
-      )}
-
-      {page === 12 && (
-        <IdentityDetailsConfirmPage
-          next={nextPage}
-          prev={prevPage}
-          edit={personalDetailsPage}
-        />
-      )}
-      {page === 13 && <SuccessPage />}
     </div>
   );
 }
