@@ -495,7 +495,7 @@ function PersonalDetailsPage({ next, prev, page, skipPrev }) {
                 </div>
 
                 <p className={`mt-4 mb-4 text-xs text-fg-danger-neutral ${titleError.status ? "opacity-100" : "opacity-100"}`}>
-                  {titleError.message ?? "Error"}
+                  {titleError.message ? "Error" : null}
                 </p>
 
                 <ul
