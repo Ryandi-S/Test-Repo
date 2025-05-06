@@ -243,7 +243,7 @@ function ContactPage({ next, prev, skipPrev, page }) {
                   this.setState({
                     data: {
                       ...this.state.data,
-                      name: event.target.value,
+                      email: event.target.value,
                     },
                   });
                 }}
@@ -262,7 +262,7 @@ function ContactPage({ next, prev, skipPrev, page }) {
                 What’s your phone number?
               </h1>
               <h4 className="origination-input-label">Phone Number</h4>
-              <PhoneNumberInput
+              {/* <PhoneNumberInput
                 // setNumberError={setNumberError}
                 setPhoneNumber={this.setState({
                   data: {
@@ -272,7 +272,20 @@ function ContactPage({ next, prev, skipPrev, page }) {
                 })}
                 phoneNumber={phoneNumber}
                 // numberError={numberError}
-              />
+              /> */}
+              <input
+                className={`input !w-full h-9 mr-4 origination-input-text px-0 minimal-input  ${
+                  numberError.status ? "text-fg-danger-neutral" : ""
+                }`}
+                onChange={(event) => {
+                  this.setState({
+                    data: {
+                      ...this.state.data,
+                      phone: event.target.value,
+                    },
+                  });
+                }}
+              ></input>
 
               {numberError.status && (
                 <p className="mt-2 p3 text-fg-danger-neutral">
