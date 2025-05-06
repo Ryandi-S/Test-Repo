@@ -91,6 +91,7 @@ function SelectButton({ onClick, idx, selected, label, className }) {
 window.SelectButton = SelectButton;
 
 function PersonalDetailsConfirmPage({ next, prev, userData }) {
+  console.log("--- components / PersonalDetailsConfirmPage ---", userData);
   return (
     <div className="container flex flex-row sm:mb-[104px] mb-16 items-center h-full max-h-[680px]">
       <div className="left sm:w-[654px] w-full sm:mr-10 h-full flex justify-between flex-col">
@@ -249,7 +250,7 @@ const PageStep = {
   Verification: 3,
 };
 
-function ContactPage({ next, prev, skipPrev, page }) {
+function ContactPage({ next, prev, skipPrev, page, userData, setUserData }) {
   // const { updateOriginationForm, originationForm } = useStore();
   const [email, setEmail] = React.useState("");
   const [phoneNumber, setPhoneNumber] = React.useState("");
@@ -298,6 +299,10 @@ function ContactPage({ next, prev, skipPrev, page }) {
                 placeholder="Enter email"
                 value={email}
                 onChange={(e) => {
+                  setUserData({
+                    ...userData,
+                    email: e.target.value
+                  });
                   setEmail(e.target.value);
                   setEmailError((prev) => ({
                     ...prev,
@@ -322,15 +327,18 @@ function ContactPage({ next, prev, skipPrev, page }) {
               <h1 className="origination-steps-title">
                 What’s your phone number?
               </h1>
-              <h4 className="origination-input-label">Phone Number</h4>
 
               <input
                 className={`input !w-full h-9 mr-4 origination-input-text px-0 minimal-input  ${
                   numberError.status ? "text-fg-danger-neutral" : ""
                 }`}
-                value={phoneNumber}
                 placeholder="Enter phone number"
+                value={phoneNumber}
                 onChange={(event) => {
+                  setUserData({
+                    ...userData,
+                    phone: e.target.value
+                  });
                   setPhoneNumber(event.target.value);
                   setNumberError((prev) => ({
                     ...prev,
