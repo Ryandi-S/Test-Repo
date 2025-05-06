@@ -301,7 +301,7 @@ function ContactPage({ next, prev, skipPrev, page, userData, setUserData }) {
                 onChange={(e) => {
                   setUserData({
                     ...userData,
-                    email: e.target.value
+                    email: e.target.value,
                   });
                   setEmail(e.target.value);
                   setEmailError((prev) => ({
@@ -337,7 +337,7 @@ function ContactPage({ next, prev, skipPrev, page, userData, setUserData }) {
                 onChange={(event) => {
                   setUserData({
                     ...userData,
-                    phone: event.target.value
+                    phone: event.target.value,
                   });
                   setPhoneNumber(event.target.value);
                   setNumberError((prev) => ({
@@ -366,7 +366,14 @@ function ContactPage({ next, prev, skipPrev, page, userData, setUserData }) {
 
 window.ContactPage = ContactPage;
 
-function PersonalDetailsPage({ next, prev, page, skipPrev }) {
+function PersonalDetailsPage({
+  next,
+  prev,
+  page,
+  skipPrev,
+  userData,
+  setUserData,
+}) {
   // const { updateOriginationForm, originationForm } = useStore();
 
   const [title, setTitle] = React.useState("");
@@ -487,53 +494,6 @@ function PersonalDetailsPage({ next, prev, page, skipPrev }) {
           <div>
             <h4 className="origination-input-label">What's your name?</h4>
 
-            <div className="dropdown dropdown-bottom flex items-start flex-col justify-start w-fit">
-              <div
-                tabIndex={0}
-                role="button"
-                className="input w-40 max-w-xs  h-9 mr-3 flex justify-between pt-1 px-0 minimal-input"
-                onClick={() => setOpenDropdown((prev) => !prev)}
-              >
-                <h2
-                  className={`sm:text-[26px] text-base",
-                      ${title} ? "opacity-100" : "opacity-50`}
-                >
-                  {title ? title : "Title"}
-                </h2>
-                {/* {openDropdown ? (
-                    <IoIosArrowUp className="size-5 mt-1 text-fg-success-stronger" />
-                  ) : (
-                    <IoIosArrowDown className="size-5 mt-1 text-fg-success-stronger" />
-                  )} */}
-              </div>
-
-              <p
-                className={`mt-4 mb-4 text-xs text-fg-danger-neutral ${
-                  titleError.status ? "opacity-100" : "opacity-100"
-                }`}
-              >
-                {titleError.message ? "Error" : null}
-              </p>
-
-              <ul
-                tabIndex={0}
-                className={`dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-40 -mt-4",
-                    ${openDropdown ? "block" : "hidden"}`}
-              >
-                {titleOptions.map((option, idx) => (
-                  <li
-                    key={idx}
-                    onClick={() => {
-                      setTitle(option);
-                      setOpenDropdown((prev) => !prev);
-                    }}
-                  >
-                    <a className="no-underline">{option}</a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
             <div className="name-container flex sm:flex-row flex-col sm:mt-5 mt-0 gap-8 sm:gap-4">
               <div className="flex flex-col">
                 <input
@@ -542,8 +502,11 @@ function PersonalDetailsPage({ next, prev, page, skipPrev }) {
                   placeholder="*First name"
                   value={firstName}
                   onChange={(e) => {
+                    setUserData({
+                      ...userData,
+                      firstName: event.target.value,
+                    });
                     setFirstName(e.target.value);
-
                     setFirstNameError((prev) => ({
                       ...prev,
                       status: false,
@@ -567,6 +530,10 @@ function PersonalDetailsPage({ next, prev, page, skipPrev }) {
                   placeholder="Middle name"
                   value={middleName}
                   onChange={(e) => {
+                    setUserData({
+                      ...userData,
+                      middleName: event.target.value,
+                    });
                     setMiddleName(e.target.value);
                     setMiddleNameError((prev) => ({
                       ...prev,
@@ -591,6 +558,10 @@ function PersonalDetailsPage({ next, prev, page, skipPrev }) {
                   placeholder="*Last name"
                   value={lastName}
                   onChange={(e) => {
+                    setUserData({
+                      ...userData,
+                      lastName: event.target.value,
+                    });
                     setLastName(e.target.value);
                     setLastNameError((prev) => ({
                       ...prev,

@@ -96,6 +96,8 @@ function OnboadingForm() {
           prev={prevPage}
           page={page}
           skipPrev={skipPrevPage}
+          userData={userData}
+          setUserData={setUserData}
         />
       )}
 
