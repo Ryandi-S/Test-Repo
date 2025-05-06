@@ -115,7 +115,7 @@ function SuccessPage({ userData }) {
 
           <div className="actions sm:flex flex-row mt-9 grid grid-cols-2 gap-6 sm:gap-3">
             <PrimaryButton label="Let's Begin" onClick={() => null} arrow />
-            <SecondaryButton label="Get the App" onClick={() => {}} />
+            <SecondaryButton label="Get the App" onClick={() => null} />
           </div>
         </div>
         {/* <div className="right hidden lg:block">

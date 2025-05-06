@@ -107,7 +107,7 @@ function OnboadingForm() {
 
       {page === 5 && (
         // <p>- SuccessPage -</p>
-        <SuccessPage data={userData} />
+        <SuccessPage userData={userData} />
       )}
     </div>
   );
