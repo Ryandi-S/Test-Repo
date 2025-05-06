@@ -96,7 +96,9 @@ function PersonalDetailsConfirmPage({ next, prev }) {
       <div className="left sm:w-[654px] w-full sm:mr-10 h-full flex justify-between flex-col">
         <div>
           <h5 className="text-fg-highlight-strong mb-2">Personal Details</h5>
-          <h1 className="origination-steps-title">Let's confirm your details</h1>
+          <h1 className="origination-steps-title">
+            Let's confirm your details
+          </h1>
           <h6 className="mb-4 text-md">
             Ensure that your details are accurate and proceed to the next steps.
           </h6>
@@ -118,10 +120,7 @@ function PersonalDetailsConfirmPage({ next, prev }) {
         </div>
 
         <div className="actions sm:flex flex-row mt-9 grid grid-cols-2 gap-6 sm:gap-3">
-          <SecondaryButton
-            label="Back"
-            onClick={prev}
-          />
+          <SecondaryButton label="Back" onClick={prev} />
           <PrimaryButton label="Confirm" arrow onClick={next} />
         </div>
       </div>
@@ -473,134 +472,131 @@ function PersonalDetailsPage({ next, prev, page, skipPrev }) {
         <div>
           <h5 className="text-fg-highlight-strong mb-2">Personal Details</h5>
           <h1 className="origination-steps-title">Let's get to know you</h1>
+          <div>
+            <h4 className="origination-input-label">What's your name?</h4>
 
-          {page === PageStep.Name && (
-            <div>
-              <h4 className="origination-input-label">What's your name?</h4>
-
-              <div className="dropdown dropdown-bottom flex items-start flex-col justify-start w-fit">
-                <div
-                  tabIndex={0}
-                  role="button"
-                  className="input w-40 max-w-xs  h-9 mr-3 flex justify-between pt-1 px-0 minimal-input"
-                  onClick={() => setOpenDropdown((prev) => !prev)}
-                >
-                  <h2
-                    className={`sm:text-[26px] text-base",
+            <div className="dropdown dropdown-bottom flex items-start flex-col justify-start w-fit">
+              <div
+                tabIndex={0}
+                role="button"
+                className="input w-40 max-w-xs  h-9 mr-3 flex justify-between pt-1 px-0 minimal-input"
+                onClick={() => setOpenDropdown((prev) => !prev)}
+              >
+                <h2
+                  className={`sm:text-[26px] text-base",
                       ${title} ? "opacity-100" : "opacity-50`}
-                  >
-                    {title ? title : "Title"}
-                  </h2>
-                  {/* {openDropdown ? (
+                >
+                  {title ? title : "Title"}
+                </h2>
+                {/* {openDropdown ? (
                     <IoIosArrowUp className="size-5 mt-1 text-fg-success-stronger" />
                   ) : (
                     <IoIosArrowDown className="size-5 mt-1 text-fg-success-stronger" />
                   )} */}
-                </div>
-
-                <p
-                  className={`mt-4 mb-4 text-xs text-fg-danger-neutral ${
-                    titleError.status ? "opacity-100" : "opacity-100"
-                  }`}
-                >
-                  {titleError.message ? "Error" : null}
-                </p>
-
-                <ul
-                  tabIndex={0}
-                  className={`dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-40 -mt-4",
-                    ${openDropdown ? "block" : "hidden"}`}
-                >
-                  {titleOptions.map((option, idx) => (
-                    <li
-                      key={idx}
-                      onClick={() => {
-                        setTitle(option);
-                        setOpenDropdown((prev) => !prev);
-                      }}
-                    >
-                      <a className="no-underline">{option}</a>
-                    </li>
-                  ))}
-                </ul>
               </div>
 
-              <div className="name-container flex sm:flex-row flex-col sm:mt-5 mt-0 gap-8 sm:gap-4">
-                <div className="flex flex-col">
-                  <input
-                    type="text"
-                    maxLength={50}
-                    placeholder="*First name"
-                    value={firstName}
-                    onChange={(e) => {
-                      setFirstName(e.target.value);
+              <p
+                className={`mt-4 mb-4 text-xs text-fg-danger-neutral ${
+                  titleError.status ? "opacity-100" : "opacity-100"
+                }`}
+              >
+                {titleError.message ? "Error" : null}
+              </p>
 
-                      setFirstNameError((prev) => ({
-                        ...prev,
-                        status: false,
-                      }));
+              <ul
+                tabIndex={0}
+                className={`dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-40 -mt-4",
+                    ${openDropdown ? "block" : "hidden"}`}
+              >
+                {titleOptions.map((option, idx) => (
+                  <li
+                    key={idx}
+                    onClick={() => {
+                      setTitle(option);
+                      setOpenDropdown((prev) => !prev);
                     }}
-                    className={`input w-40 max-w-xs h-9 border sm:text-[26px] text-base px-0 minimal-input tracking-tight ${
-                      firstNameError.status ? "text-fg-danger-neutral" : ""
-                    }`}
-                  />
-                  {firstNameError.status && (
-                    <p className="mt-2 p3 text-fg-danger-neutral">
-                      {firstNameError.message}
-                    </p>
-                  )}
-                </div>
+                  >
+                    <a className="no-underline">{option}</a>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-                <div className="flex flex-col">
-                  <input
-                    type="text"
-                    maxLength={50}
-                    placeholder="Middle name"
-                    value={middleName}
-                    onChange={(e) => {
-                      setMiddleName(e.target.value);
-                      setMiddleNameError((prev) => ({
-                        ...prev,
-                        status: false,
-                      }));
-                    }}
-                    className={`input w-40 max-w-xs h-9 border sm:text-[26px] text-base px-0 minimal-input tracking-tight ${
-                      middleNameError.status ? "text-fg-danger-neutral" : ""
-                    }`}
-                  />
-                  {middleNameError.status && (
-                    <p className="mt-2 p3 text-fg-danger-neutral">
-                      {middleNameError.message}
-                    </p>
-                  )}
-                </div>
+            <div className="name-container flex sm:flex-row flex-col sm:mt-5 mt-0 gap-8 sm:gap-4">
+              <div className="flex flex-col">
+                <input
+                  type="text"
+                  maxLength={50}
+                  placeholder="*First name"
+                  value={firstName}
+                  onChange={(e) => {
+                    setFirstName(e.target.value);
 
-                <div className="flex flex-col">
-                  <input
-                    type="text"
-                    maxLength={50}
-                    placeholder="*Last name"
-                    value={lastName}
-                    onChange={(e) => {
-                      setLastName(e.target.value);
-                      setLastNameError((prev) => ({
-                        ...prev,
-                        status: false,
-                      }));
-                    }}
-                    className={`input w-40 max-w-xs h-9 mr-3 border sm:text-[26px] text-base px-0 minimal-input tracking-tight ${
-                      lastNameError.status ? "text-fg-danger-neutral" : ""
-                    }`}
-                  />
-                  {lastNameError.status && (
-                    <p className="mt-2 p3 text-fg-danger-neutral">
-                      {lastNameError.message}
-                    </p>
-                  )}
-                </div>
+                    setFirstNameError((prev) => ({
+                      ...prev,
+                      status: false,
+                    }));
+                  }}
+                  className={`input w-40 max-w-xs h-9 border sm:text-[26px] text-base px-0 minimal-input tracking-tight ${
+                    firstNameError.status ? "text-fg-danger-neutral" : ""
+                  }`}
+                />
+                {firstNameError.status && (
+                  <p className="mt-2 p3 text-fg-danger-neutral">
+                    {firstNameError.message}
+                  </p>
+                )}
+              </div>
+
+              <div className="flex flex-col">
+                <input
+                  type="text"
+                  maxLength={50}
+                  placeholder="Middle name"
+                  value={middleName}
+                  onChange={(e) => {
+                    setMiddleName(e.target.value);
+                    setMiddleNameError((prev) => ({
+                      ...prev,
+                      status: false,
+                    }));
+                  }}
+                  className={`input w-40 max-w-xs h-9 border sm:text-[26px] text-base px-0 minimal-input tracking-tight ${
+                    middleNameError.status ? "text-fg-danger-neutral" : ""
+                  }`}
+                />
+                {middleNameError.status && (
+                  <p className="mt-2 p3 text-fg-danger-neutral">
+                    {middleNameError.message}
+                  </p>
+                )}
+              </div>
+
+              <div className="flex flex-col">
+                <input
+                  type="text"
+                  maxLength={50}
+                  placeholder="*Last name"
+                  value={lastName}
+                  onChange={(e) => {
+                    setLastName(e.target.value);
+                    setLastNameError((prev) => ({
+                      ...prev,
+                      status: false,
+                    }));
+                  }}
+                  className={`input w-40 max-w-xs h-9 mr-3 border sm:text-[26px] text-base px-0 minimal-input tracking-tight ${
+                    lastNameError.status ? "text-fg-danger-neutral" : ""
+                  }`}
+                />
+                {lastNameError.status && (
+                  <p className="mt-2 p3 text-fg-danger-neutral">
+                    {lastNameError.message}
+                  </p>
+                )}
               </div>
             </div>
-          )}
+          </div>
         </div>
 
         <div className="actions sm:flex flex-row mt-9 grid grid-cols-2 gap-6 sm:gap-3">
