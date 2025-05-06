@@ -73,7 +73,7 @@ function OnboadingForm() {
         <Stepper step={step} maxStep={5} className="mt-20 mb-10" />
       )}
 
-      {page === 0 && <GetStartedPage next={nextPage} />}
+      {page === 0 && <GetStartedPage next={nextPage} setPage={setPage} />}
 
       {[1, 2].includes(page) && (
         // <p>- ContactPage / email & phone -</p>
