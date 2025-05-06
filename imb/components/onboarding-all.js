@@ -131,182 +131,182 @@ function GetStartedPage({ next }) {
 // Attach to window so Webflow can access it
 window.GetStartedPage = GetStartedPage;
 
-// function PhoneNumberInput({
-//   phoneNumber,
-//   setPhoneNumber,
-//   numberError,
-//   setNumberError,
-//   className,
-// }) {
-//   return (
-//     <PhoneInput
-//       international
-//       defaultCountry="AU"
-//       countryCallingCodeEditable={true}
-//       value={phoneNumber}
-//       onChange={(value) => {
-//         setPhoneNumber(value);
-//         setNumberError((prev) => ({
-//           ...prev,
-//           status: false,
-//         }));
-//       }}
-//       className={`input w-full h-9 mr-4  text-base px-0 minimal-input ${
-//         numberError.status ? "text-fg-danger-neutral" : ""
-//       } ${className}`}
-//     />
-//   );
-// }
-// window.PhoneNumberInput = PhoneNumberInput;
+function PhoneNumberInput({
+  phoneNumber,
+  setPhoneNumber,
+  numberError,
+  setNumberError,
+  className,
+}) {
+  return (
+    <PhoneInput
+      international
+      defaultCountry="AU"
+      countryCallingCodeEditable={true}
+      value={phoneNumber}
+      onChange={(value) => {
+        setPhoneNumber(value);
+        setNumberError((prev) => ({
+          ...prev,
+          status: false,
+        }));
+      }}
+      className={`input w-full h-9 mr-4  text-base px-0 minimal-input ${
+        numberError.status ? "text-fg-danger-neutral" : ""
+      } ${className}`}
+    />
+  );
+}
+window.PhoneNumberInput = PhoneNumberInput;
 
-// function ContactPage({ next, prev, skipPrev, page }) {
-//   // const { updateOriginationForm, originationForm } = useStore();
-//   const [email, setEmail] = React.React.useState("");
-//   const [phoneNumber, setPhoneNumber] = React.React.useState("");
+function ContactPage({ next, prev, skipPrev, page }) {
+  // const { updateOriginationForm, originationForm } = useStore();
+  const [email, setEmail] = React.React.useState("");
+  const [phoneNumber, setPhoneNumber] = React.React.useState("");
 
-//   const [emailError, setEmailError] = React.React.useState({
-//     status: false,
-//     message: "",
-//     type: "",
-//   });
-//   const [numberError, setNumberError] = React.React.useState({
-//     status: false,
-//     message: "",
-//     type: "",
-//   });
+  const [emailError, setEmailError] = React.React.useState({
+    status: false,
+    message: "",
+    type: "",
+  });
+  const [numberError, setNumberError] = React.React.useState({
+    status: false,
+    message: "",
+    type: "",
+  });
 
-//   const [usersData, setUsersData] = React.React.useState([]);
+  const [usersData, setUsersData] = React.React.useState([]);
 
-//   // useEffect(() => {
-//   //   async function fetchData() {
-//   //     try {
-//   //       const response = await fetch("/api/get-users");
-//   //       const result = await response.json();
-//   //       setUsersData(result);
-//   //     } catch (error) {
-//   //       console.error(error);
-//   //     }
-//   //   }
-//   //   fetchData();
-//   // }, []);
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     try {
+  //       const response = await fetch("/api/get-users");
+  //       const result = await response.json();
+  //       setUsersData(result);
+  //     } catch (error) {
+  //       console.error(error);
+  //     }
+  //   }
+  //   fetchData();
+  // }, []);
 
-//   function handleNext() {
-//     switch (page) {
-//       case PageStep.Email:
-//         const userExist = usersData.some((user) => user.email === email);
-//         const validEmail = validator.isEmail(email);
-//         if (setState.email === "") {
-//           setEmailError((prev) => ({
-//             ...prev,
-//             status: true,
-//             message: "Please provide a valid email address",
-//           }));
-//           return;
-//         } else if (!validEmail) {
-//           setEmailError((prev) => ({
-//             ...prev,
-//             status: true,
-//             message: "Invalid email address",
-//           }));
-//           return;
-//         } else if (userExist) {
-//           setEmailError((prev) => ({
-//             ...prev,
-//             status: true,
-//             message:
-//               "The email address provided is already linked to an existing account. Please login or proceed to password recovery to continue",
-//           }));
-//           return;
-//         }
-//         // updateOriginationForm({ email });
-//         break;
-//       case PageStep.Number:
-//         if (phoneNumber === "" || !phoneNumber) {
-//           setNumber((prev) => ({
-//             ...prev,
-//             status: true,
-//             message: "Enter your phone number",
-//           }));
-//           return;
-//         } else if (!isValidPhoneNumber(phoneNumber)) {
-//           setNumber((prev) => ({
-//             ...prev,
-//             status: true,
-//             message: "Invalid phone number",
-//           }));
-//           return;
-//         }
-//         // updateOriginationForm({ phoneNumber });
-//         break;
-//       default:
-//         break;
-//     }
-//     next();
-//   }
+  function handleNext() {
+    switch (page) {
+      case PageStep.Email:
+        const userExist = usersData.some((user) => user.email === email);
+        const validEmail = validator.isEmail(email);
+        if (setState.email === "") {
+          setEmailError((prev) => ({
+            ...prev,
+            status: true,
+            message: "Please provide a valid email address",
+          }));
+          return;
+        } else if (!validEmail) {
+          setEmailError((prev) => ({
+            ...prev,
+            status: true,
+            message: "Invalid email address",
+          }));
+          return;
+        } else if (userExist) {
+          setEmailError((prev) => ({
+            ...prev,
+            status: true,
+            message:
+              "The email address provided is already linked to an existing account. Please login or proceed to password recovery to continue",
+          }));
+          return;
+        }
+        // updateOriginationForm({ email });
+        break;
+      case PageStep.Number:
+        if (phoneNumber === "" || !phoneNumber) {
+          setNumber((prev) => ({
+            ...prev,
+            status: true,
+            message: "Enter your phone number",
+          }));
+          return;
+        } else if (!isValidPhoneNumber(phoneNumber)) {
+          setNumber((prev) => ({
+            ...prev,
+            status: true,
+            message: "Invalid phone number",
+          }));
+          return;
+        }
+        // updateOriginationForm({ phoneNumber });
+        break;
+      default:
+        break;
+    }
+    next();
+  }
 
-//   return (
-//     <div className="container flex flex-row sm:mb-[104px] mb-16 items-center h-full max-h-[680px]">
-//       <div className="left sm:w-[550px] w-full sm:mr-10  h-full flex flex-col justify-between">
-//         <div>
-//           <h5 className="text-fg-highlight-strong mb-2">Getting Started</h5>
+  return (
+    <div className="container flex flex-row sm:mb-[104px] mb-16 items-center h-full max-h-[680px]">
+      <div className="left sm:w-[550px] w-full sm:mr-10  h-full flex flex-col justify-between">
+        <div>
+          <h5 className="text-fg-highlight-strong mb-2">Getting Started</h5>
 
-//           {page === PageStep.Email && (
-//             <div>
-//               <h1 className="origination-steps-title">What’s your email?</h1>
-//               <input
-//                 type="text"
-//                 placeholder="Enter email"
-//                 value={email}
-//                 onChange={(e) => {
-//                   setEmail(e.target.value);
-//                   setEmailError((prev) => ({
-//                     ...prev,
-//                     status: false,
-//                   }));
-//                 }}
-//                 className={`input !w-full h-9 mr-4 origination-input-text px-0 minimal-input  ${
-//                   emailError.status ? "text-fg-danger-neutral" : ""
-//                 }`}
-//               />
-//               {emailError.status && (
-//                 <p className="mt-2 p3 text-fg-danger-neutral">
-//                   {emailError.message}
-//                 </p>
-//               )}
-//             </div>
-//           )}
+          {page === PageStep.Email && (
+            <div>
+              <h1 className="origination-steps-title">What’s your email?</h1>
+              <input
+                type="text"
+                placeholder="Enter email"
+                value={email}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                  setEmailError((prev) => ({
+                    ...prev,
+                    status: false,
+                  }));
+                }}
+                className={`input !w-full h-9 mr-4 origination-input-text px-0 minimal-input  ${
+                  emailError.status ? "text-fg-danger-neutral" : ""
+                }`}
+              />
+              {emailError.status && (
+                <p className="mt-2 p3 text-fg-danger-neutral">
+                  {emailError.message}
+                </p>
+              )}
+            </div>
+          )}
 
-//           {page === PageStep.Number && (
-//             <>
-//               <h1 className="origination-steps-title">
-//                 What’s your phone number?
-//               </h1>
-//               <h4 className="origination-input-label">Phone Number</h4>
-//               <PhoneNumberInput
-//                 setNumberError={setNumberError}
-//                 setPhoneNumber={setPhoneNumber}
-//                 phoneNumber={phoneNumber}
-//                 numberError={numberError}
-//               />
+          {page === PageStep.Number && (
+            <>
+              <h1 className="origination-steps-title">
+                What’s your phone number?
+              </h1>
+              <h4 className="origination-input-label">Phone Number</h4>
+              <PhoneNumberInput
+                setNumberError={setNumberError}
+                setPhoneNumber={setPhoneNumber}
+                phoneNumber={phoneNumber}
+                numberError={numberError}
+              />
 
-//               {numberError.status && (
-//                 <p className="mt-2 p3 text-fg-danger-neutral">
-//                   {numberError.message}
-//                 </p>
-//               )}
-//             </>
-//           )}
-//         </div>
-//         <div className="actions sm:flex flex-row mt-9 grid grid-cols-2 gap-6 sm:gap-3">
-//           <SecondaryButton label="Back" onClick={prev} />
-//           <PrimaryButton label="Next" onClick={handleNext} arrow />
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }
+              {numberError.status && (
+                <p className="mt-2 p3 text-fg-danger-neutral">
+                  {numberError.message}
+                </p>
+              )}
+            </>
+          )}
+        </div>
+        <div className="actions sm:flex flex-row mt-9 grid grid-cols-2 gap-6 sm:gap-3">
+          <SecondaryButton label="Back" onClick={prev} />
+          <PrimaryButton label="Next" onClick={handleNext} arrow />
+        </div>
+      </div>
+    </div>
+  );
+}
 
-// window.ContactPage = ContactPage;
+window.ContactPage = ContactPage;
 
 function PersonalDetailsPage({ next, prev, page, skipPrev }) {
   // const { updateOriginationForm, originationForm } = useStore();
@@ -580,5 +580,5 @@ function PersonalDetailsPage({ next, prev, page, skipPrev }) {
     </div>
   );
 }
-
+// Attach to window so Webflow can access it
 window.PersonalDetailsPage = PersonalDetailsPage;
