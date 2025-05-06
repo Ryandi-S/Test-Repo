@@ -166,7 +166,7 @@ class RegisteredData extends React.Component {
   render() {
     return (
       <div>
-        <TestElement propText1="Registration data received!" propText2="The new user --->" />
+        <TestElement propText1="Registration data received!" propText2="The new user ---> UPDATED #3" />
         <div className="w-layout-cell">
           <p className="text">Name : {this.state.data.name}</p>
           <p className="text">Email : {this.state.data.email}</p>
