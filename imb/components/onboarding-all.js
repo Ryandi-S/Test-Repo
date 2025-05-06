@@ -1,4 +1,5 @@
 function Stepper({ step, maxStep, className }) {
+  console.log("--- components / Stepper ---")
   const renderItems = () => {
       const elements = [];
       for (let i = 0; i < maxStep; i++) {

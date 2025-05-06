@@ -68,12 +68,13 @@ function OnboadingForm() {
       {page === 0 && <GetStartedPage next={nextPage} />}
 
       {[1, 2, 3].includes(page) && (
-        <ContactPage
-          next={nextPage}
-          prev={prevPage}
-          skipPrev={skipPrevPage}
-          page={page}
-        />
+        <p>- ContactPage -</p>
+        // <ContactPage
+        //   next={nextPage}
+        //   prev={prevPage}
+        //   skipPrev={skipPrevPage}
+        //   page={page}
+        // />
       )}
 
       {page === 4 && (
