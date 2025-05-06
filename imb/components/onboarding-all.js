@@ -104,9 +104,7 @@ function PersonalDetailsConfirmPage({ next, prev, userData }) {
       })
       .then((response) => {
         console.log("Success:", response.data);
-        window.location.href =
-          "https://custom-code-react-sample.webflow.io/onboarding/registration-summary?id=" +
-          response.data.id;
+        next();
       })
       .catch(function (error) {
         console.error("Error:", error);
@@ -115,7 +113,6 @@ function PersonalDetailsConfirmPage({ next, prev, userData }) {
 
   function handleSubmit() {
     submitRegistration({ userData });
-    next();
   }
   return (
     <div className="container flex flex-row sm:mb-[104px] mb-16 items-center h-full max-h-[680px]">
