@@ -83,7 +83,7 @@ function OnboadingForm() {
           skipPrev={skipPrevPage}
           page={page}
         />
-      )}
+      )}m
 
       {page === 3 && (
         // <p>- PersonalDetailsPage / name -</p>
