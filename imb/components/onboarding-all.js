@@ -335,7 +335,7 @@ function ContactPage({ next, prev, skipPrev, page, userData, setUserData }) {
                 onChange={(event) => {
                   setUserData({
                     ...userData,
-                    phone: e.target.value
+                    phone: event.target.value
                   });
                   setPhoneNumber(event.target.value);
                   setNumberError((prev) => ({
