@@ -499,7 +499,7 @@ function PersonalDetailsPage({ next, prev, page, skipPrev }) {
                     titleError.status ? "opacity-100" : "opacity-100"
                   }`}
                 >
-                  {titleError.message ?? "Error"}
+                  {titleError.message ? "Error" : null}
                 </p>
 
                 <ul
