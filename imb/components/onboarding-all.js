@@ -99,7 +99,9 @@ function SuccessPage({ userData, reset }) {
           <p className="text-fg-highlight-strong font-medium mb-2">Success</p>
           <h1 className="mb-6 sm:text-4xl text-[22px] strong">
             Welcome to IMB,{" "}
-            <span className="text-fg-highlight-strong">{userData.firstName}</span>
+            <span className="text-fg-highlight-strong">
+              {userData.firstName}
+            </span>
           </h1>
           {/* <div className="lg:hidden block mb-10 w-full">
             <video width="353" height="283" autoPlay muted loop>
@@ -109,8 +111,8 @@ function SuccessPage({ userData, reset }) {
           <p className="p2 mb-10">
             Congratulations on opening your account with us! We're thrilled to
             have you as a part of our community. We make banking a breeze at
-            IMB. Feel free to reach out here if you have any questions or
-            need assistance.
+            IMB. Feel free to reach out here if you have any questions or need
+            assistance.
           </p>
 
           <div className="actions sm:flex flex-row mt-9 grid grid-cols-2 gap-6 sm:gap-3">
@@ -148,11 +150,7 @@ function GetStartedPage({ next, jump }) {
         </p>
 
         <div className="actions flex flex-row mt-9 gap-6">
-          <PrimaryButton
-            label="Login"
-            arrow
-            onClick={jump}
-          />
+          <PrimaryButton label="Login" arrow onClick={jump} />
           <SecondaryButton
             label="Sign up now"
             onClick={next}
@@ -204,23 +202,6 @@ function PhoneNumberInput({
 window.PhoneNumberInput = PhoneNumberInput;
 
 function ContactPage({ next, prev, skipPrev, page }) {
-  // this.state = {
-  //   data: {
-  //     email: "",
-  //     phone: "",
-  //     numberError: {
-  //       status: false,
-  //       message: "",
-  //       type: "",
-  //     },
-  //     emailError: {
-  //       status: false,
-  //       message: "",
-  //       type: "",
-  //     },
-  //     usersData: [],
-  //   },
-  // };
   // const { updateOriginationForm, originationForm } = useStore();
   const [email, setEmail] = React.useState("");
   const [phoneNumber, setPhoneNumber] = React.useState("");
@@ -264,7 +245,7 @@ function ContactPage({ next, prev, skipPrev, page }) {
           {page === PageStep.Email && (
             <div>
               <h1 className="origination-steps-title">What’s your email?</h1>
-              {/* <input
+              <input
                 type="text"
                 placeholder="Enter email"
                 value={email}
@@ -278,19 +259,8 @@ function ContactPage({ next, prev, skipPrev, page }) {
                 className={`input !w-full h-9 mr-4 origination-input-text px-0 minimal-input  ${
                   emailError.status ? "text-fg-danger-neutral" : ""
                 }`}
-              /> */}
-              <input
-                className={`input !w-full h-9 mr-4 origination-input-text px-0 minimal-input  ${
-                  emailError.status ? "text-fg-danger-neutral" : ""
-                }`}
-                onChange={(event) => {
-                  setEmail(event.target.value);
-                  setEmailError((prev) => ({
-                    ...prev,
-                    status: false,
-                  }));
-                }}
-              ></input>
+              />
+
               {emailError.status && (
                 <p className="mt-2 p3 text-fg-danger-neutral">
                   {emailError.message}
@@ -305,21 +275,12 @@ function ContactPage({ next, prev, skipPrev, page }) {
                 What’s your phone number?
               </h1>
               <h4 className="origination-input-label">Phone Number</h4>
-              {/* <PhoneNumberInput
-                // setNumberError={setNumberError}
-                setPhoneNumber={this.setState({
-                  data: {
-                    ...this.state.data,
-                    phone: event.target.value,
-                  },
-                })}
-                phoneNumber={phoneNumber}
-                // numberError={numberError}
-              /> */}
+
               <input
                 className={`input !w-full h-9 mr-4 origination-input-text px-0 minimal-input  ${
                   numberError.status ? "text-fg-danger-neutral" : ""
                 }`}
+                value={phoneNumber}
                 onChange={(event) => {
                   setPhoneNumber(event.target.value);
                   setNumberError((prev) => ({
