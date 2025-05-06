@@ -6,16 +6,13 @@ function PrimaryButton({
   disabled,
   label,
 }) {
-  const { mode } = useTheme();
   return (
     <button
       disabled={disabled ? true : false}
       className={
         `btn bg-bg-accent-neutral border-none text-fg-brand-default rounded-full btn-sm mt-2 !h-10 text-base hover:bg-bg-accent-neutral hover:opacity-60
         ${className}
-        disabled:opacity-40 disabled:bg-bg-accent-neutral disabled:border-none disabled:text-fg-brand-default
-        ${mode === "dark" &&
-          "text-fg-greyscale-subtlest disabled:text-fg-greyscale-subtlest"}`
+        disabled:opacity-40 disabled:bg-bg-accent-neutral disabled:border-none disabled:text-fg-brand-default`
       }
       onClick={onClick}
       type={type}
