@@ -96,11 +96,9 @@ function PersonalDetailsConfirmPage({ next, prev, userData }) {
     console.log("--- submitRegistration ---", userData);
     axios
       .post("https://68183f135a4b07b9d1ce55e0.mockapi.io/test/user", {
-        name: `${
-          userData.firstName + userData.middleName
-            ? userData.middleName
-            : "" + userData.lastName
-        }`,
+        name: `${userData.firstName} ${
+          userData.middleName ? userData.middleName + " " : ""
+        }${userData.lastName}`,
         email: userData.email,
         phone: userData.phone,
       })
