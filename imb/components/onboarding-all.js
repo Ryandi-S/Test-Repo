@@ -19,7 +19,7 @@ function PrimaryButton({
     >
       {label}
       {/* {arrow ? <FaArrowRight /> : <></>} */}
-      {arrow ? "->" : null}
+      {arrow ? " >" : null}
     </button>
   );
 }
@@ -111,6 +111,7 @@ function GetStartedPage({ next }) {
             label="Sign up now"
             onClick={next}
             className="border-border-highlight-strong hover:border-border-highlight-strong"
+            border={true}
           />
         </div>
       </div>
