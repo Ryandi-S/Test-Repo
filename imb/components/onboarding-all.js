@@ -99,9 +99,7 @@ function SuccessPage({ userData }) {
           <p className="text-fg-highlight-strong font-medium mb-2">Success</p>
           <h1 className="mb-6 sm:text-4xl text-[22px] strong">
             Welcome to Alphie,{" "}
-            <span className="text-fg-highlight-strong">
-              {`--- test ---`}
-            </span>
+            <span className="text-fg-highlight-strong">{`--- test ---`}</span>
           </h1>
           <div className="lg:hidden block mb-10 w-full">
             <video width="353" height="283" autoPlay muted loop>
@@ -116,11 +114,7 @@ function SuccessPage({ userData }) {
           </p>
 
           <div className="actions sm:flex flex-row mt-9 grid grid-cols-2 gap-6 sm:gap-3">
-            <PrimaryButton
-              label="Let's Begin"
-              onClick={() => null}
-              arrow
-            />
+            <PrimaryButton label="Let's Begin" onClick={() => null} arrow />
             <SecondaryButton label="Get the App" onClick={() => {}} />
           </div>
         </div>
@@ -154,9 +148,13 @@ function GetStartedPage({ next }) {
         </p>
 
         <div className="actions flex flex-row mt-9 gap-6">
-          <PrimaryButton label="Login" arrow onClick={() => {
-            React.useCallback(() => setPage(5), [page]);
-          }} />
+          <PrimaryButton
+            label="Login"
+            arrow
+            onClick={() => {
+              React.useCallback(() => setPage(5), [page]);
+            }}
+          />
           <SecondaryButton
             label="Sign up now"
             onClick={next}
