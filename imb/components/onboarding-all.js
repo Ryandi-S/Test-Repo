@@ -206,7 +206,7 @@ function ContactPage({ next, prev, skipPrev, page }) {
   //   fetchData();
   // }, []);
 
-  const handleNext = () => {
+  function handleNext() {
     switch (page) {
       case PageStep.Email:
         const userExist = usersData.some((user) => user.email === email);
@@ -258,7 +258,7 @@ function ContactPage({ next, prev, skipPrev, page }) {
         break;
     }
     next();
-  };
+  }
 
   return (
     <div className="container flex flex-row sm:mb-[104px] mb-16 items-center h-full max-h-[680px]">
