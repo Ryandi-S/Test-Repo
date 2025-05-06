@@ -160,38 +160,22 @@ function PhoneNumberInput({
 window.PhoneNumberInput = PhoneNumberInput;
 
 function ContactPage({ next, prev, skipPrev, page }) {
-  this.state = {
-    emailError: {
-      status: false,
-      message: "",
-      type: "",
-    },
-    numberError: {
-      status: false,
-      message: "",
-      type: "",
-    },
-    usersData: [],
-    email: "",
-    phoneNumber: "",
-  };
-
   // const { updateOriginationForm, originationForm } = useStore();
-  // const [email, setEmail] = useState("");
-  // const [phoneNumber, setPhoneNumber] = useState("");
+  const [email, setEmail] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
 
-  // const [emailError, setEmailError] = useState({
-  //   status: false,
-  //   message: "",
-  //   type: "",
-  // });
-  // const [numberError, setNumberError] = useState({
-  //   status: false,
-  //   message: "",
-  //   type: "",
-  // });
+  const [emailError, setEmailError] = useState({
+    status: false,
+    message: "",
+    type: "",
+  });
+  const [numberError, setNumberError] = useState({
+    status: false,
+    message: "",
+    type: "",
+  });
 
-  // const [usersData, setUsersData] = useState([]);
+  const [usersData, setUsersData] = useState([]);
 
   // useEffect(() => {
   //   async function fetchData() {
@@ -211,22 +195,22 @@ function ContactPage({ next, prev, skipPrev, page }) {
       case PageStep.Email:
         const userExist = usersData.some((user) => user.email === email);
         const validEmail = validator.isEmail(email);
-        if (this.state.email === "") {
-          this.state.emailError((prev) => ({
+        if (this.setState.email === "") {
+          this.setState.emailError((prev) => ({
             ...prev,
             status: true,
             message: "Please provide a valid email address",
           }));
           return;
         } else if (!validEmail) {
-          this.state.emailError((prev) => ({
+          this.setState.emailError((prev) => ({
             ...prev,
             status: true,
             message: "Invalid email address",
           }));
           return;
         } else if (userExist) {
-          this.state.emailError((prev) => ({
+          this.setState.emailError((prev) => ({
             ...prev,
             status: true,
             message:
@@ -237,15 +221,15 @@ function ContactPage({ next, prev, skipPrev, page }) {
         // updateOriginationForm({ email });
         break;
       case PageStep.Number:
-        if (this.state.phoneNumber === "" || !phoneNumber) {
-          this.state.numberError((prev) => ({
+        if (this.setState.phoneNumber === "" || !phoneNumber) {
+          this.setState.numberError((prev) => ({
             ...prev,
             status: true,
             message: "Enter your phone number",
           }));
           return;
         } else if (!isValidPhoneNumber(phoneNumber)) {
-          this.state.NumberError((prev) => ({
+          this.setState.NumberError((prev) => ({
             ...prev,
             status: true,
             message: "Invalid phone number",
@@ -274,19 +258,21 @@ function ContactPage({ next, prev, skipPrev, page }) {
                 placeholder="Enter email"
                 value={email}
                 onChange={(e) => {
-                  this.state.email(e.target.value);
-                  this.state.emailError((prev) => ({
+                  this.setState.email(e.target.value);
+                  this.setState.emailError((prev) => ({
                     ...prev,
                     status: false,
                   }));
                 }}
                 className={`input !w-full h-9 mr-4 origination-input-text px-0 minimal-input  ${
-                  this.state.emailError.status ? "text-fg-danger-neutral" : ""
+                  this.setState.emailError.status
+                    ? "text-fg-danger-neutral"
+                    : ""
                 }`}
               />
-              {this.state.emailError.status && (
+              {this.setState.emailError.status && (
                 <p className="mt-2 p3 text-fg-danger-neutral">
-                  {this.state.emailError.message}
+                  {this.setState.emailError.message}
                 </p>
               )}
             </div>
@@ -299,8 +285,8 @@ function ContactPage({ next, prev, skipPrev, page }) {
               </h1>
               <h4 className="origination-input-label">Phone Number</h4>
               <PhoneNumberInput
-                setNumberError={this.state.numberError}
-                setPhoneNumber={this.state.phoneNumber}
+                setNumberError={this.setState.numberError}
+                setPhoneNumber={this.setState.phoneNumber}
                 phoneNumber={this.state.phoneNumber}
                 numberError={this.state.numberError}
               />
