@@ -206,37 +206,37 @@ function PhoneNumberInput({
 window.PhoneNumberInput = PhoneNumberInput;
 
 function ContactPage({ next, prev, skipPrev, page }) {
-  this.state = {
-    data: {
-      email: "",
-      phone: "",
-      numberError: {
-        status: false,
-        message: "",
-        type: "",
-      },
-      emailError: {
-        status: false,
-        message: "",
-        type: "",
-      },
-      usersData: [],
-    },
-  };
+  // this.state = {
+  //   data: {
+  //     email: "",
+  //     phone: "",
+  //     numberError: {
+  //       status: false,
+  //       message: "",
+  //       type: "",
+  //     },
+  //     emailError: {
+  //       status: false,
+  //       message: "",
+  //       type: "",
+  //     },
+  //     usersData: [],
+  //   },
+  // };
   // const { updateOriginationForm, originationForm } = useStore();
-  // const [email, setEmail] = React.React.useState("");
-  // const [phoneNumber, setPhoneNumber] = React.React.useState("");
+  const [email, setEmail] = React.useState("");
+  const [phoneNumber, setPhoneNumber] = React.useState("");
 
-  // const [emailError, setEmailError] = React.React.useState({
-  //   status: false,
-  //   message: "",
-  //   type: "",
-  // });
-  // const [numberError, setNumberError] = React.React.useState({
-  //   status: false,
-  //   message: "",
-  //   type: "",
-  // });
+  const [emailError, setEmailError] = React.useState({
+    status: false,
+    message: "",
+    type: "",
+  });
+  const [numberError, setNumberError] = React.useState({
+    status: false,
+    message: "",
+    type: "",
+  });
 
   // const [usersData, setUsersData] = React.React.useState([]);
 
@@ -286,12 +286,11 @@ function ContactPage({ next, prev, skipPrev, page }) {
                   emailError.status ? "text-fg-danger-neutral" : ""
                 }`}
                 onChange={(event) => {
-                  this.setState({
-                    data: {
-                      ...this.state.data,
-                      email: event.target.value,
-                    },
-                  });
+                  setEmail(event.target.value);
+                  setEmailError((prev) => ({
+                    ...prev,
+                    status: false,
+                  }));
                 }}
               ></input>
               {emailError.status && (
@@ -324,12 +323,11 @@ function ContactPage({ next, prev, skipPrev, page }) {
                   numberError.status ? "text-fg-danger-neutral" : ""
                 }`}
                 onChange={(event) => {
-                  this.setState({
-                    data: {
-                      ...this.state.data,
-                      phone: event.target.value,
-                    },
-                  });
+                  setPhoneNumber(event.target.value);
+                  setNumberError((prev) => ({
+                    ...prev,
+                    status: false,
+                  }));
                 }}
               ></input>
 
