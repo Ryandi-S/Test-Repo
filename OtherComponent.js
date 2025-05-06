@@ -1,7 +1,7 @@
 const TestElement = ({ propText1, propText2 }) => {
   return (
   	<div>
-      <p>--- Test Component Here ---</p>
+      <p>Component for receiving prop</p>
       <p>Prop text 1 : {propText1}</p>
       <p>Prop text 2 : {propText2}</p>
     </div>
@@ -22,7 +22,7 @@ const submitRegistration = ({ name, email, phone }) => {
   })
   .then((response) => {
     console.log('Success:', response.data);
-    window.location.href = "https://custom-code-react-sample.webflow.io/registration-summary?id="+response.data.id
+    window.location.href = "https://custom-code-react-sample.webflow.io/onboarding/registration-summary?id="+response.data.id
   })
   .catch(function (error) {
     console.error('Error:', error);

@@ -1,3 +1,4 @@
+
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 class DemoForm extends React.Component {
@@ -31,7 +32,6 @@ class DemoForm extends React.Component {
     else {
       alert("Please fill all form correctly");
     }
-    // window.location.href = "https://custom-code-react-sample.webflow.io/open-everyday-unlimited"
   }
 
   submitAgain() {
@@ -167,6 +167,7 @@ class RegisteredData extends React.Component {
   render() {
     return (
       <div>
+        <TestElement propText1="Registration data received" propText2="User data :" />
         <div className="w-layout-cell">
           <p className="text">Name : {this.state.data.name}</p>
           <p className="text">Email : {this.state.data.email}</p>
