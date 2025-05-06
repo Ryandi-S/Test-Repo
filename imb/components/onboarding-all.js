@@ -103,7 +103,7 @@ function GetStartedPage({ next }) {
 
         <div className="actions flex flex-row mt-9 gap-6">
           <PrimaryButton
-            label="Login"
+            label="Login test"
             arrow
             onClick={() => null}
           />
