@@ -1,4 +1,3 @@
-
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 class DemoForm extends React.Component {
