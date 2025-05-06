@@ -90,6 +90,52 @@ function SelectButton({ onClick, idx, selected, label, className }) {
 // Attach to window so Webflow can access it
 window.SelectButton = SelectButton;
 
+function SuccessPage({ userData }) {
+  console.log("--- components / SuccessPage ---", userData);
+  return (
+    <div className="container flex items-center h-full">
+      <div className="flex mx-auto">
+        <div className="left sm:w-[516px] w-full">
+          <p className="text-fg-highlight-strong font-medium mb-2">Success</p>
+          <h1 className="mb-6 sm:text-4xl text-[22px] strong">
+            Welcome to Alphie,{" "}
+            <span className="text-fg-highlight-strong">
+              {`--- test ---`}
+            </span>
+          </h1>
+          <div className="lg:hidden block mb-10 w-full">
+            <video width="353" height="283" autoPlay muted loop>
+              <source src={videoSrc} type="video/mp4" />
+            </video>
+          </div>
+          <p className="p2 mb-10">
+            Congratulations on opening your account with us! We're thrilled to
+            have you as a part of our community. We make banking a breeze at
+            Alphie. Feel free to reach out here if you have any questions or
+            need assistance.
+          </p>
+
+          <div className="actions sm:flex flex-row mt-9 grid grid-cols-2 gap-6 sm:gap-3">
+            <PrimaryButton
+              label="Let's Begin"
+              onClick={() => null}
+              arrow
+            />
+            <SecondaryButton label="Get the App" onClick={() => {}} />
+          </div>
+        </div>
+        <div className="right hidden lg:block">
+          <video width="353" height="283" autoPlay muted loop>
+            <source src={videoSrc} type="video/mp4" />
+          </video>
+        </div>
+      </div>
+    </div>
+  );
+}
+// Attach to window so Webflow can access it
+window.SuccessPage = SuccessPage;
+
 function GetStartedPage({ next }) {
   console.log("--- components / GetStartedPage ---");
   return (
@@ -108,7 +154,9 @@ function GetStartedPage({ next }) {
         </p>
 
         <div className="actions flex flex-row mt-9 gap-6">
-          <PrimaryButton label="Login" arrow onClick={() => null} />
+          <PrimaryButton label="Login" arrow onClick={() => {
+            React.useCallback(() => setPage(5), [page]);
+          }} />
           <SecondaryButton
             label="Sign up now"
             onClick={next}
