@@ -1,4 +1,3 @@
-
 const mapPageToStep = (page) => {
   if (page === 0) return 0;
   if ([1, 2, 3, 4].includes(page)) return 1;
