@@ -30,9 +30,9 @@ function OnboadingForm() {
   const personalDetailsPage = React.useCallback(() => setPage(4), []);
 
   const [userData, setUserData] = React.useState({
-    firstName: "tes 1st",
-    middleName: "2nd",
-    lastName: "the 3rd",
+    firstName: "John",
+    middleName: "",
+    lastName: "Doe",
     email: "m@il.com",
     phone: "0809",
   });
@@ -102,6 +102,7 @@ function OnboadingForm() {
         <PersonalDetailsConfirmPage
           next={nextPage}
           prev={prevPage}
+          userData={userData}
         />
       )}
 
