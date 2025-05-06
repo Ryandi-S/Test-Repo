@@ -265,12 +265,12 @@ function ContactPage({ next, prev, skipPrev, page }) {
                   }));
                 }}
                 className={`input !w-full h-9 mr-4 origination-input-text px-0 minimal-input  ${
-                  setEmailError.status ? "text-fg-danger-neutral" : ""
+                  emailError.status ? "text-fg-danger-neutral" : ""
                 }`}
               />
-              {setEmailError.status && (
+              {emailError.status && (
                 <p className="mt-2 p3 text-fg-danger-neutral">
-                  {setEmailError.message}
+                  {emailError.message}
                 </p>
               )}
             </div>
@@ -291,7 +291,7 @@ function ContactPage({ next, prev, skipPrev, page }) {
 
               {numberError.status && (
                 <p className="mt-2 p3 text-fg-danger-neutral">
-                  {setNumberError.message}
+                  {numberError.message}
                 </p>
               )}
             </>

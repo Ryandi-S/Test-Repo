@@ -53,8 +53,8 @@ function OnboadingForm() {
   // }
 
   React.useEffect(() => {
-    console.log("--- OnboadingForm ---")
-  }, [])
+    console.log("--- OnboadingForm ---");
+  }, []);
 
   return (
     <div
@@ -68,13 +68,13 @@ function OnboadingForm() {
       {page === 0 && <GetStartedPage next={nextPage} />}
 
       {[1, 2].includes(page) && (
-        <p>- ContactPage / email & phone -</p>
-        // <ContactPage
-        //   next={nextPage}
-        //   prev={prevPage}
-        //   skipPrev={skipPrevPage}
-        //   page={page}
-        // />
+        // <p>- ContactPage / email & phone -</p>
+        <ContactPage
+          next={nextPage}
+          prev={prevPage}
+          skipPrev={skipPrevPage}
+          page={page}
+        />
       )}
 
       {page === 3 && (
