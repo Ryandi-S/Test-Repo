@@ -388,78 +388,78 @@ function PersonalDetailsPage({ next, prev, page, skipPrev }) {
   );
 
   function handleNext() {
-    switch (page) {
-      case PageStep.Name:
-        let hasError = false;
+    // switch (page) {
+    //   case PageStep.Name:
+    //     let hasError = false;
 
-        if (title === "") {
-          setTitleError((prev) => ({
-            ...prev,
-            status: true,
-            message: "Please select a title",
-          }));
-          hasError = true;
-        }
-        if (firstName === "") {
-          setFirstNameError((prev) => ({
-            ...prev,
-            status: true,
-            message: "You must include your first name",
-          }));
-          hasError = true;
-        }
-        if (lastName === "") {
-          setLastNameError((prev) => ({
-            ...prev,
-            status: true,
-            message: "You must include your last name",
-          }));
-          hasError = true;
-        }
+    //     if (title === "") {
+    //       setTitleError((prev) => ({
+    //         ...prev,
+    //         status: true,
+    //         message: "Please select a title",
+    //       }));
+    //       hasError = true;
+    //     }
+    //     if (firstName === "") {
+    //       setFirstNameError((prev) => ({
+    //         ...prev,
+    //         status: true,
+    //         message: "You must include your first name",
+    //       }));
+    //       hasError = true;
+    //     }
+    //     if (lastName === "") {
+    //       setLastNameError((prev) => ({
+    //         ...prev,
+    //         status: true,
+    //         message: "You must include your last name",
+    //       }));
+    //       hasError = true;
+    //     }
 
-        const validNamePattern = /^[a-z ,.'-]+$/i;
+    //     const validNamePattern = /^[a-z ,.'-]+$/i;
 
-        if (firstName !== "" && !validNamePattern.test(firstName)) {
-          setFirstNameError((prev) => ({
-            ...prev,
-            status: true,
-            message:
-              "Invalid characters detected. Please use alphabetic characters and hyphens only.",
-          }));
-          hasError = true;
-        }
-        if (lastName !== "" && !validNamePattern.test(lastName)) {
-          setLastNameError((prev) => ({
-            ...prev,
-            status: true,
-            message:
-              "Invalid characters detected. Please use alphabetic characters and hyphens only.",
-          }));
-          hasError = true;
-        }
-        if (middleName !== "" && !validNamePattern.test(middleName)) {
-          setMiddleNameError((prev) => ({
-            ...prev,
-            status: true,
-            message:
-              "Invalid characters detected. Please use alphabetic characters and hyphens only.",
-          }));
-          hasError = true;
-        }
+    //     if (firstName !== "" && !validNamePattern.test(firstName)) {
+    //       setFirstNameError((prev) => ({
+    //         ...prev,
+    //         status: true,
+    //         message:
+    //           "Invalid characters detected. Please use alphabetic characters and hyphens only.",
+    //       }));
+    //       hasError = true;
+    //     }
+    //     if (lastName !== "" && !validNamePattern.test(lastName)) {
+    //       setLastNameError((prev) => ({
+    //         ...prev,
+    //         status: true,
+    //         message:
+    //           "Invalid characters detected. Please use alphabetic characters and hyphens only.",
+    //       }));
+    //       hasError = true;
+    //     }
+    //     if (middleName !== "" && !validNamePattern.test(middleName)) {
+    //       setMiddleNameError((prev) => ({
+    //         ...prev,
+    //         status: true,
+    //         message:
+    //           "Invalid characters detected. Please use alphabetic characters and hyphens only.",
+    //       }));
+    //       hasError = true;
+    //     }
 
-        if (hasError) {
-          return;
-        }
+    //     if (hasError) {
+    //       return;
+    //     }
 
-        hasError = false;
-        // updateOriginationForm({
-        //   name: { title, firstName, middleName, lastName },
-        // });
-        break;
+    //     hasError = false;
+    //     // updateOriginationForm({
+    //     //   name: { title, firstName, middleName, lastName },
+    //     // });
+    //     break;
 
-      default:
-        break;
-    }
+    //   default:
+    //     break;
+    // }
     next();
   }
 
@@ -496,12 +496,7 @@ function PersonalDetailsPage({ next, prev, page, skipPrev }) {
 
                 <p
                   className={`mt-4 mb-4 text-xs text-fg-danger-neutral 
-                                    ${
-                                      titleError.status
-                                        ? "opacity-100"
-                                        : "opacity-100"
-                                    }
-                                `}
+                    ${titleError.status ? "opacity-100" : "opacity-100"}`}
                 >
                   {titleError.message ?? "Error"}
                 </p>
