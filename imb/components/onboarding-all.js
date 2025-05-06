@@ -130,7 +130,7 @@ function SuccessPage({ userData }) {
 // Attach to window so Webflow can access it
 window.SuccessPage = SuccessPage;
 
-function GetStartedPage({ next }) {
+function GetStartedPage({ next, jump }) {
   console.log("--- components / GetStartedPage ---");
   return (
     <div className="container flex lg:grid lg:grid-cols-2 gap-8 items-center relative h-[calc(100vh-64px)]">
@@ -151,9 +151,7 @@ function GetStartedPage({ next }) {
           <PrimaryButton
             label="Login"
             arrow
-            onClick={() => {
-              React.useCallback(() => setPage(5), [page]);
-            }}
+            onClick={jump}
           />
           <SecondaryButton
             label="Sign up now"

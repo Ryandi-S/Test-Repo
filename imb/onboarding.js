@@ -21,6 +21,7 @@ function OnboadingForm() {
 
   const step = mapPageToStep(page);
 
+  const jumpPage = React.useCallback(() => setPage(5), [page]);
   const nextPage = React.useCallback(() => setPage(page + 1), [page]);
   const prevPage = React.useCallback(() => setPage(page - 1), [page]);
   const skipNextPage = React.useCallback(() => setPage(page + 2), [page]);
@@ -73,7 +74,7 @@ function OnboadingForm() {
         <Stepper step={step} maxStep={5} className="mt-20 mb-10" />
       )}
 
-      {page === 0 && <GetStartedPage next={nextPage} />}
+      {page === 0 && <GetStartedPage next={nextPage} jump={jumpPage} />}
 
       {[1, 2].includes(page) && (
         // <p>- ContactPage / email & phone -</p>
