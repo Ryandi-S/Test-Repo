@@ -29,12 +29,12 @@ function OnboadingForm() {
   const personalDetailsPage = React.useCallback(() => setPage(4), []);
 
   const [userData, setUserData] = React.useState({
-    "firstName": "tes 1st",
-    "middleName": "2nd",
-    "lastName": "the 3rd",
-    "email": "m@il.com",
-    "phone": "0809",
-  })
+    firstName: "tes 1st",
+    middleName: "2nd",
+    lastName: "the 3rd",
+    email: "m@il.com",
+    phone: "0809",
+  });
 
   // React.useEffect(() => {
   //   const storedForm = JSON.parse(
@@ -84,7 +84,7 @@ function OnboadingForm() {
           skipPrev={skipPrevPage}
           page={page}
         />
-      )}m
+      )}
 
       {page === 3 && (
         // <p>- PersonalDetailsPage / name -</p>
