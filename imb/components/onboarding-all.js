@@ -1,4 +1,5 @@
 function GetStartedPage({ next }) {
+  console.log("--- components / GetStartedPage ---")
   return (
     <div className="container flex lg:grid lg:grid-cols-2 gap-8 items-center relative h-[calc(100vh-64px)]">
       <div>
@@ -43,4 +44,4 @@ function GetStartedPage({ next }) {
 }
 
 // Attach to window so Webflow can access it
-window.OnboadingForm = OnboadingForm;
+window.GetStartedPage = GetStartedPage;

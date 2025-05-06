@@ -53,7 +53,7 @@ function OnboadingForm() {
   // }
 
   React.useEffect(() => {
-    console.log("--- OINK ---")
+    console.log("--- OnboadingForm ---")
   }, [])
 
   return (
