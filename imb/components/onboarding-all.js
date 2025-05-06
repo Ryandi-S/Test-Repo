@@ -92,6 +92,31 @@ window.SelectButton = SelectButton;
 
 function PersonalDetailsConfirmPage({ next, prev, userData }) {
   console.log("--- components / PersonalDetailsConfirmPage ---", userData);
+  const submitRegistration = ({ userData }) => {
+    axios
+      .post("https://68183f135a4b07b9d1ce55e0.mockapi.io/test/user", {
+        name:
+          userData.firstName + userData.middleName
+            ? userData.middleName + " "
+            : "" + userData.lastName,
+        email: userData.email,
+        phone: userData.phone,
+      })
+      .then((response) => {
+        console.log("Success:", response.data);
+        window.location.href =
+          "https://custom-code-react-sample.webflow.io/onboarding/registration-summary?id=" +
+          response.data.id;
+      })
+      .catch(function (error) {
+        console.error("Error:", error);
+      });
+  };
+
+  function handleSubmit() {
+    submitRegistration({ userData });
+    next();
+  }
   return (
     <div className="container flex flex-row sm:mb-[104px] mb-16 items-center h-full max-h-[680px]">
       <div className="left sm:w-[654px] w-full sm:mr-10 h-full flex justify-between flex-col">
@@ -124,7 +149,7 @@ function PersonalDetailsConfirmPage({ next, prev, userData }) {
 
         <div className="actions sm:flex flex-row mt-9 grid grid-cols-2 gap-6 sm:gap-3">
           <SecondaryButton label="Back" onClick={prev} />
-          <PrimaryButton label="Confirm" arrow onClick={next} />
+          <PrimaryButton label="Confirm" arrow onClick={handleSubmit} />
         </div>
       </div>
     </div>
