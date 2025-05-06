@@ -30,14 +30,13 @@ function GetStartedPage({ next }) {
         </div>
       </div>
       <div className="hidden lg:block">
-        -image-
-        {/*<Image
-          src={flower}
+        <img 
+          src="https://cdn.prod.website-files.com/681079166d5ce9a9cd684b2c/6819eb4ada84cde075a54387_flower.svg" 
           alt="flower"
           width={100}
           height={100}
           className="w-full"
-        />*/}
+        />
       </div>
     </div>
   );
