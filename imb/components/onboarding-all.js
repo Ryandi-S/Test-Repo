@@ -161,21 +161,21 @@ window.PhoneNumberInput = PhoneNumberInput;
 
 function ContactPage({ next, prev, skipPrev, page }) {
   // const { updateOriginationForm, originationForm } = useStore();
-  const [email, setEmail] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
+  const [email, setEmail] = React.useState("");
+  const [phoneNumber, setPhoneNumber] = React.useState("");
 
-  const [emailError, setEmailError] = useState({
+  const [emailError, setEmailError] = React.useState({
     status: false,
     message: "",
     type: "",
   });
-  const [numberError, setNumberError] = useState({
+  const [numberError, setNumberError] = React.useState({
     status: false,
     message: "",
     type: "",
   });
 
-  const [usersData, setUsersData] = useState([]);
+  const [usersData, setUsersData] = React.useState([]);
 
   // useEffect(() => {
   //   async function fetchData() {
@@ -195,22 +195,22 @@ function ContactPage({ next, prev, skipPrev, page }) {
       case PageStep.Email:
         const userExist = usersData.some((user) => user.email === email);
         const validEmail = validator.isEmail(email);
-        if (this.setState.email === "") {
-          this.setState.emailError((prev) => ({
+        if (setState.email === "") {
+          setEmailError((prev) => ({
             ...prev,
             status: true,
             message: "Please provide a valid email address",
           }));
           return;
         } else if (!validEmail) {
-          this.setState.emailError((prev) => ({
+          setEmailError((prev) => ({
             ...prev,
             status: true,
             message: "Invalid email address",
           }));
           return;
         } else if (userExist) {
-          this.setState.emailError((prev) => ({
+          setEmailError((prev) => ({
             ...prev,
             status: true,
             message:
@@ -221,15 +221,15 @@ function ContactPage({ next, prev, skipPrev, page }) {
         // updateOriginationForm({ email });
         break;
       case PageStep.Number:
-        if (this.setState.phoneNumber === "" || !phoneNumber) {
-          this.setState.numberError((prev) => ({
+        if (phoneNumber === "" || !phoneNumber) {
+          setNumber((prev) => ({
             ...prev,
             status: true,
             message: "Enter your phone number",
           }));
           return;
         } else if (!isValidPhoneNumber(phoneNumber)) {
-          this.setState.NumberError((prev) => ({
+          setNumber((prev) => ({
             ...prev,
             status: true,
             message: "Invalid phone number",
@@ -258,21 +258,19 @@ function ContactPage({ next, prev, skipPrev, page }) {
                 placeholder="Enter email"
                 value={email}
                 onChange={(e) => {
-                  this.setState.email(e.target.value);
-                  this.setState.emailError((prev) => ({
+                  setEmail(e.target.value);
+                  setEmailError((prev) => ({
                     ...prev,
                     status: false,
                   }));
                 }}
                 className={`input !w-full h-9 mr-4 origination-input-text px-0 minimal-input  ${
-                  this.setState.emailError.status
-                    ? "text-fg-danger-neutral"
-                    : ""
+                  setEmailError.status ? "text-fg-danger-neutral" : ""
                 }`}
               />
-              {this.setState.emailError.status && (
+              {setEmailError.status && (
                 <p className="mt-2 p3 text-fg-danger-neutral">
-                  {this.setState.emailError.message}
+                  {setEmailError.message}
                 </p>
               )}
             </div>
@@ -285,15 +283,15 @@ function ContactPage({ next, prev, skipPrev, page }) {
               </h1>
               <h4 className="origination-input-label">Phone Number</h4>
               <PhoneNumberInput
-                setNumberError={this.setState.numberError}
-                setPhoneNumber={this.setState.phoneNumber}
-                phoneNumber={this.state.phoneNumber}
-                numberError={this.state.numberError}
+                setNumberError={setNumberError}
+                setPhoneNumber={setPhoneNumber}
+                phoneNumber={phoneNumber}
+                numberError={numberError}
               />
 
               {numberError.status && (
                 <p className="mt-2 p3 text-fg-danger-neutral">
-                  {this.state.numberError.message}
+                  {setNumberError.message}
                 </p>
               )}
             </>
