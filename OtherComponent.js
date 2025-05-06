@@ -1,7 +1,7 @@
 const TestElement = ({ propText1, propText2 }) => {
   return (
   	<div>
-      <p>A component for receiving prop</p>
+      <p>Compoonent with prop</p>
       <p>Prop text 1 : {propText1}</p>
       <p>Prop text 2 : {propText2}</p>
     </div>
