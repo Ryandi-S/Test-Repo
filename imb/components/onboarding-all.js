@@ -36,10 +36,21 @@ function PrimaryButton({ onClick, arrow, className, type, disabled, label }) {
       {label}
       {/* {arrow ? <FaArrowRight /> : <></>} */}
       {arrow ? (
-        <image
-          src="https://cdn.prod.website-files.com/681079166d5ce9a9cd684b2c/681ab0b5ef7173dfb95a2ded_arrow.svg"
-          alt="arrow"
-        />
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+        >
+          <path
+            d="M4 12H20M20 12L14 6M20 12L14 18"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
       ) : null}
     </button>
   );
