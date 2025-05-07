@@ -35,7 +35,12 @@ function PrimaryButton({ onClick, arrow, className, type, disabled, label }) {
     >
       {label}
       {/* {arrow ? <FaArrowRight /> : <></>} */}
-      {arrow ? " >" : null}
+      {arrow ? (
+        <image
+          src="https://cdn.prod.website-files.com/681079166d5ce9a9cd684b2c/681ab0b5ef7173dfb95a2ded_arrow.svg"
+          alt="arrow"
+        />
+      ) : null}
     </button>
   );
 }
@@ -59,7 +64,7 @@ function SecondaryButton({
       onClick={onClick}
     >
       {edit ? (
-        <Image
+        <image
           src="https://cdn.prod.website-files.com/681079166d5ce9a9cd684b2c/6819eec86c94548a98c68e50_edit-square.svg"
           alt="edit"
           className="size-6"
@@ -225,7 +230,7 @@ function GetStartedPage({ next, jump }) {
       </div>
       <div className="hidden lg:block">
         <img
-          src="https://cdn.prod.website-files.com/681079166d5ce9a9cd684b2c/6819eb4ada84cde075a54387_flower.svg"
+          src="https://cdn.prod.website-files.com/681079166d5ce9a9cd684b2c/6819eb4ada84cde075a54387_5425c564983d58e4623f90ada8f86ccd_flower.svg"
           alt="flower"
           width={100}
           height={100}
