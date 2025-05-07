@@ -17,14 +17,14 @@ export default async function handler(req, res) {
     }
   
     // Destructure the fields from the request body
-    const { name, email, phone } = req.body;
+    const { name, slug, phone } = req.body;
   
     try {
       // Call Webflow API to create a new "Applied User" item
-      const response = await fetch(`https://api.webflow.com/v2/collections/b450ca82263a274e60b2c69064bf661b676342d2b33fbe75b50d6fb5c68d7e0f/items`, {
+      const response = await fetch('https://api.webflow.com/v2/collections/b450ca82263a274e60b2c69064bf661b676342d2b33fbe75b50d6fb5c68d7e0f/items', {
         method: 'POST',
         headers: {
-          Authorization: `Bearer 6811da0773f06606ec5b071e`,
+          Authorization: 'Bearer 6811da0773f06606ec5b071e',
           'Content-Type': 'application/json',
           'accept-version': '2.0.0',
         },
