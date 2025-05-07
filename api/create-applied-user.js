@@ -21,19 +21,19 @@ export default async function handler(req, res) {
   
     try {
       // Call Webflow API to create a new "Applied User" item
-      const response = await fetch(`https://api.webflow.com/v2/collections/${process.env.WEBFLOW_COLLECTION_ID}/items`, {
+      const response = await fetch(`https://api.webflow.com/v2/collections/b450ca82263a274e60b2c69064bf661b676342d2b33fbe75b50d6fb5c68d7e0f/items`, {
         method: 'POST',
         headers: {
-          Authorization: `Bearer ${process.env.WEBFLOW_API_TOKEN}`,
+          Authorization: `Bearer 6811da0773f06606ec5b071e`,
           'Content-Type': 'application/json',
           'accept-version': '2.0.0',
         },
         body: JSON.stringify({
           isArchived: false,
           isDraft: false,
-          fields: {
+          fieldData: {
             name,  // Name of the applicant
-            email, // Email of the applicant
+            slug, // Email of the applicant
             phone, // Phone number of the applicant
           },
         }),
