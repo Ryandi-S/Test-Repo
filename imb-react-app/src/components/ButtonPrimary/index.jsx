@@ -1,4 +1,4 @@
-import React from "react";
+// import React from "react";
 
 function PrimaryButton() {
   return (
@@ -18,4 +18,4 @@ function PrimaryButton() {
 // Attach to window so Webflow can access it
 window.PrimaryButton = PrimaryButton;
 
-export default PrimaryButton;
+// export default PrimaryButton;
