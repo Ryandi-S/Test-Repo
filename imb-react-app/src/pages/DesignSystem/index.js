@@ -1,8 +1,10 @@
 // import React from "react";
-import PrimaryButton from "../../components/ButtonPrimary";
+import ButtonPrimary from "../../components/ButtonPrimary";
 
 function DesignSystem() {
-  return <PrimaryButton />;
+  return <ButtonPrimary />;
 }
 
 window.DesignSystem = DesignSystem;
+
+export default DesignSystem;
