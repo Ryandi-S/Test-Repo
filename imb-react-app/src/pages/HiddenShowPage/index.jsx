@@ -1,267 +1,99 @@
-import React from "react";
+import HiddenShowPageFunction from './function.jsx';
 
-function HiddenShowPage() {
-  function getToEmailPage() {
-    const starterPage = document.querySelector("#onboarding-section-0");
-    const emailPage = document.querySelector("#onboarding-section-1");
-    console.log("starterPage", starterPage);
-    starterPage.classList.add("imb-display-none");
-    emailPage.classList.remove("imb-display-none");
-  }
-
-  function getToPhonePage() {
-    const emailPage = document.querySelector("#onboarding-section-1");
-    const phonePage = document.querySelector("#onboarding-section-2");
-    emailPage.classList.remove("imb-display-block");
-    emailPage.classList.add("imb-display-none");
-    phonePage.classList.remove("imb-display-none");
-  }
-
-  function getToPersonalDetailsPage() {
-    const phonePage = document.querySelector("#onboarding-section-2");
-    const personalDetailsPage = document.querySelector("#onboarding-section-3");
-    phonePage.classList.remove("imb-display-block");
-    phonePage.classList.add("imb-display-none");
-    personalDetailsPage.classList.remove("imb-display-none");
-  }
-
-  function getToSuccessPage() {
-    const personalDetailsPage = document.querySelector("#onboarding-section-3");
-    const successPage = document.querySelector("#onboarding-section-4");
-    personalDetailsPage.classList.remove("imb-display-block");
-    personalDetailsPage.classList.add("imb-display-none");
-    successPage.classList.remove("imb-display-none");
-  }
-
-  function getToStarterPage() {
-    const successPage = document.querySelector("#onboarding-section-4");
-    const starterPage = document.querySelector("#onboarding-section-0");
-    successPage.classList.remove("imb-display-block");
-    starterPage.classList.remove("imb-display-none");
-    starterPage.classList.add("imb-display-block");
-  }
-
-  React.useEffect(() => {
-    const input = document.querySelector("#onboarding-0-button-signup .imb-button-text");
-    console.log("===>", input)
-    if (input) {
-      input.addEventListener('click', getToEmailPage);
-    }
-    // Clean up to prevent memory leaks
-    return () => {
-      if (input) {
-        input.removeEventListener('click', getToEmailPage);
-      }
-    };
-  }, []);
+const HiddenShowPage = () => {
+  HiddenShowPageFunction();
 
   return (
-    <div class="w-layout-blockcontainer imb-container w-container">
-      <div
-        id="w-node-d73717e3-3569-745f-9cdc-cdcb725c6525-958faacb"
-        class="w-layout-layout imb-stack wf-layout-layout"
-      >
-        <div
-          id="w-node-d73717e3-3569-745f-9cdc-cdcb725c6526-958faacb"
-          class="w-layout-cell"
-        >
+    <div className="w-layout-blockcontainer imb-container w-container">
+      <div id="w-node-d73717e3-3569-745f-9cdc-cdcb725c6525-958faacb" className="w-layout-layout imb-stack wf-layout-layout">
+        <div id="w-node-d73717e3-3569-745f-9cdc-cdcb725c6526-958faacb" className="w-layout-cell">
           <div id="onboarding-section-0">
-            <div
-              id="w-node-ca87aaa3-3157-c565-3cbc-09710191a74e-958faacb"
-              class="w-layout-layout imb-stack wf-layout-layout"
-            >
-              <div class="w-layout-cell">
-                <div
-                  id="w-node-_9a24a930-6657-c21a-8d60-a63b8bd65c47-958faacb"
-                  class="w-layout-layout imb-stack wf-layout-layout"
-                >
-                  <div class="w-layout-cell">
-                    <p class="imb-color-primary">Get Started</p>
-                    <h1 class="imb-typography-light">
-                      Start your journey with{" "}
-                      <span class="imb-color-primary">IMB</span>.
-                    </h1>
+            <div id="w-node-ca87aaa3-3157-c565-3cbc-09710191a74e-958faacb" className="w-layout-layout imb-stack wf-layout-layout">
+              <div className="w-layout-cell">
+                <div id="w-node-_9a24a930-6657-c21a-8d60-a63b8bd65c47-958faacb" className="w-layout-layout imb-stack wf-layout-layout">
+                  <div className="w-layout-cell">
+                    <p className="imb-color-primary">Get Started</p>
+                    <h1 className="imb-typography-light">Start your journey with <span className="imb-color-primary">IMB</span>.</h1>
                   </div>
-                  <div class="w-layout-cell">
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Suspendisse varius enim in eros elementum tristique. Duis
-                      cursus, mi quis viverra ornare, eros dolor interdum nulla,
-                      ut commodo diam libero vitae erat. Aenean faucibus nibh et
-                      justo cursus id.
-                    </p>
+                  <div className="w-layout-cell">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat. Aenean faucibus nibh et justo cursus id.</p>
                   </div>
-                  <div class="w-layout-cell">
-                    <div
-                      id="w-node-be86ce02-387b-cb2f-0d05-beb76192a368-958faacb"
-                      class="w-layout-layout imb-stack imb-stack-inline wf-layout-layout"
-                    >
-                      <div class="w-layout-cell">
-                        <div
-                          id="onboarding-0-button-login"
-                          class="imb-button imb-button-with-icon"
-                        >
-                          <p class="imb-button-text">Login</p>
-                          <img
-                            src="https://cdn.prod.website-files.com/681079166d5ce9a9cd684b2c/681ab0b5ef7173dfb95a2ded_arrow.svg"
-                            loading="lazy"
-                            alt=""
-                            class="imb-button-icon"
-                          />
+                  <div className="w-layout-cell">
+                    <div id="w-node-be86ce02-387b-cb2f-0d05-beb76192a368-958faacb" className="w-layout-layout imb-stack imb-stack-inline wf-layout-layout">
+                      <div className="w-layout-cell">
+                        <div id="onboarding-0-button-login" className="imb-button imb-button-with-icon">
+                          <p className="imb-button-text">Login</p>
+                          <img src="https://cdn.prod.website-files.com/681079166d5ce9a9cd684b2c/681ab0b5ef7173dfb95a2ded_arrow.svg" loading="lazy" alt="" className="imb-button-icon" />
                         </div>
                       </div>
-                      <div class="w-layout-cell">
-                        <div
-                          id="onboarding-0-button-signup"
-                          class="imb-button imb-button-outline"
-                        >
-                          <button
-                            class="imb-button-text"
-                          >
-                            Sign up now
-                          </button>
+                      <div className="w-layout-cell">
+                        <div id="onboarding-0-button-signup" className="imb-button imb-button-outline">
+                          <p className="imb-button-text">Sign up now</p>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="w-layout-cell">
-                <img
-                  src="https://cdn.prod.website-files.com/681079166d5ce9a9cd684b2c/6819eb4ada84cde075a54387_5425c564983d58e4623f90ada8f86ccd_flower.svg"
-                  loading="lazy"
-                  alt=""
-                />
-              </div>
+              <div className="w-layout-cell"><img src="https://cdn.prod.website-files.com/681079166d5ce9a9cd684b2c/6819eb4ada84cde075a54387_5425c564983d58e4623f90ada8f86ccd_flower.svg" loading="lazy" alt="" /></div>
             </div>
           </div>
         </div>
-        <div
-          id="w-node-c9433695-ac55-b826-c273-0b458e3ae835-958faacb"
-          class="w-layout-cell"
-        >
-          <div id="onboarding-section-1" class="imb-display-none">
-            <div
-              id="w-node-_8d4f01c3-cdbb-cf6b-f671-6c5344d73c32-958faacb"
-              class="w-layout-layout imb-stack wf-layout-layout"
-            >
-              <div
-                id="w-node-_8d4f01c3-cdbb-cf6b-f671-6c5344d73c33-958faacb"
-                class="w-layout-cell"
-              >
-                <div class="imb-stepper">
-                  <div class="imb-stepper-step">
-                    <div class="imb-stepper-step-block imb-stepper-step-active"></div>
+        <div id="w-node-c9433695-ac55-b826-c273-0b458e3ae835-958faacb" className="w-layout-cell">
+          <div id="onboarding-section-1">
+            <div id="w-node-_8d4f01c3-cdbb-cf6b-f671-6c5344d73c32-958faacb" className="w-layout-layout imb-stack wf-layout-layout">
+              <div id="w-node-_8d4f01c3-cdbb-cf6b-f671-6c5344d73c33-958faacb" className="w-layout-cell">
+                <div className="imb-stepper">
+                  <div className="imb-stepper-step">
+                    <div className="imb-stepper-step-block imb-stepper-step-active"></div>
                   </div>
-                  <div class="imb-stepper-step">
-                    <div class="imb-stepper-step-block"></div>
+                  <div className="imb-stepper-step">
+                    <div className="imb-stepper-step-block"></div>
                   </div>
-                  <div class="imb-stepper-step">
-                    <div class="imb-stepper-step-block"></div>
+                  <div className="imb-stepper-step">
+                    <div className="imb-stepper-step-block"></div>
                   </div>
-                  <div class="imb-stepper-step">
-                    <div class="imb-stepper-step-block"></div>
+                  <div className="imb-stepper-step">
+                    <div className="imb-stepper-step-block"></div>
                   </div>
                 </div>
               </div>
-              <div
-                id="w-node-_8d4f01c3-cdbb-cf6b-f671-6c5344d73c35-958faacb"
-                class="w-layout-cell"
-              >
-                <div
-                  id="w-node-_8d4f01c3-cdbb-cf6b-f671-6c5344d73c36-958faacb"
-                  class="w-layout-layout imb-stack wf-layout-layout"
-                >
-                  <div class="w-layout-cell">
-                    <p class="imb-color-primary-2">Getting Started</p>
-                    <h1 class="imb-typography-light">What's your email?</h1>
+              <div id="w-node-_8d4f01c3-cdbb-cf6b-f671-6c5344d73c35-958faacb" className="w-layout-cell">
+                <div id="w-node-_8d4f01c3-cdbb-cf6b-f671-6c5344d73c36-958faacb" className="w-layout-layout imb-stack wf-layout-layout">
+                  <div className="w-layout-cell">
+                    <p className="imb-color-primary-2">Getting Started</p>
+                    <h1 className="imb-typography-light">What's your email?</h1>
                   </div>
-                  <div class="w-layout-cell">
-                    <div class="w-form">
-                      <form
-                        id="email-form"
-                        name="email-form"
-                        data-name="Email Form"
-                        method="get"
-                        data-wf-page-id="681c34e75e7ea102958faacb"
-                        data-wf-element-id="8d4f01c3-cdbb-cf6b-f671-6c5344d73c3e"
-                        data-turnstile-sitekey="0x4AAAAAAAQTptj2So4dx43e"
-                        aria-label="Email Form"
-                      >
-                        <div id="onboarding-input-email" class="imb-input">
-                          <label for="field" class="imb-input-label">
-                            Email
-                          </label>
-                          <input
-                            class="imb-input-field w-input"
-                            maxlength="256"
-                            name="field"
-                            data-name=""
-                            placeholder="Type something"
-                            type="text"
-                            id="field"
-                          />
-                          <div class="imb-input-error-message">
-                            * Email is required
-                          </div>
+                  <div className="w-layout-cell">
+                    <div className="w-form">
+                      <form id="email-form" name="email-form" data-name="Email Form" method="get" data-wf-page-id="681c34e75e7ea102958faacb" data-wf-element-id="8d4f01c3-cdbb-cf6b-f671-6c5344d73c3e" data-turnstile-sitekey="0x4AAAAAAAQTptj2So4dx43e" aria-label="Email Form">
+                        <div id="onboarding-input-email" className="imb-input">
+                          <label for="field" className="imb-input-label">Email</label><input className="imb-input-field w-input" maxlength="256" name="field" data-name="" placeholder="Type something" type="text" id="field" />
+                          <div className="imb-input-error-message">* Email is required</div>
                         </div>
                         <div>
-                          <div>
-                            <input
-                              type="hidden"
-                              name="cf-turnstile-response"
-                              id="cf-chl-widget-27tml_response"
-                              value="0.Hjp06h8_it0Yah1sPIRk4IMdEkvcBGvg_b9go5vfmJF9MAri_VGfEYGKTNKW4Y6VOpD9Qi-XCe0V953XH-nFUSFaEsqPjHXJGP5C_yojNtwja0g4tzPatbAWH3Dk-utbNL526Z3rBD3MI46KEdheVF14rldBt3JKcNAxlqH5K1LM4g7Q2FmTOe4JT1xVQmGDQJCQbthc5CQrAi3IT0VQ1CteXC4N73gqiakTEd3Qw2ip3hOt-ZuZaMGrnc54JNMBuW5D7SfcRoGCVv_BecLPOUgPMr7XsKM0vyz6a47nmB60X08VyVwwMCd9Bd_GvxMQ9oRxAV1edBe8qcE5n7XUmIek0RXvzyg7Yr1wHFdhBsjyVWfpoNqgGAIWpfeAAmGAPqP3_On_emSzLvXgMaK91nXKY5mWK4FR5c7EmLW3wM28kTSOT9LiLrYS-VKFnlGf4Khz5d1lF0ils7UEUM0TgIgk6hgX0fUaWB9f9VSIef4X95hgYMIVZK7bj_2IACX4LEYhhS7O7m96dCyn5SfUYKFtmzZcbTQlqkLwUBsYBIE0fkujiikrSMXG2IfKPjMj1kGLuygeeRZZju09nkHOiEDQxxovba1P7f938qlv2pIuSiAXePJ_Tw1s4R7gmIN4e-Kv0rpxHvRmBFKuegp3B8TR7XJJK5U94hZ9wjWQD4ucN50GNyZ8MKRv5hUsv7WiYimKLUKtemQxb7r5Ps-0b_dxSTZVrSSEHHtAg0z8n4NhrDWQQvXE0pmE3GCjEOHq52z1M7ZjwP0_IgKVs8a_RTs9vXTtnj8PeAB1VVYw6eGQc23eijTSFdZ9uxNGyi2RhsAopPGlge4nAsuO-c1-rTvhWVZ-xpHfqQHH4A0xGOnlqc1fmQRkQ-f6vpywuSqK.DnpLLquryx5o5hOy7VkHDw.e883466b5494fdda2cae832f8e6b4613b1826f32b0df70d402c01079452e0a27"
-                            />
-                          </div>
+                          <div><input type="hidden" name="cf-turnstile-response" id="cf-chl-widget-ismnu_response" value="0.Qlc5pJ6AkpfxBuvmldOl5wHPK7RbGEV9sWPg9AZ6lcLPSTIi9q2RZsfgnjq1340yFGVM5FdOdajkuG1wFlZlXuK2dYcyStQTIyIvpOGIuVw3secOKaePQggVCAj4ByDtEuzxLVWsHjGYbDSO5UDYN8P0Rb_JZ7e-CuABg-Pb4QJwQYwqVS69_4fjd4SVutcT3M_RcsbAMxy32lLErfxUTrsCKIBJEl8n3DvWhASY110pCbAwykgj_vH_o4bKfvmOYCE08G4c92fc_0-22okn9I3pcfDqGg3wFkXkyJ5CL7MvIrTQrAzQ8DZqIjrr5JOdQeB-LXlworpm8X0XYMwBmjVaszE4MLJeat58lAWZ27CZOxmg-i6uhvHhOTloadTdIrho7moB9qJxzBbxsoCEee1P9kXuzAePajSz1NWdl1zhl8pAybXQ4iH3Clgks75FVsxoELCFWgODBifnEy2j0uQX5_LA0ZaoNeY5nh5sfJvq3t1rMtokvD6yAe1CARGnWCubOl-MVwpGsxrK6Xy_qVZEiFtQRKDFW-Mme5a6SXvqDzllYtTfd7SUx1DI9nzcW9V5xpzyvQ7NuRMlHrx5cpIbnWacP57o2RjZfAcS1Vw3KjlyBhDql2n15UOISwd1MaUfwstVXEGQnrcK-OXZFIqgEV8IWAHXdPpj31XTbTdP0jS7574Zxj3a5E18zpbHzIDhRHTouU2HL-Sb-vdxWg3U2alCMauLUF6SNeGQK3yXBpzZUEuYvg3aaLp5W-f7atE0-zNQ5kxxC4IEOCuspGIHFy4GUZGyACzXMaIT4EmAH2FxhoEI1psu7bU1keTjXdGA8QJQQnHR65wXhLAGAQ.SPFddtUW3tHjxS2izV2Lzg.f9d42e39234c5454274cbba7eab4be2745d7a0a5769ebc4c7bead9f22727376e" /></div>
                         </div>
                       </form>
-                      <div
-                        class="w-form-done"
-                        tabindex="-1"
-                        role="region"
-                        aria-label="Email Form success"
-                      >
+                      <div className="w-form-done" tabindex="-1" role="region" aria-label="Email Form success">
                         <div>Thank you! Your submission has been received!</div>
                       </div>
-                      <div
-                        class="w-form-fail"
-                        tabindex="-1"
-                        role="region"
-                        aria-label="Email Form failure"
-                      >
-                        <div>
-                          Oops! Something went wrong while submitting the form.
-                        </div>
+                      <div className="w-form-fail" tabindex="-1" role="region" aria-label="Email Form failure">
+                        <div>Oops! Something went wrong while submitting the form.</div>
                       </div>
                     </div>
                   </div>
-                  <div class="w-layout-cell">
-                    <div
-                      id="w-node-_8d4f01c3-cdbb-cf6b-f671-6c5344d73c49-958faacb"
-                      class="w-layout-layout imb-stack imb-stack-inline wf-layout-layout"
-                    >
-                      <div class="w-layout-cell">
-                        <div
-                          id="onboarding-1-button-back"
-                          class="imb-button imb-button-outline"
-                        >
-                          <p class="imb-button-text">Back</p>
+                  <div className="w-layout-cell">
+                    <div id="w-node-_8d4f01c3-cdbb-cf6b-f671-6c5344d73c49-958faacb" className="w-layout-layout imb-stack imb-stack-inline wf-layout-layout">
+                      <div className="w-layout-cell">
+                        <div id="onboarding-1-button-back" className="imb-button imb-button-outline">
+                          <p className="imb-button-text">Back</p>
                         </div>
                       </div>
-                      <div class="w-layout-cell">
-                        <div
-                          id="onboarding-1-button-next"
-                          class="imb-button imb-button-with-icon"
-                          onClick={getToPhonePage}
-                        >
-                          <p class="imb-button-text">Next</p>
-                          <img
-                            src="https://cdn.prod.website-files.com/681079166d5ce9a9cd684b2c/681ab0b5ef7173dfb95a2ded_arrow.svg"
-                            loading="lazy"
-                            alt=""
-                            class="imb-button-icon"
-                          />
+                      <div className="w-layout-cell">
+                        <div id="onboarding-1-button-next" className="imb-button imb-button-with-icon">
+                          <p className="imb-button-text">Next</p>
+                          <img src="https://cdn.prod.website-files.com/681079166d5ce9a9cd684b2c/681ab0b5ef7173dfb95a2ded_arrow.svg" loading="lazy" alt="" className="imb-button-icon" />
                         </div>
                       </div>
                     </div>
@@ -271,134 +103,61 @@ function HiddenShowPage() {
             </div>
           </div>
         </div>
-        <div
-          id="w-node-adf6161a-df29-7cf5-77ec-7c4c530042eb-958faacb"
-          class="w-layout-cell"
-        >
-          <div id="onboarding-section-2" class="imb-display-none">
-            <div
-              id="w-node-fbec7a83-5c75-021b-4c22-a03f24af4335-958faacb"
-              class="w-layout-layout imb-stack wf-layout-layout"
-            >
-              <div
-                id="w-node-fbec7a83-5c75-021b-4c22-a03f24af4336-958faacb"
-                class="w-layout-cell"
-              >
-                <div class="imb-stepper">
-                  <div class="imb-stepper-step">
-                    <div class="imb-stepper-step-block imb-stepper-step-active"></div>
+        <div id="w-node-adf6161a-df29-7cf5-77ec-7c4c530042eb-958faacb" className="w-layout-cell">
+          <div id="onboarding-section-2">
+            <div id="w-node-fbec7a83-5c75-021b-4c22-a03f24af4335-958faacb" className="w-layout-layout imb-stack wf-layout-layout">
+              <div id="w-node-fbec7a83-5c75-021b-4c22-a03f24af4336-958faacb" className="w-layout-cell">
+                <div className="imb-stepper">
+                  <div className="imb-stepper-step">
+                    <div className="imb-stepper-step-block imb-stepper-step-active"></div>
                   </div>
-                  <div class="imb-stepper-step">
-                    <div class="imb-stepper-step-block"></div>
+                  <div className="imb-stepper-step">
+                    <div className="imb-stepper-step-block"></div>
                   </div>
-                  <div class="imb-stepper-step">
-                    <div class="imb-stepper-step-block"></div>
+                  <div className="imb-stepper-step">
+                    <div className="imb-stepper-step-block"></div>
                   </div>
-                  <div class="imb-stepper-step">
-                    <div class="imb-stepper-step-block"></div>
+                  <div className="imb-stepper-step">
+                    <div className="imb-stepper-step-block"></div>
                   </div>
                 </div>
               </div>
-              <div
-                id="w-node-fbec7a83-5c75-021b-4c22-a03f24af4338-958faacb"
-                class="w-layout-cell"
-              >
-                <div
-                  id="w-node-fbec7a83-5c75-021b-4c22-a03f24af4339-958faacb"
-                  class="w-layout-layout imb-stack wf-layout-layout"
-                >
-                  <div class="w-layout-cell">
-                    <p class="imb-color-primary-2">Getting Started</p>
-                    <h1 class="imb-typography-light">
-                      What's your phone number?
-                    </h1>
+              <div id="w-node-fbec7a83-5c75-021b-4c22-a03f24af4338-958faacb" className="w-layout-cell">
+                <div id="w-node-fbec7a83-5c75-021b-4c22-a03f24af4339-958faacb" className="w-layout-layout imb-stack wf-layout-layout">
+                  <div className="w-layout-cell">
+                    <p className="imb-color-primary-2">Getting Started</p>
+                    <h1 className="imb-typography-light">What's your phone number?</h1>
                   </div>
-                  <div class="w-layout-cell">
-                    <div class="w-form">
-                      <form
-                        id="email-form"
-                        name="email-form"
-                        data-name="Email Form"
-                        method="get"
-                        data-wf-page-id="681c34e75e7ea102958faacb"
-                        data-wf-element-id="fbec7a83-5c75-021b-4c22-a03f24af4341"
-                        data-turnstile-sitekey="0x4AAAAAAAQTptj2So4dx43e"
-                        aria-label="Email Form"
-                      >
-                        <div id="onboarding-input-phone" class="imb-input">
-                          <label for="field" class="imb-input-label">
-                            Phone Number
-                          </label>
-                          <input
-                            class="imb-input-field w-input"
-                            maxlength="256"
-                            name="field"
-                            data-name=""
-                            placeholder="Type something"
-                            type="text"
-                            id="field"
-                          />
-                          <div class="imb-input-error-message">
-                            * Phone number is required
-                          </div>
+                  <div className="w-layout-cell">
+                    <div className="w-form">
+                      <form id="email-form" name="email-form" data-name="Email Form" method="get" data-wf-page-id="681c34e75e7ea102958faacb" data-wf-element-id="fbec7a83-5c75-021b-4c22-a03f24af4341" data-turnstile-sitekey="0x4AAAAAAAQTptj2So4dx43e" aria-label="Email Form">
+                        <div id="onboarding-input-phone" className="imb-input">
+                          <label for="field" className="imb-input-label">Phone Number</label><input className="imb-input-field w-input" maxlength="256" name="field" data-name="" placeholder="Type something" type="text" id="field" />
+                          <div className="imb-input-error-message">* Phone number is required</div>
                         </div>
                         <div>
-                          <div>
-                            <input
-                              type="hidden"
-                              name="cf-turnstile-response"
-                              id="cf-chl-widget-ehbxc_response"
-                              value="0.XjlTcKx5pbhzMwUpuz3fOI58WaLhITqfj7x2_HC6XX50fDaDPllv9UIF-3zx-1ZrrLB9xsKxQ7eNu5Jg1UXS623P4yDVXhVkmQoLzs97BFovRroJ0P1IpxAJHDNtHSSEr64qqlAyxxDHMqlCXcN0uzxoupPbZPdY4On_5y7zQSKDUxQZUQFnBBCBx_PyZ9Hj5XLBIPMdCM0vtwAAQSDUFMg98ei5Rd0jxn3s2zfj6uhxL-H8gFWpAdo1I9O_suU155IoPgNPAoyWfLpekTpBvFEwRWDUirBB20lWOt7Mx43-6lYK-aJ9lK_OyGPrhhZ-pUWEASaEpQnfyONPzZM9IwVeBtN5wO7ZWiLBPSFy3kFgF4RCKaRgfbE3n_13jo69uB8p9WPN6i-RzO59SEVhb9OZM3wl9pakqCRSWrSo0Vz_1zcpqzA0EiSSocQkHojyuTThwsGETZdMFSP2QO3otx2fLX5dIqBLbmge3SaYzEgNY5zpsGWNtHPRjW9Rck8o3fRbADgZbp_OQg00T7fe00Dsx4vBnOl0wtwPJN272QJIexq0g-cyDHXC1nS4H4NweiUrgv7NdU3EaYEyJX-GBTg1YRhwHgOopLiulVmWe6-1EmOvrDaON9aOxl2lWztcnKGUrZehSJWzXI7COwXVuH24SCvkDJbV1K28RFsq2hAflCxKmWzX1S0kDCsLYGAy_RfvNaYxmkrIF6I7VHErIeF6jf1EwBLEWH-Jr83I5FyLgGv3Jgh4ADaxyEUXxo5n6c3cltFS4gy6kJYWSOIDS9Eb6ibBCE4-NHS-ak7S9ushgN_6neGPMorFNPqlxCdB7hJN_shIdkYwenP2t2ma43p8B6L2UfxgR9HtgjtXi6uvrePqjO9P3wBAgf9_6nsL.vlIegPKBfkAA0t-PohCLLA.ea3f504582d57df07d7cad566098d19be6faa1385624a929f964ed6c26559fe5"
-                            />
-                          </div>
+                          <div><input type="hidden" name="cf-turnstile-response" id="cf-chl-widget-pns36_response" value="0.jvOITY5IuU2jF6vVjY6PZfuUTgIAwEPs7ZzN_WVWpLQKBzewyzJZUfQ-HdAAcQlLreVAxC3mRqcw6aBLjb4fUgFP1bP8TOcOj5Naz7hyeZe0cgsZS_blZXUN6jdh98TXD9el_h6v7ohEuhreCQ0g6b5xa_911L-QUbCAT7qD5srxzL8T7hTeQkfVCjDER9zG_B04P242ZhHLyMF7u_L8aby6c2XoCbA47W0W3-6ynlLCHsNo1T0h9In8qi6Fimihg6MkOi5UflicVp0Mkfj49XuecOhVEDIEYc4mW3hCUROqexlQagEfQCPGXHHhlV3QzA4vQ3huINddp5dsWZC9OkEIIcgDdukw0aD9pMDFaX0H3B5s7tvCCOVbfBPDtYc2WlGGu7Q7HiXO72fhKilQcxMk9peieJX8Vo_jFa1r0L0dLES75y40H5774Zyyz5qjEVjct1cpzLCc1G5DJDO2KJIHzL0V9V7meAtwejgyEgTQkoSPMN8_LeF8B_CULH1cdwlw4pWYXGURU_RR6ekT1S3zQoK9BkwKFT9iteHpbnJQNfTHU1XJyA333WWmIxDmuU2aioF9k84hnVXHl7IxGnetLw-iD9dZFsLt6056np-U9RYgHXmIJM7X-qjuuiw4D-BanP2n4aqNenNOK1ZNcHqJhUeIyo4sgUJ-9sD1XESA6LwCOzEs6nE3dneWFslWylL1yeMXswiHrrAzgxfJuHJUg7GajIvyM_7nJfp4rY2uPtst0qiCbhgt3d2xlTFxMZc8Y6VCSVJCr4JSjYyim0EWALy-NwAj4xeqi1gjMHMQQz0E-iOH5BmsRsqIDxVJLFMtH2fh8mTh8p99H0hwxw.2AcODU2NB_ytNV9uoXa-TQ.c45d68102c930fe0ff8645708b4e9fe79bc208c60fb38e717b589bad0bf3039f" /></div>
                         </div>
                       </form>
-                      <div
-                        class="w-form-done"
-                        tabindex="-1"
-                        role="region"
-                        aria-label="Email Form success"
-                      >
+                      <div className="w-form-done" tabindex="-1" role="region" aria-label="Email Form success">
                         <div>Thank you! Your submission has been received!</div>
                       </div>
-                      <div
-                        class="w-form-fail"
-                        tabindex="-1"
-                        role="region"
-                        aria-label="Email Form failure"
-                      >
-                        <div>
-                          Oops! Something went wrong while submitting the form.
-                        </div>
+                      <div className="w-form-fail" tabindex="-1" role="region" aria-label="Email Form failure">
+                        <div>Oops! Something went wrong while submitting the form.</div>
                       </div>
                     </div>
                   </div>
-                  <div class="w-layout-cell">
-                    <div
-                      id="w-node-fbec7a83-5c75-021b-4c22-a03f24af434c-958faacb"
-                      class="w-layout-layout imb-stack imb-stack-inline wf-layout-layout"
-                    >
-                      <div class="w-layout-cell">
-                        <div
-                          id="onboarding-2-button-back"
-                          class="imb-button imb-button-outline"
-                        >
-                          <p class="imb-button-text">Back</p>
+                  <div className="w-layout-cell">
+                    <div id="w-node-fbec7a83-5c75-021b-4c22-a03f24af434c-958faacb" className="w-layout-layout imb-stack imb-stack-inline wf-layout-layout">
+                      <div className="w-layout-cell">
+                        <div id="onboarding-2-button-back" className="imb-button imb-button-outline">
+                          <p className="imb-button-text">Back</p>
                         </div>
                       </div>
-                      <div class="w-layout-cell">
-                        <div
-                          id="onboarding-2-button-next"
-                          class="imb-button imb-button-with-icon"
-                          onClick={getToPersonalDetailsPage}
-                        >
-                          <p class="imb-button-text">Next</p>
-                          <img
-                            src="https://cdn.prod.website-files.com/681079166d5ce9a9cd684b2c/681ab0b5ef7173dfb95a2ded_arrow.svg"
-                            loading="lazy"
-                            alt=""
-                            class="imb-button-icon"
-                          />
+                      <div className="w-layout-cell">
+                        <div id="onboarding-2-button-next" className="imb-button imb-button-with-icon">
+                          <p className="imb-button-text">Next</p>
+                          <img src="https://cdn.prod.website-files.com/681079166d5ce9a9cd684b2c/681ab0b5ef7173dfb95a2ded_arrow.svg" loading="lazy" alt="" className="imb-button-icon" />
                         </div>
                       </div>
                     </div>
@@ -408,186 +167,77 @@ function HiddenShowPage() {
             </div>
           </div>
         </div>
-        <div
-          id="w-node-c7724385-fa1e-984f-ae37-eafa54f7830c-958faacb"
-          class="w-layout-cell"
-        >
-          <div id="onboarding-section-3" class="imb-display-none">
-            <div
-              id="w-node-_0b34ad53-4740-686f-8eaf-62f447c35394-958faacb"
-              class="w-layout-layout imb-stack wf-layout-layout"
-            >
-              <div
-                id="w-node-_0b34ad53-4740-686f-8eaf-62f447c35395-958faacb"
-                class="w-layout-cell"
-              >
-                <div class="imb-stepper">
-                  <div class="imb-stepper-step">
-                    <div class="imb-stepper-step-block imb-stepper-step-active"></div>
+        <div id="w-node-c7724385-fa1e-984f-ae37-eafa54f7830c-958faacb" className="w-layout-cell">
+          <div id="onboarding-section-3">
+            <div id="w-node-_0b34ad53-4740-686f-8eaf-62f447c35394-958faacb" className="w-layout-layout imb-stack wf-layout-layout">
+              <div id="w-node-_0b34ad53-4740-686f-8eaf-62f447c35395-958faacb" className="w-layout-cell">
+                <div className="imb-stepper">
+                  <div className="imb-stepper-step">
+                    <div className="imb-stepper-step-block imb-stepper-step-active"></div>
                   </div>
-                  <div class="imb-stepper-step">
-                    <div class="imb-stepper-step-block"></div>
+                  <div className="imb-stepper-step">
+                    <div className="imb-stepper-step-block"></div>
                   </div>
-                  <div class="imb-stepper-step">
-                    <div class="imb-stepper-step-block"></div>
+                  <div className="imb-stepper-step">
+                    <div className="imb-stepper-step-block"></div>
                   </div>
-                  <div class="imb-stepper-step">
-                    <div class="imb-stepper-step-block"></div>
+                  <div className="imb-stepper-step">
+                    <div className="imb-stepper-step-block"></div>
                   </div>
                 </div>
               </div>
-              <div
-                id="w-node-_0b34ad53-4740-686f-8eaf-62f447c35397-958faacb"
-                class="w-layout-cell"
-              >
-                <div
-                  id="w-node-_0b34ad53-4740-686f-8eaf-62f447c35398-958faacb"
-                  class="w-layout-layout imb-stack wf-layout-layout"
-                >
-                  <div class="w-layout-cell">
-                    <p class="imb-color-primary-2">Personal Details</p>
-                    <h1 class="imb-typography-light">Let's get to know you</h1>
+              <div id="w-node-_0b34ad53-4740-686f-8eaf-62f447c35397-958faacb" className="w-layout-cell">
+                <div id="w-node-_0b34ad53-4740-686f-8eaf-62f447c35398-958faacb" className="w-layout-layout imb-stack wf-layout-layout">
+                  <div className="w-layout-cell">
+                    <p className="imb-color-primary-2">Personal Details</p>
+                    <h1 className="imb-typography-light">Let's get to know you</h1>
                   </div>
-                  <div class="w-layout-cell">
-                    <div class="w-form">
-                      <form
-                        id="email-form"
-                        name="email-form"
-                        data-name="Email Form"
-                        method="get"
-                        data-wf-page-id="681c34e75e7ea102958faacb"
-                        data-wf-element-id="0b34ad53-4740-686f-8eaf-62f447c353a0"
-                        data-turnstile-sitekey="0x4AAAAAAAQTptj2So4dx43e"
-                        aria-label="Email Form"
-                      >
-                        <div
-                          id="w-node-_0b34ad53-4740-686f-8eaf-62f447c353a1-958faacb"
-                          class="w-layout-layout imb-stack wf-layout-layout"
-                        >
-                          <div class="w-layout-cell">
-                            <div
-                              id="onboarding-input-firstname"
-                              class="imb-input"
-                            >
-                              <label for="field" class="imb-input-label">
-                                First Name
-                              </label>
-                              <input
-                                class="imb-input-field w-input"
-                                maxlength="256"
-                                name="field"
-                                data-name=""
-                                placeholder="Type something"
-                                type="text"
-                                id="field"
-                              />
-                              <div class="imb-input-error-message">
-                                * First name is required
-                              </div>
+                  <div className="w-layout-cell">
+                    <div className="w-form">
+                      <form id="email-form" name="email-form" data-name="Email Form" method="get" data-wf-page-id="681c34e75e7ea102958faacb" data-wf-element-id="0b34ad53-4740-686f-8eaf-62f447c353a0" data-turnstile-sitekey="0x4AAAAAAAQTptj2So4dx43e" aria-label="Email Form">
+                        <div id="w-node-_0b34ad53-4740-686f-8eaf-62f447c353a1-958faacb" className="w-layout-layout imb-stack wf-layout-layout">
+                          <div className="w-layout-cell">
+                            <div id="onboarding-input-firstname" className="imb-input">
+                              <label for="field" className="imb-input-label">First Name</label><input className="imb-input-field w-input" maxlength="256" name="field" data-name="" placeholder="Type something" type="text" id="field" />
+                              <div className="imb-input-error-message">* First name is required</div>
                             </div>
                           </div>
-                          <div class="w-layout-cell">
-                            <div
-                              id="onboarding-input-middlename"
-                              class="imb-input"
-                            >
-                              <label for="field" class="imb-input-label">
-                                Middle Name
-                              </label>
-                              <input
-                                class="imb-input-field w-input"
-                                maxlength="256"
-                                name="field"
-                                data-name=""
-                                placeholder="Type something"
-                                type="text"
-                                id="field"
-                              />
-                              <div class="imb-input-error-message">
-                                * Middle name is required
-                              </div>
+                          <div className="w-layout-cell">
+                            <div id="onboarding-input-middlename" className="imb-input">
+                              <label for="field" className="imb-input-label">Middle Name</label><input className="imb-input-field w-input" maxlength="256" name="field" data-name="" placeholder="Type something" type="text" id="field" />
+                              <div className="imb-input-error-message">* Middle name is required</div>
                             </div>
                           </div>
-                          <div class="w-layout-cell">
-                            <div
-                              id="onboarding-input-lastname"
-                              class="imb-input"
-                            >
-                              <label for="field" class="imb-input-label">
-                                Last Name
-                              </label>
-                              <input
-                                class="imb-input-field w-input"
-                                maxlength="256"
-                                name="field"
-                                data-name=""
-                                placeholder="Type something"
-                                type="text"
-                                id="field"
-                              />
-                              <div class="imb-input-error-message">
-                                * Last name is required
-                              </div>
+                          <div className="w-layout-cell">
+                            <div id="onboarding-input-lastname" className="imb-input">
+                              <label for="field" className="imb-input-label">Last Name</label><input className="imb-input-field w-input" maxlength="256" name="field" data-name="" placeholder="Type something" type="text" id="field" />
+                              <div className="imb-input-error-message">* Last name is required</div>
                             </div>
                           </div>
                         </div>
                         <div>
-                          <div>
-                            <input
-                              type="hidden"
-                              name="cf-turnstile-response"
-                              id="cf-chl-widget-41pg3_response"
-                              value="0.L6TU4_n2P5EuqeNBuMNrvrT4Se0ohFmcu0I806tlIr4i2abVotzOc6H_sAyopWXiw35Qp753JskMQDpNxsoh6VYFhe3PRMAv3wePYFtWI-HIHm4ys1d8q-GiT30VE_WTNZhkJ4NEQHmK1i4HUUFoQDe9lqSFmFRg8VWsaMwmasUc-wKqbPSP-_sUVr3176jci9gAEEgzDZBBSb7viIWw9aYunX61oaKbWhlzAMP21l6O8iNzJ-oG4FudFS6A46TKxSmrTlmfRcHur5GnvPSj8M6uaUWlzaPVKi8H_9Nnp_z5KA5C8JAoWL1oXVZZA_WrMiwY3XqTGnMproqjDCbifWx3zZHzeEc_TtjQCxgkPPmSeAP7MPT4lGOAYX5hVKH8S7nxT1AUZSbPTmnElX9i6AAukRO-KyZFW-CYFq9mMJe0zQRetz3bdkhIGc6QLNMsBVqYZMBeFe_VGJBNblr3od2acz7kNE5dBceU5WGh5LKEs8N5WDbhpCQVIfDg6uEwBZt__0zfFBzHhnQa7VwJJTKeNDO-rBQ5sufvDI33fF0qDJD2_FMrKBSifIG1QWC9cw5fiQHV0I0ynohvv5anzcg6gYvaxeVEvKdoEXA2ge8YbZ3KP-vLA9CQtSO_F83BVnI7ehP3dbUdtrb5VO0iaNpQo4DpI8Mjzso6nY53diRBuyrt6yogjnwiWC33iC_XlLy2y7ehf9ae7sVlUE8fL6iiym2BV3jxp4eqRuAXJhVayzmDRlaIPxd4Szc69U102PQkmrmknrSu7ADWK_IFmhtRfiZmnZWINZDjErPwA-zQD60Dg81iFR6AZ7BpQVMktW-Vft1jB9Rh0WyRYkpLXeON5HGKX0d7qCVZx4ryA3KFlG4qoM1BgNoLzcRNvOHJ.ay3iPevWyyV7tTbES-tPcw.2eadf6821f90efd5cede7dd7aa0169e0e34050b9ce678efe6b5420a147ddeec2"
-                            />
-                          </div>
+                          <div><input type="hidden" name="cf-turnstile-response" id="cf-chl-widget-6h00u_response" value="0.3nOTGpn2dL5RQTTybg7MnfC13yLscQO0nQzrPTk6lTwVFPowV4dEK8VBvRgEU9_vUwwQnLtPsh-xNip7SrUVaHgcvJbNv8AQRcJHaeUzNlV9IeEqJn1r_dC2VgiKafO0wo4YOB8LPyqa7JUFb9LeP6eZTkban2LhtD-ozYP7IGGQlrqZ9lOEL6h_5A5hFrCqvzTSxra2A9tt4DkLfbLxsi_CFx46ozrLbtAdomLcL8Y9vUrUA_JDTDwswN4vvJcSURsdycFHbeVbacJYgOm5ZGzyeBKhYlAj5DLsPnmwhdqqZnApcMMF5AKDS9HwzCBSuDrpPDeL2sbXBdjG0FO3Qcy_fRrtUgegDMIzuZQe3HlOGgjiJQXwSQmbQG3lzfZlVbhRC1LCLo1_O1R4dsI-JwnQ_Rwq-JrYNBb0WUgQX8MFXUw9J-WdX8LoJaM5ssHD_db7hSfdQ4gtXbmuHu-L0AAJxJT4GesN77hp9NaUh5pDHU7hjtrAxQeptJPo5eKYaLiEgCA9anOQkAAv3Lwz-2-Jz61D3iCcthBctF0-qIZa7sLYExBS0yEPTdW-9eYeJ3CHiQ0HOmOwJ8ApJDf1qgwqWAb4fRBGBBPb2FI-kUCXEfxm94V0jD2gfNjfY54Be3zb13YcCbHwAuyHoHhWxudjjooK9SMFQ7HJ103We9HumVJSr-mMycCC4Fr1YnDyHn8OJoM86UNV3RrsFzqVaNOp_ul0pvrK9k1N3s7rru7bXBMVtcEJmEKd1LVfBhxebehsH8-qUhWBDOso2_Gg2Nt0rxrXQMG8bVrVuUPrulSPrWqQ12bSqQNJ2HBghJi5lwzHKCWeuZLXftEEaYz1sw.x604pXTpZq2aGevUSpKsuA.6a76a0d4e6772109eaefd5611ae65ea7feeada38bdeeb28408c6f399900839ef" /></div>
                         </div>
                       </form>
-                      <div
-                        class="w-form-done"
-                        tabindex="-1"
-                        role="region"
-                        aria-label="Email Form success"
-                      >
+                      <div className="w-form-done" tabindex="-1" role="region" aria-label="Email Form success">
                         <div>Thank you! Your submission has been received!</div>
                       </div>
-                      <div
-                        class="w-form-fail"
-                        tabindex="-1"
-                        role="region"
-                        aria-label="Email Form failure"
-                      >
-                        <div>
-                          Oops! Something went wrong while submitting the form.
-                        </div>
+                      <div className="w-form-fail" tabindex="-1" role="region" aria-label="Email Form failure">
+                        <div>Oops! Something went wrong while submitting the form.</div>
                       </div>
                     </div>
                   </div>
-                  <div class="w-layout-cell">
-                    <div
-                      id="w-node-_0b34ad53-4740-686f-8eaf-62f447c353b5-958faacb"
-                      class="w-layout-layout imb-stack imb-stack-inline wf-layout-layout"
-                    >
-                      <div class="w-layout-cell">
-                        <div
-                          id="onboarding-3-button-back"
-                          class="imb-button imb-button-outline"
-                        >
-                          <p class="imb-button-text">Back</p>
+                  <div className="w-layout-cell">
+                    <div id="w-node-_0b34ad53-4740-686f-8eaf-62f447c353b5-958faacb" className="w-layout-layout imb-stack imb-stack-inline wf-layout-layout">
+                      <div className="w-layout-cell">
+                        <div id="onboarding-3-button-back" className="imb-button imb-button-outline">
+                          <p className="imb-button-text">Back</p>
                         </div>
                       </div>
-                      <div class="w-layout-cell">
-                        <div
-                          id="onboarding-3-button-next"
-                          class="imb-button imb-button-with-icon"
-                          onClick={getToSuccessPage}
-                        >
-                          <p class="imb-button-text">Next</p>
-                          <img
-                            src="https://cdn.prod.website-files.com/681079166d5ce9a9cd684b2c/681ab0b5ef7173dfb95a2ded_arrow.svg"
-                            loading="lazy"
-                            alt=""
-                            class="imb-button-icon"
-                          />
+                      <div className="w-layout-cell">
+                        <div id="onboarding-3-button-next" className="imb-button imb-button-with-icon">
+                          <p className="imb-button-text">Next</p>
+                          <img src="https://cdn.prod.website-files.com/681079166d5ce9a9cd684b2c/681ab0b5ef7173dfb95a2ded_arrow.svg" loading="lazy" alt="" className="imb-button-icon" />
                         </div>
                       </div>
                     </div>
@@ -597,86 +247,48 @@ function HiddenShowPage() {
             </div>
           </div>
         </div>
-        <div
-          id="w-node-c32a3559-6741-dcef-b060-169b2e288f60-958faacb"
-          class="w-layout-cell"
-        >
-          <div id="onboarding-section-4" class="imb-display-none">
-            <div
-              id="w-node-f9ecb76b-64dc-778a-c664-5860e8064cf6-958faacb"
-              class="w-layout-layout imb-stack wf-layout-layout"
-            >
-              <div
-                id="w-node-f9ecb76b-64dc-778a-c664-5860e8064cf7-958faacb"
-                class="w-layout-cell"
-              >
-                <div
-                  id="w-node-f9ecb76b-64dc-778a-c664-5860e8064cf8-958faacb"
-                  class="w-layout-layout imb-stack wf-layout-layout"
-                >
-                  <div class="w-layout-cell">
-                    <p class="imb-color-primary-2">Personal Details</p>
-                    <h1 class="imb-typography-light">
-                      Let's confirm your details
-                    </h1>
+        <div id="w-node-c32a3559-6741-dcef-b060-169b2e288f60-958faacb" className="w-layout-cell">
+          <div id="onboarding-section-4">
+            <div id="w-node-f9ecb76b-64dc-778a-c664-5860e8064cf6-958faacb" className="w-layout-layout imb-stack wf-layout-layout">
+              <div id="w-node-f9ecb76b-64dc-778a-c664-5860e8064cf7-958faacb" className="w-layout-cell">
+                <div id="w-node-f9ecb76b-64dc-778a-c664-5860e8064cf8-958faacb" className="w-layout-layout imb-stack wf-layout-layout">
+                  <div className="w-layout-cell">
+                    <p className="imb-color-primary-2">Personal Details</p>
+                    <h1 className="imb-typography-light">Let's confirm your details</h1>
                   </div>
-                  <div class="w-layout-cell">
-                    <div
-                      id="w-node-f9ecb76b-64dc-778a-c664-5860e8064cff-958faacb"
-                      class="w-layout-layout imb-stack wf-layout-layout"
-                    >
-                      <div class="w-layout-cell">
-                        <div class="imb-lv-display">
-                          <h4 class="imb-lv-label">Full Name</h4>
-                          <p id="onboarding-preview-name" class="imb-lv-value">
-                            John Doe
-                          </p>
+                  <div className="w-layout-cell">
+                    <div id="w-node-f9ecb76b-64dc-778a-c664-5860e8064cff-958faacb" className="w-layout-layout imb-stack wf-layout-layout">
+                      <div className="w-layout-cell">
+                        <div className="imb-lv-display">
+                          <h4 className="imb-lv-label">Full Name</h4>
+                          <p id="onboarding-preview-name" className="imb-lv-value">John Doe</p>
                         </div>
                       </div>
-                      <div class="w-layout-cell">
-                        <div class="imb-lv-display">
-                          <h4 class="imb-lv-label">Email</h4>
-                          <p id="onboarding-preview-email" class="imb-lv-value">
-                            john@gmail.com
-                          </p>
+                      <div className="w-layout-cell">
+                        <div className="imb-lv-display">
+                          <h4 className="imb-lv-label">Email</h4>
+                          <p id="onboarding-preview-email" className="imb-lv-value">john@gmail.com</p>
                         </div>
                       </div>
-                      <div class="w-layout-cell">
-                        <div class="imb-lv-display">
-                          <h4 class="imb-lv-label">Phone</h4>
-                          <p id="onboarding-preview-phone" class="imb-lv-value">
-                            +62 1234 5678
-                          </p>
+                      <div className="w-layout-cell">
+                        <div className="imb-lv-display">
+                          <h4 className="imb-lv-label">Phone</h4>
+                          <p id="onboarding-preview-phone" className="imb-lv-value">+62 1234 5678</p>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <div class="w-layout-cell">
-                    <div
-                      id="w-node-f9ecb76b-64dc-778a-c664-5860e8064d0d-958faacb"
-                      class="w-layout-layout imb-stack imb-stack-inline wf-layout-layout"
-                    >
-                      <div class="w-layout-cell">
-                        <div
-                          id="onboarding-4-button-back"
-                          class="imb-button imb-button-outline"
-                        >
-                          <p class="imb-button-text">Back</p>
+                  <div className="w-layout-cell">
+                    <div id="w-node-f9ecb76b-64dc-778a-c664-5860e8064d0d-958faacb" className="w-layout-layout imb-stack imb-stack-inline wf-layout-layout">
+                      <div className="w-layout-cell">
+                        <div id="onboarding-4-button-back" className="imb-button imb-button-outline">
+                          <p className="imb-button-text">Back</p>
                         </div>
                       </div>
-                      <div class="w-layout-cell">
-                        <div
-                          id="onboarding-4-button-next"
-                          class="imb-button imb-button-with-icon"
-                          onClick={getToStarterPage}
-                        >
-                          <p class="imb-button-text">Next</p>
-                          <img
-                            src="https://cdn.prod.website-files.com/681079166d5ce9a9cd684b2c/681ab0b5ef7173dfb95a2ded_arrow.svg"
-                            loading="lazy"
-                            alt=""
-                            class="imb-button-icon"
-                          />
+                      <div className="w-layout-cell">
+                        <div id="onboarding-4-button-next" className="imb-button imb-button-with-icon">
+                          <p className="imb-button-text">Next</p>
+                          <img src="https://cdn.prod.website-files.com/681079166d5ce9a9cd684b2c/681ab0b5ef7173dfb95a2ded_arrow.svg" loading="lazy" alt="" className="imb-button-icon" />
                         </div>
                       </div>
                     </div>
@@ -686,36 +298,36 @@ function HiddenShowPage() {
             </div>
           </div>
         </div>
-        <div id="w-node-_9649efbb-1b11-345b-266a-3b1879770036-958faacb" class="w-layout-cell">
-          <div id="onboarding-section-5" class="imb-display-none">
-            <div id="w-node-d063f4b7-329a-6f2d-0599-872182b891cf-958faacb" class="w-layout-layout imb-stack wf-layout-layout">
-              <div class="w-layout-cell">
-                <div id="w-node-d063f4b7-329a-6f2d-0599-872182b891d1-958faacb" class="w-layout-layout imb-stack wf-layout-layout">
-                  <div class="w-layout-cell">
-                    <p class="imb-color-primary">Success</p>
-                    <h1 class="imb-typography-light">Welcome to IMB, <span class="imb-color-primary">John</span>.</h1>
+        <div id="w-node-_9649efbb-1b11-345b-266a-3b1879770036-958faacb" className="w-layout-cell">
+          <div id="onboarding-section-5">
+            <div id="w-node-d063f4b7-329a-6f2d-0599-872182b891cf-958faacb" className="w-layout-layout imb-stack wf-layout-layout">
+              <div className="w-layout-cell">
+                <div id="w-node-d063f4b7-329a-6f2d-0599-872182b891d1-958faacb" className="w-layout-layout imb-stack wf-layout-layout">
+                  <div className="w-layout-cell">
+                    <p className="imb-color-primary">Success</p>
+                    <h1 className="imb-typography-light">Welcome to IMB, <span className="imb-color-primary">John</span>.</h1>
                   </div>
-                  <div class="w-layout-cell">
+                  <div className="w-layout-cell">
                     <p>Congratulations on opening your account with us! We're thrilled to have you as a part of our community. We make banking a breeze at IMB. Feel free to reach out here if you have any questions or need assistance.</p>
                   </div>
-                  <div class="w-layout-cell">
-                    <div id="w-node-d063f4b7-329a-6f2d-0599-872182b891de-958faacb" class="w-layout-layout imb-stack imb-stack-inline wf-layout-layout">
-                      <div class="w-layout-cell">
-                        <div id="onboarding-success-button-begin" class="imb-button imb-button-with-icon">
-                          <p class="imb-button-text">Let's Begin</p>
-                          <img src="https://cdn.prod.website-files.com/681079166d5ce9a9cd684b2c/681ab0b5ef7173dfb95a2ded_arrow.svg" loading="lazy" alt="" class="imb-button-icon" />
+                  <div className="w-layout-cell">
+                    <div id="w-node-d063f4b7-329a-6f2d-0599-872182b891de-958faacb" className="w-layout-layout imb-stack imb-stack-inline wf-layout-layout">
+                      <div className="w-layout-cell">
+                        <div id="onboarding-success-button-begin" className="imb-button imb-button-with-icon">
+                          <p className="imb-button-text">Let's Begin</p>
+                          <img src="https://cdn.prod.website-files.com/681079166d5ce9a9cd684b2c/681ab0b5ef7173dfb95a2ded_arrow.svg" loading="lazy" alt="" className="imb-button-icon" />
                         </div>
                       </div>
-                      <div class="w-layout-cell">
-                        <div id="onboarding-success-button-getapp" class="imb-button imb-button-outline">
-                          <p class="imb-button-text">Get the App</p>
+                      <div className="w-layout-cell">
+                        <div id="onboarding-success-button-getapp" className="imb-button imb-button-outline">
+                          <p className="imb-button-text">Get the App</p>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="w-layout-cell"></div>
+              <div className="w-layout-cell"></div>
             </div>
           </div>
         </div>
