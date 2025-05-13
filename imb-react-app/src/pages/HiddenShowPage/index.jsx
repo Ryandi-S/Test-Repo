@@ -1,13 +1,6 @@
 import React from "react";
 
 function HiddenShowPage() {
-  // const getToEmailPage = () => {
-  //   const starterPage = document.querySelector("#onboarding-section-0");
-  //   const emailPage = document.querySelector("#onboarding-section-1");
-  //   starterPage.classList.remove("imb-display-block");
-  //   starterPage.classList.add("imb-display-none");
-  //   emailPage.classList.remove("imb-display-block");
-  // };
   function getToEmailPage() {
     const starterPage = document.querySelector("#onboarding-section-0");
     const emailPage = document.querySelector("#onboarding-section-1");
@@ -47,6 +40,20 @@ function HiddenShowPage() {
     starterPage.classList.remove("imb-display-none");
     starterPage.classList.add("imb-display-block");
   }
+
+  React.useEffect(() => {
+    const input = document.querySelector("#onboarding-0-button-signup .imb-button-text");
+    console.log("===>", input)
+    if (input) {
+      input.addEventListener('click', getToEmailPage);
+    }
+    // Clean up to prevent memory leaks
+    return () => {
+      if (input) {
+        input.removeEventListener('click', getToEmailPage);
+      }
+    };
+  }, []);
 
   return (
     <div class="w-layout-blockcontainer imb-container w-container">
@@ -110,7 +117,6 @@ function HiddenShowPage() {
                         >
                           <button
                             class="imb-button-text"
-                            onClick={getToEmailPage}
                           >
                             Sign up now
                           </button>
@@ -677,6 +683,39 @@ function HiddenShowPage() {
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+        <div id="w-node-_9649efbb-1b11-345b-266a-3b1879770036-958faacb" class="w-layout-cell">
+          <div id="onboarding-section-5" class="imb-display-none">
+            <div id="w-node-d063f4b7-329a-6f2d-0599-872182b891cf-958faacb" class="w-layout-layout imb-stack wf-layout-layout">
+              <div class="w-layout-cell">
+                <div id="w-node-d063f4b7-329a-6f2d-0599-872182b891d1-958faacb" class="w-layout-layout imb-stack wf-layout-layout">
+                  <div class="w-layout-cell">
+                    <p class="imb-color-primary">Success</p>
+                    <h1 class="imb-typography-light">Welcome to IMB, <span class="imb-color-primary">John</span>.</h1>
+                  </div>
+                  <div class="w-layout-cell">
+                    <p>Congratulations on opening your account with us! We're thrilled to have you as a part of our community. We make banking a breeze at IMB. Feel free to reach out here if you have any questions or need assistance.</p>
+                  </div>
+                  <div class="w-layout-cell">
+                    <div id="w-node-d063f4b7-329a-6f2d-0599-872182b891de-958faacb" class="w-layout-layout imb-stack imb-stack-inline wf-layout-layout">
+                      <div class="w-layout-cell">
+                        <div id="onboarding-success-button-begin" class="imb-button imb-button-with-icon">
+                          <p class="imb-button-text">Let's Begin</p>
+                          <img src="https://cdn.prod.website-files.com/681079166d5ce9a9cd684b2c/681ab0b5ef7173dfb95a2ded_arrow.svg" loading="lazy" alt="" class="imb-button-icon" />
+                        </div>
+                      </div>
+                      <div class="w-layout-cell">
+                        <div id="onboarding-success-button-getapp" class="imb-button imb-button-outline">
+                          <p class="imb-button-text">Get the App</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="w-layout-cell"></div>
             </div>
           </div>
         </div>
