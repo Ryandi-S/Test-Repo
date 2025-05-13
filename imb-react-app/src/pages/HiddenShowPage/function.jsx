@@ -108,4 +108,4 @@ const HiddenShowPageFunction = () => {
 
 window.HiddenShowPageFunction = HiddenShowPageFunction;
 
-export default HiddenShowPageFunction;
+// export default HiddenShowPageFunction;
