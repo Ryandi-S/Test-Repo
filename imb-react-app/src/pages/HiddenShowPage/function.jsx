@@ -104,6 +104,10 @@ const HiddenShowPageFunction = () => {
       }
     };
   }, []);
+  
+  return (
+    null
+  )
 }
 
 window.HiddenShowPageFunction = HiddenShowPageFunction;
