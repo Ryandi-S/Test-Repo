@@ -1,6 +1,4 @@
-// import React from "react";
-
-const HiddenShowPageFunction = () => {
+const HiddenShowPageFunction = (React) => {
   console.log("--- HiddenShowPageFunction ---");
 
   const getToEmailPage = () => {

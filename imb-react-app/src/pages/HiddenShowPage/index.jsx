@@ -1,7 +1,8 @@
-import HiddenShowPageFunction from './function.jsx';
+import React from "react";
+import './function.jsx';
 
 const HiddenShowPage = () => {
-  HiddenShowPageFunction();
+  HiddenShowPageFunction(React);
 
   return (
     <div className="w-layout-blockcontainer imb-container w-container">
