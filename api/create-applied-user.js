@@ -21,7 +21,7 @@ export default async function handler(req, res) {
   
     try {
       // Call Webflow API to create a new "Applied User" item
-      const response = await fetch('https://api.webflow.com/v2/collections/'+collection_users+'/items', {
+      const response = await fetch('https://api.webflow.com/v2/collections/'+process.env.collection_users+'/items', {
         method: 'POST',
         headers: {
           Authorization: 'Bearer '+process.env.token_auth,
