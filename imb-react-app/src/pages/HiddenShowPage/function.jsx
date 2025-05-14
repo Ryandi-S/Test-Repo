@@ -1,6 +1,8 @@
 const HiddenShowPageFunction = (ReactProp) => {
   const React = window.React || ReactProp;
-  console.log("--- HiddenShowPageFunction ---", React);
+  console.log("--- HiddenShowPageFunction ---");
+  console.log("show : ",window.showElement)
+  console.log("hide : ",window.hideElement)
 
   const getToEmailPage = () => {
     const starterPage = document.querySelector("#onboarding-section-0");
