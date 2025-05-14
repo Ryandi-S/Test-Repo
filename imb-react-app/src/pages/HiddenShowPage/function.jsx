@@ -1,5 +1,5 @@
 const HiddenShowPageFunction = (ReactProp) => {
-  const React = ReactProp || window.React;
+  const React = window.React || ReactProp;
   console.log("--- HiddenShowPageFunction ---", React);
 
   const getToEmailPage = () => {
