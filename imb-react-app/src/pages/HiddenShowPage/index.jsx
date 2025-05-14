@@ -1,17 +1,15 @@
 import React from "react";
 
 function HiddenShowPage() {
-  // const getToEmailPage = () => {
-  //   const starterPage = document.querySelector("#onboarding-section-0");
-  //   const emailPage = document.querySelector("#onboarding-section-1");
-  //   starterPage.classList.remove("imb-display-block");
-  //   starterPage.classList.add("imb-display-none");
-  //   emailPage.classList.remove("imb-display-block");
-  // };
+  const errorElement = document.querySelector(".imb-input-error-message");
+  if (errorElement !== null) {
+    errorElement.classList.add("imb-display-none");
+  }
+
   function getToEmailPage() {
-    const starterPage = document.querySelector("#onboarding-section-0");
+    const starterPage = document.querySelector("#onboarding-section");
     const emailPage = document.querySelector("#onboarding-section-1");
-    console.log("starterPage", starterPage);
+    starterPage.classList.remove("imb-display-block");
     starterPage.classList.add("imb-display-none");
     emailPage.classList.remove("imb-display-none");
   }
@@ -19,33 +17,96 @@ function HiddenShowPage() {
   function getToPhonePage() {
     const emailPage = document.querySelector("#onboarding-section-1");
     const phonePage = document.querySelector("#onboarding-section-2");
-    emailPage.classList.remove("imb-display-block");
-    emailPage.classList.add("imb-display-none");
-    phonePage.classList.remove("imb-display-none");
+    const formEmail = document.querySelector("#onboarding-input-email");
+    const valueInput = formEmail.querySelectorAll("input")[0].value;
+    // const valueInput = inputElement[0].value;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (valueInput === "" || valueInput === undefined) {
+      errorElement.classList.remove("imb-display-none");
+      errorElement.classList.add("imb-display-block");
+    } else {
+      if (emailRegex.test(valueInput)) {
+        // const errorElement = document.querySelector(".imb-input-error-message");
+        errorElement.classList.remove("imb-display-block");
+        errorElement.classList.add("imb-display-none");
+        emailPage.classList.remove("imb-display-block");
+        emailPage.classList.add("imb-display-none");
+        phonePage.classList.remove("imb-display-none");
+      } else {
+        errorElement.classList.remove("imb-display-none");
+        errorElement.classList.add("imb-display-block");
+      }
+    }
   }
 
   function getToPersonalDetailsPage() {
     const phonePage = document.querySelector("#onboarding-section-2");
     const personalDetailsPage = document.querySelector("#onboarding-section-3");
-    phonePage.classList.remove("imb-display-block");
-    phonePage.classList.add("imb-display-none");
-    personalDetailsPage.classList.remove("imb-display-none");
+    const formPhone = document.querySelector("#onboarding-input-phone");
+    const inputElement = formPhone.querySelectorAll("input");
+    if (inputElement[0].value === "" || inputElement[0].value === undefined) {
+      errorElement.classList.remove("imb-display-none");
+      errorElement.classList.add("imb-display-block");
+    } else {
+      errorElement.classList.remove("imb-display-block");
+      errorElement.classList.add("imb-display-none");
+      phonePage.classList.remove("imb-display-block");
+      phonePage.classList.add("imb-display-none");
+      personalDetailsPage.classList.remove("imb-display-none");
+    }
   }
 
   function getToSuccessPage() {
     const personalDetailsPage = document.querySelector("#onboarding-section-3");
     const successPage = document.querySelector("#onboarding-section-4");
-    personalDetailsPage.classList.remove("imb-display-block");
-    personalDetailsPage.classList.add("imb-display-none");
-    successPage.classList.remove("imb-display-none");
+    const formFirstName = document.querySelector("#onboarding-input-firstname");
+    const formMiddleName = document.querySelector(
+      "#onboarding-input-middlename"
+    );
+    const formLastName = document.querySelector("#onboarding-input-lastname");
+    const valueInputFirstName =
+      formFirstName.querySelectorAll("input")[0].value;
+    const valueInputMiddleName =
+      formMiddleName.querySelectorAll("input")[0].value;
+    const valueInputLastName = formLastName.querySelectorAll("input")[0].value;
+    if (
+      valueInputFirstName === "" ||
+      valueInputFirstName === undefined ||
+      valueInputMiddleName === "" ||
+      valueInputMiddleName === undefined ||
+      valueInputLastName === "" ||
+      valueInputLastName === undefined
+    ) {
+      errorElement.classList.remove("imb-display-none");
+      errorElement.classList.add("imb-display-block");
+    } else {
+      personalDetailsPage.classList.remove("imb-display-block");
+      personalDetailsPage.classList.add("imb-display-none");
+      successPage.classList.remove("imb-display-none");
+    }
   }
 
   function getToStarterPage() {
     const successPage = document.querySelector("#onboarding-section-4");
-    const starterPage = document.querySelector("#onboarding-section-0");
+    const starterPage = document.querySelector("#onboarding-section");
     successPage.classList.remove("imb-display-block");
     starterPage.classList.remove("imb-display-none");
     starterPage.classList.add("imb-display-block");
+  }
+
+  function hanldeBack(number) {
+    if (number === 1) {
+      const starterPage = document.querySelector("#onboarding-section");
+      starterPage.classList.remove("imb-display-none");
+      starterPage.classList.add("imb-display-block");
+    }
+    const currentPage = document.querySelector(`#onboarding-section-${number}`);
+    const previousPage = document.querySelector(
+      `#onboarding-section-${number - 1}`
+    );
+    currentPage.classList.remove("imb-display-block");
+    currentPage.classList.add("imb-display-none");
+    previousPage.classList.remove("imb-display-none");
   }
 
   return (
@@ -58,7 +119,7 @@ function HiddenShowPage() {
           id="w-node-d73717e3-3569-745f-9cdc-cdcb725c6526-958faacb"
           class="w-layout-cell"
         >
-          <div id="onboarding-section-0">
+          <div id="onboarding-section">
             <div
               id="w-node-ca87aaa3-3157-c565-3cbc-09710191a74e-958faacb"
               class="w-layout-layout imb-stack wf-layout-layout"
@@ -107,13 +168,10 @@ function HiddenShowPage() {
                         <div
                           id="onboarding-0-button-signup"
                           class="imb-button imb-button-outline"
+                          role="button"
+                          onClick={getToEmailPage}
                         >
-                          <button
-                            class="imb-button-text"
-                            onClick={getToEmailPage}
-                          >
-                            Sign up now
-                          </button>
+                          <p class="imb-button-text">Sign up now</p>
                         </div>
                       </div>
                     </div>
@@ -239,6 +297,8 @@ function HiddenShowPage() {
                         <div
                           id="onboarding-1-button-back"
                           class="imb-button imb-button-outline"
+                          role="button"
+                          onClick={() => hanldeBack(1)}
                         >
                           <p class="imb-button-text">Back</p>
                         </div>
@@ -376,6 +436,8 @@ function HiddenShowPage() {
                         <div
                           id="onboarding-2-button-back"
                           class="imb-button imb-button-outline"
+                          role="button"
+                          onClick={() => hanldeBack(2)}
                         >
                           <p class="imb-button-text">Back</p>
                         </div>
@@ -565,6 +627,8 @@ function HiddenShowPage() {
                         <div
                           id="onboarding-3-button-back"
                           class="imb-button imb-button-outline"
+                          role="button"
+                          onClick={() => hanldeBack(3)}
                         >
                           <p class="imb-button-text">Back</p>
                         </div>
@@ -654,6 +718,8 @@ function HiddenShowPage() {
                         <div
                           id="onboarding-4-button-back"
                           class="imb-button imb-button-outline"
+                          role="button"
+                          onClick={() => hanldeBack(4)}
                         >
                           <p class="imb-button-text">Back</p>
                         </div>

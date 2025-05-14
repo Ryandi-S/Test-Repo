@@ -100,6 +100,6 @@ function App() {
   return <HiddenShowPage />;
 }
 
-// window.App = App;
+window.App = App;
 
 export default App;
