@@ -1,0 +1,20 @@
+/* 
+  External styles for webflow
+  Only applies on staging, not in webflow design view
+*/
+
+#onboarding-section-1,
+#onboarding-section-2,
+#onboarding-section-3,
+#onboarding-section-4,
+#onboarding-section-5 {
+  display: none;
+}
+
+.imb-display-none {
+  display: none !important;
+}
+
+.imb-display-block {
+  display: block !important;
+}

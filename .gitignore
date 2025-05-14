@@ -1,3 +1,5 @@
 
 imb/.DS_Store
 .DS_Store
+*.lock
+imb-react-app/yarn.lock
