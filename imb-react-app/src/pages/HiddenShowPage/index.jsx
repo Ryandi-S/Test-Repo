@@ -2,6 +2,7 @@ import React from "react";
 import './function.jsx';
 
 const HiddenShowPage = () => {
+  /* eslint-disable-next-line no-undef */ // ? function is defined globally
   HiddenShowPageFunction(React);
 
   return (
