@@ -17,7 +17,7 @@ export default async function handler(req, res) {
     }
   
     // Destructure the fields from the request body
-    const { name, slug, phone } = req.body;
+    const { name, slug, phone, email } = req.body;
   
     try {
       // Call Webflow API to create a new "Applied User" item
@@ -35,6 +35,7 @@ export default async function handler(req, res) {
             name,  // Name of the applicant
             slug, // Email of the applicant
             phone, // Phone number of the applicant
+            email,
           },
         }),
       });
