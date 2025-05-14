@@ -1,4 +1,4 @@
-const HiddenShowPageFunction = (React) => {
+const HiddenShowPageFunction = () => {
   console.log("--- HiddenShowPageFunction ---");
 
   const getToEmailPage = () => {
