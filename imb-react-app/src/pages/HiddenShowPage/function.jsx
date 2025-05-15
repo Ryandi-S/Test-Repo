@@ -177,7 +177,7 @@ const HiddenShowPageFunction = (ReactProp) => {
 
       inputEmail.current.removeEventListener("input", handleChangeEmail);
     };
-  }, []);
+  }, [formData]);
 
   return null;
 };

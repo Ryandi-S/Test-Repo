@@ -14,8 +14,7 @@ window.hideElement = hideElement;
 
 const isValidEmail = (val) => {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  console.log("---> isValidEmail : ", val, val && emailRegex.test(val));
-  return (val && emailRegex.test(val))
+  return (val !== "" && val !== undefined && val !== null && emailRegex.test(val))
 }
 window.isValidEmail = isValidEmail;
 
