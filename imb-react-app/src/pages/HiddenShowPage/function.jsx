@@ -135,21 +135,21 @@ const HiddenShowPageFunction = (ReactProp) => {
 
   // attach events
   React.useEffect(() => {
-    input?.current.addEventListener("click", getToEmailPage);
-    input2?.current.addEventListener("click", getToPhonePage);
-    input3?.current.addEventListener("click", getToPersonalDetailsPage);
-    input4?.current.addEventListener("click", getToConfirmPage);
-    input5?.current.addEventListener("click", getToSuccessPage);
-    input6?.current.addEventListener("click", getToStarterPage);
+    input.current.addEventListener("click", getToEmailPage);
+    input2.current.addEventListener("click", getToPhonePage);
+    input3.current.addEventListener("click", getToPersonalDetailsPage);
+    input4.current.addEventListener("click", getToConfirmPage);
+    input5.current.addEventListener("click", getToSuccessPage);
+    input6.current.addEventListener("click", getToStarterPage);
 
     // Clean up to prevent memory leaks
     return () => {
-      input?.current.removeEventListener("click", getToEmailPage);
-      input2?.current.removeEventListener("click", getToPhonePage);
-      input3?.current.removeEventListener("click", getToPersonalDetailsPage);
-      input4?.current.removeEventListener("click", getToConfirmPage);
-      input5?.current.removeEventListener("click", getToSuccessPage);
-      input6?.current.removeEventListener("click", getToStarterPage);
+      input.current.removeEventListener("click", getToEmailPage);
+      input2.current.removeEventListener("click", getToPhonePage);
+      input3.current.removeEventListener("click", getToPersonalDetailsPage);
+      input4.current.removeEventListener("click", getToConfirmPage);
+      input5.current.removeEventListener("click", getToSuccessPage);
+      input6.current.removeEventListener("click", getToStarterPage);
     };
   }, []);
 
