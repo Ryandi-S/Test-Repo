@@ -1,7 +1,10 @@
 /* 
   External styles for webflow
-  Only applies on staging, not in webflow design view
+  Only applies on local / staging, not in webflow design view
 */
+.imb-input-error-message {
+  display: none;
+}
 
 #onboarding-section-1,
 #onboarding-section-2,
