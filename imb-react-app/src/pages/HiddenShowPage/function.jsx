@@ -1,7 +1,6 @@
 /* eslint-disable no-undef */ // ? some function are defined globally in utils
 const HiddenShowPageFunction = (ReactProp) => {
   const React = window.React || ReactProp;
-  console.log("--- HiddenShowPageFunction ---");
 
   // page elements
   const starterPage = React.useRef(null);
@@ -18,6 +17,9 @@ const HiddenShowPageFunction = (ReactProp) => {
   const input5 = React.useRef(null);
   const input6 = React.useRef(null);
 
+  const inputEmail = React.useRef(null);
+  const inputEmailErrMsg = React.useRef(null);
+
   React.useEffect(() => {
     starterPage.current = document.querySelector("#onboarding-section-0");
     emailPage.current = document.querySelector("#onboarding-section-1");
@@ -32,6 +34,9 @@ const HiddenShowPageFunction = (ReactProp) => {
     input4.current = document.querySelector("#onboarding-3-button-next");
     input5.current = document.querySelector("#onboarding-4-button-next");
     input6.current = document.querySelector("#onboarding-success-button-begin");
+
+    inputEmail.current = document.querySelector("#onboarding-input-email input");
+    inputEmailErrMsg.current = document.querySelector("#onboarding-input-email .imb-input-error-message");
   }, []);
 
   // page states
@@ -49,20 +54,15 @@ const HiddenShowPageFunction = (ReactProp) => {
     hideElement(starterPage.current);
     showElement(emailPage.current);
   };
-
   const getToPhonePage = () => {
-    const errorElement = document.querySelector(".imb-input-error-message");
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const inputEmailValue = document.querySelectorAll("input")[0].value;
-    if (inputEmailValue === "" || inputEmailValue === undefined) {
-      showElement(errorElement);
-    } else {
-      if (emailRegex.test(inputEmailValue)) {
-        hideElement(errorElement);
-        hideElement(emailPage.current);
-        return showElement(phonePage.current);
-      }
-      return showElement(errorElement);
+    if (!isValidEmail(formData.email)){
+      setIsValidated(true);
+      return false;
+    }
+    else {
+      setIsValidated(false);
+      hideElement(emailPage.current);
+      showElement(phonePage.current);
     }
   };
   const getToPersonalDetailsPage = () => {
@@ -71,12 +71,12 @@ const HiddenShowPageFunction = (ReactProp) => {
     );
     //number must be 10 digits and number only
     const phoneRegex = /^[0-9]{10}$/;
-    const inputPhoneBalue = phonePage.current.querySelectorAll("input")[0].value;
+    const inputPhoneValue = phonePage.current.querySelectorAll("input")[0].value;
 
-    if (inputPhoneBalue === "" || inputPhoneBalue === undefined) {
+    if (inputPhoneValue === "" || inputPhoneValue === undefined) {
       return showElement(errorPhoneElement);
     } else {
-      if (phoneRegex.test(inputPhoneBalue)) {
+      if (phoneRegex.test(inputPhoneValue)) {
         console.log("valid phone number");
         hideElement(errorPhoneElement);
         hideElement(phonePage.current);
@@ -133,6 +133,28 @@ const HiddenShowPageFunction = (ReactProp) => {
     showElement(starterPage.current);
   };
 
+  const handleChangeEmail = (e) => {
+    setFormData({
+      ...formData,
+      email: e.target.value
+    });
+  }
+  React.useEffect(() => {
+    // validate the email step
+    console.log("handleChangeEmail / formData.email :", formData.email);
+    if (isValidated && !formData.email){
+      inputEmailErrMsg.current.innerHTML = "Email field is required";
+      showElement(inputEmailErrMsg.current);
+    }
+    else if (isValidated && !isValidEmail(formData.email)){
+      inputEmailErrMsg.current.innerHTML = "Invalid email address";
+      showElement(inputEmailErrMsg.current);
+    }
+    else {
+      hideElement(inputEmailErrMsg.current);
+    }
+  }, [formData.email, isValidated]);
+
   // attach events
   React.useEffect(() => {
     input.current.addEventListener("click", getToEmailPage);
@@ -142,6 +164,8 @@ const HiddenShowPageFunction = (ReactProp) => {
     input5.current.addEventListener("click", getToSuccessPage);
     input6.current.addEventListener("click", getToStarterPage);
 
+    inputEmail.current.addEventListener("input", handleChangeEmail);
+
     // Clean up to prevent memory leaks
     return () => {
       input.current.removeEventListener("click", getToEmailPage);
@@ -150,6 +174,8 @@ const HiddenShowPageFunction = (ReactProp) => {
       input4.current.removeEventListener("click", getToConfirmPage);
       input5.current.removeEventListener("click", getToSuccessPage);
       input6.current.removeEventListener("click", getToStarterPage);
+
+      inputEmail.current.removeEventListener("input", handleChangeEmail);
     };
   }, []);
 
