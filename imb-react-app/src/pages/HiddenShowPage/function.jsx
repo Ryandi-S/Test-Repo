@@ -10,7 +10,7 @@ const HiddenShowPageFunction = (ReactProp) => {
   const personalDetailsPage = React.useRef(null);
   const confirmPage = React.useRef(null);
   const successPage = React.useRef(null);
-  
+
   const input = React.useRef(null);
   const input2 = React.useRef(null);
   const input3 = React.useRef(null);
@@ -22,7 +22,9 @@ const HiddenShowPageFunction = (ReactProp) => {
     starterPage.current = document.querySelector("#onboarding-section-0");
     emailPage.current = document.querySelector("#onboarding-section-1");
     phonePage.current = document.querySelector("#onboarding-section-2");
-    personalDetailsPage.current = document.querySelector("#onboarding-section-3");
+    personalDetailsPage.current = document.querySelector(
+      "#onboarding-section-3"
+    );
     confirmPage.current = document.querySelector("#onboarding-section-4");
     successPage.current = document.querySelector("#onboarding-section-5");
 
@@ -36,13 +38,24 @@ const HiddenShowPageFunction = (ReactProp) => {
 
   // page states
   const [isValidated, setIsValidated] = React.useState(false);
+  const [currentPage, setCurrentPage] = React.useState(starterPage.current);
+  // console.log("currentPage", currentPage);
   const [formData, setFormData] = React.useState({
     email: "",
     phone: "",
     firstName: "",
     middleName: "",
-    lastName: ""
-  })
+    lastName: "",
+  });
+
+  const handleStepper = (page, step) => {
+    console.log("handleStepper", page, step);
+    const stepper = page.querySelectorAll(".imb-stepper-step-block");
+    //set i max to step
+    for (let i = 0; i < step; i++) {
+      stepper[i].classList.add("imb-stepper-step-active");
+    }
+  };
 
   // page functions
   const getToEmailPage = () => {
@@ -60,18 +73,21 @@ const HiddenShowPageFunction = (ReactProp) => {
       if (emailRegex.test(inputEmailValue)) {
         hideElement(errorElement);
         hideElement(emailPage.current);
+        handleStepper(phonePage.current, 2);
         return showElement(phonePage.current);
       }
       return showElement(errorElement);
     }
   };
+
   const getToPersonalDetailsPage = () => {
     const errorPhoneElement = phonePage.current.querySelector(
       ".imb-input-error-message"
     );
     //number must be 10 digits and number only
     const phoneRegex = /^[0-9]{10}$/;
-    const inputPhoneBalue = phonePage.current.querySelectorAll("input")[0].value;
+    const inputPhoneBalue =
+      phonePage.current.querySelectorAll("input")[0].value;
 
     if (inputPhoneBalue === "" || inputPhoneBalue === undefined) {
       return showElement(errorPhoneElement);
@@ -80,6 +96,7 @@ const HiddenShowPageFunction = (ReactProp) => {
         console.log("valid phone number");
         hideElement(errorPhoneElement);
         hideElement(phonePage.current);
+        handleStepper(personalDetailsPage.current, 3);
         return showElement(personalDetailsPage.current);
       }
       console.log("invalid phone number");
@@ -121,6 +138,8 @@ const HiddenShowPageFunction = (ReactProp) => {
       hideElement(errorMiddleNameElement);
       hideElement(errorLastNameElement);
       hideElement(personalDetailsPage.current);
+      handleStepper(currentPage);
+      setCurrentPage("confirmPage");
       return showElement(confirmPage.current);
     }
   };
