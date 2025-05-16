@@ -141,7 +141,7 @@ const HiddenShowPageFunction = (ReactProp) => {
       hideElement(errorMiddleNameElement);
       hideElement(errorLastNameElement);
       hideElement(personalDetailsPage.current);
-      handleStepper(currentPage);
+      // handleStepper(confirmPage.current, 4);
       setCurrentPage("confirmPage");
       return showElement(confirmPage.current);
     }
