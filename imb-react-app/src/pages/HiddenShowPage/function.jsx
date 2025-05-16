@@ -176,28 +176,38 @@ const HiddenShowPageFunction = (ReactProp) => {
   }, [formData.email, isValidated]);
 
   // attach events
-  React.useEffect(() => {
-    input.current.addEventListener("click", getToEmailPage);
-    input2.current.addEventListener("click", getToPhonePage);
-    input3.current.addEventListener("click", getToPersonalDetailsPage);
-    input4.current.addEventListener("click", getToConfirmPage);
-    input5.current.addEventListener("click", getToSuccessPage);
-    input6.current.addEventListener("click", getToStarterPage);
+  useEventListener([
+    { ref: input, event: "click", handler: getToEmailPage },
+    { ref: input2, event: "click", handler: getToPhonePage },
+    { ref: input3, event: "click", handler: getToPersonalDetailsPage },
+    { ref: input4, event: "click", handler: getToConfirmPage },
+    { ref: input5, event: "click", handler: getToSuccessPage },
+    { ref: input6, event: "click", handler: getToStarterPage },
+    { ref: inputEmail, event: "input", handler: handleChangeEmail }
+  ],[formData] ,React);
 
-    inputEmail.current.addEventListener("input", handleChangeEmail);
+  // React.useEffect(() => {
+  //   input.current.addEventListener("click", getToEmailPage);
+  //   input2.current.addEventListener("click", getToPhonePage);
+  //   input3.current.addEventListener("click", getToPersonalDetailsPage);
+  //   input4.current.addEventListener("click", getToConfirmPage);
+  //   input5.current.addEventListener("click", getToSuccessPage);
+  //   input6.current.addEventListener("click", getToStarterPage);
 
-    // Clean up to prevent memory leaks
-    return () => {
-      input.current.removeEventListener("click", getToEmailPage);
-      input2.current.removeEventListener("click", getToPhonePage);
-      input3.current.removeEventListener("click", getToPersonalDetailsPage);
-      input4.current.removeEventListener("click", getToConfirmPage);
-      input5.current.removeEventListener("click", getToSuccessPage);
-      input6.current.removeEventListener("click", getToStarterPage);
+  //   inputEmail.current.addEventListener("input", handleChangeEmail);
 
-      inputEmail.current.removeEventListener("input", handleChangeEmail);
-    };
-  }, [formData]);
+  //   // Clean up to prevent memory leaks
+  //   return () => {
+  //     input.current.removeEventListener("click", getToEmailPage);
+  //     input2.current.removeEventListener("click", getToPhonePage);
+  //     input3.current.removeEventListener("click", getToPersonalDetailsPage);
+  //     input4.current.removeEventListener("click", getToConfirmPage);
+  //     input5.current.removeEventListener("click", getToSuccessPage);
+  //     input6.current.removeEventListener("click", getToStarterPage);
+
+  //     inputEmail.current.removeEventListener("input", handleChangeEmail);
+  //   };
+  // }, [formData]);
 
   return null;
 };

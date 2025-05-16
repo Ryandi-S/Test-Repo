@@ -1,3 +1,20 @@
+const useEventListener = ( config = [], dependency = [], ReactProp ) => {
+  return (
+    ReactProp.useEffect(() => {
+      config.forEach(({ ref, event, handler }) => {
+        ref.current.addEventListener(event, handler);
+      });
+      // Clean up to prevent memory leaks
+      return () => {
+        config.forEach(({ ref, event, handler }) => {
+          ref.current.removeEventListener(event, handler);
+        });
+      };
+    }, dependency)
+  )
+}
+window.useEventListener = useEventListener;
+
 const showElement = (element) => {
   // console.log("---> show : ",element);
   element.classList.add("imb-display-block");
