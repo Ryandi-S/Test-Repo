@@ -47,11 +47,16 @@ const HiddenShowPageFunction = (ReactProp) => {
     React
   );
 
-  const onBackButtonPrev = (inBack) => {
-    console.log("onBackButtonPrev", inBack);
+  const onBackButtonPrev1 = () => {
+    console.log(currentPage);
 
-    // hideElement(emailPage.current);
-    // showElement(starterPage.current);
+    hideElement(refs.emailPage.current);
+    showElement(refs.starterPage.current);
+  };
+
+  const onBackButtonPrev2 = () => {
+    hideElement(refs.phonePage.current);
+    showElement(refs.emailPage.current);
   };
 
   // page states
@@ -221,12 +226,12 @@ const HiddenShowPageFunction = (ReactProp) => {
       {
         ref: refs.backButtonOnboarding1,
         event: "click",
-        handler: onBackButtonPrev,
+        handler: onBackButtonPrev1,
       },
       {
         ref: refs.backButtonOnboarding2,
         event: "click",
-        handler: onBackButtonPrev,
+        handler: onBackButtonPrev2,
       },
     ],
     [formData],
