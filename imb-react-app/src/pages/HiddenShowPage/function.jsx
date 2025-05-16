@@ -85,9 +85,9 @@ const HiddenShowPageFunction = (ReactProp) => {
   const getToPhonePage = () => {
     if (isValidEmail(formData.email)) {
       setIsValidated(false);
-      hideElement(emailPage.current);
-      handleStepper(phonePage.current, 2);
-      showElement(phonePage.current);
+      hideElement(refs.emailPage.current);
+      handleStepper(refs.phonePage.current, 2);
+      showElement(refs.phonePage.current);
       return;
     }
     setIsValidated(true);
@@ -95,7 +95,7 @@ const HiddenShowPageFunction = (ReactProp) => {
   };
 
   const getToPersonalDetailsPage = () => {
-    const phoneValue = inputPhone.current?.value.trim();
+    const phoneValue = refs.inputPhone.current?.value.trim();
 
     if (!phoneValue) {
       refs.inputPhoneErrMsg.current.innerHTML = "Phone number is required";
@@ -106,7 +106,7 @@ const HiddenShowPageFunction = (ReactProp) => {
     if (!isValidPhoneNumber(phoneValue)) {
       console.log("Invalid phone number 1");
       refs.inputPhoneErrMsg.current.innerHTML = "Invalid phone number";
-      showElement(inputPhoneErrMsg.current);
+      showElement(refs.inputPhoneErrMsg.current);
       return false;
     }
 
