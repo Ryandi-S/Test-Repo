@@ -48,8 +48,6 @@ const HiddenShowPageFunction = (ReactProp) => {
   );
 
   const onBackButtonPrev1 = () => {
-    console.log(currentPage);
-
     hideElement(refs.emailPage.current);
     showElement(refs.starterPage.current);
   };
@@ -203,7 +201,7 @@ const HiddenShowPageFunction = (ReactProp) => {
     if (isValidated && !formData.phone) {
       refs.inputPhoneErrMsg.current.innerHTML =
         "Phone number field is required";
-      showElement(inputPhoneErrMsg.current);
+      showElement(refs.inputPhoneErrMsg.current);
     } else if (isValidated && isValidPhoneNumber(formData.phone)) {
       refs.inputPhoneErrMsg.current.innerHTML = "Invalid phone number";
       showElement(refs.inputPhoneErrMsg.current);
