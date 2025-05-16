@@ -1,3 +1,23 @@
+const useElementRefs = ( configs, ReactProp ) => {
+  const refs = ReactProp.useMemo(() => {
+    const refObj = {};
+    configs.forEach(({ refName }) => {
+      refObj[refName] = ReactProp.createRef();
+    });
+    return refObj;
+  }, []);
+
+  ReactProp.useEffect(() => {
+    configs.forEach(({ refName, id }) => {
+      const el = document.querySelector(id);
+      refs[refName].current = el;
+    });
+  }, []);
+
+  return refs;
+}
+window.useElementRefs = useElementRefs;
+
 const useEventListener = ( config = [], dependency = [], ReactProp ) => {
   return (
     ReactProp.useEffect(() => {
