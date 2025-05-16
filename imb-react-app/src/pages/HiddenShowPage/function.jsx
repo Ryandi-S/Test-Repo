@@ -3,26 +3,62 @@ const HiddenShowPageFunction = (ReactProp) => {
   const React = window.React || ReactProp;
 
   // page elements
-  const refs = useElementRefs([
-    { refName: "starterPage", id: "#onboarding-section-0" },
-    { refName: "emailPage", id: "#onboarding-section-1" },
-    { refName: "phonePage", id: "#onboarding-section-2" },
-    { refName: "personalDetailsPage", id: "#onboarding-section-3" },
-    { refName: "confirmPage", id: "#onboarding-section-4" },
-    { refName: "successPage", id: "#onboarding-section-5" },
-    { refName: "input", id: "#onboarding-0-button-signup" },
-    { refName: "input2", id: "#onboarding-1-button-next" },
-    { refName: "input3", id: "#onboarding-2-button-next" },
-    { refName: "input4", id: "#onboarding-3-button-next" },
-    { refName: "input5", id: "#onboarding-4-button-next" },
-    { refName: "input6", id: "#onboarding-success-button-begin" },
-    { refName: "inputEmail", id: "#onboarding-input-email input" },
-    { refName: "inputEmailErrMsg", id: "#onboarding-input-email .imb-input-error-message" },
-  ], React);
+  const refs = useElementRefs(
+    [
+      { refName: "starterPage", id: "#onboarding-section-0" },
+      { refName: "emailPage", id: "#onboarding-section-1" },
+      { refName: "phonePage", id: "#onboarding-section-2" },
+      { refName: "personalDetailsPage", id: "#onboarding-section-3" },
+      { refName: "confirmPage", id: "#onboarding-section-4" },
+      { refName: "successPage", id: "#onboarding-section-5" },
+      { refName: "input", id: "#onboarding-0-button-signup" },
+      { refName: "input2", id: "#onboarding-1-button-next" },
+      { refName: "input3", id: "#onboarding-2-button-next" },
+      { refName: "input4", id: "#onboarding-3-button-next" },
+      { refName: "input5", id: "#onboarding-4-button-next" },
+      { refName: "input6", id: "#onboarding-success-button-begin" },
+      { refName: "inputEmail", id: "#onboarding-input-email input" },
+      {
+        refName: "inputEmailErrMsg",
+        id: "#onboarding-input-email .imb-input-error-message",
+      },
+      { refName: "inputPhone", id: "#onboarding-input-phone input" },
+      {
+        refName: "inputPhoneErrMsg",
+        id: "#onboarding-input-phone .imb-input-error-message",
+      },
+      {
+        refName: "backButtonOnboarding1",
+        id: "#onboarding-1-button-back",
+      },
+      {
+        refName: "backButtonOnboarding2",
+        id: "#onboarding-2-button-back",
+      },
+      {
+        refName: "backButtonOnboarding3",
+        id: "#onboarding-3-button-back",
+      },
+      {
+        refName: "backButtonOnboarding4",
+        id: "#onboarding-4-button-back",
+      },
+    ],
+    React
+  );
+
+  const onBackButtonPrev = (inBack) => {
+    console.log("onBackButtonPrev", inBack);
+
+    // hideElement(emailPage.current);
+    // showElement(starterPage.current);
+  };
 
   // page states
   const [isValidated, setIsValidated] = React.useState(false);
-  const [currentPage, setCurrentPage] = React.useState(refs.starterPage.current);
+  const [currentPage, setCurrentPage] = React.useState(
+    refs.starterPage.current
+  );
   console.log("currentPage", currentPage);
   const [formData, setFormData] = React.useState({
     email: "",
@@ -47,40 +83,46 @@ const HiddenShowPageFunction = (ReactProp) => {
     showElement(refs.emailPage.current);
   };
   const getToPhonePage = () => {
-    if (!isValidEmail(formData.email)) {
-      setIsValidated(true);
-      return false;
-    } else {
+    if (isValidEmail(formData.email)) {
       setIsValidated(false);
-      hideElement(refs.emailPage.current);
-      handleStepper(refs.phonePage.current, 2);
-      showElement(refs.phonePage.current);
+      hideElement(emailPage.current);
+      handleStepper(phonePage.current, 2);
+      showElement(phonePage.current);
+      return;
     }
+    setIsValidated(true);
+    return false;
   };
 
   const getToPersonalDetailsPage = () => {
-    const errorPhoneElement = refs.phonePage.current.querySelector(
-      ".imb-input-error-message"
-    );
-    //number must be 10 digits and number only
-    const phoneRegex = /^[0-9]{10}$/;
-    const inputPhoneValue =
-      refs.phonePage.current.querySelectorAll("input")[0].value;
+    const phoneValue = inputPhone.current?.value.trim();
 
-    if (inputPhoneValue === "" || inputPhoneValue === undefined) {
-      return showElement(errorPhoneElement);
-    } else {
-      if (phoneRegex.test(inputPhoneValue)) {
-        console.log("valid phone number");
-        hideElement(errorPhoneElement);
-        hideElement(refs.phonePage.current);
-        handleStepper(refs.personalDetailsPage.current, 3);
-        return showElement(refs.personalDetailsPage.current);
-      }
-      console.log("invalid phone number");
-      return showElement(errorPhoneElement);
+    if (!phoneValue) {
+      refs.inputPhoneErrMsg.current.innerHTML = "Phone number is required";
+      showElement(refs.inputPhoneErrMsg.current);
+      return false;
     }
+
+    if (!isValidPhoneNumber(phoneValue)) {
+      console.log("Invalid phone number 1");
+      refs.inputPhoneErrMsg.current.innerHTML = "Invalid phone number";
+      showElement(inputPhoneErrMsg.current);
+      return false;
+    }
+
+    hideElement(refs.inputPhoneErrMsg.current);
+    hideElement(refs.phonePage.current);
+    handleStepper(refs.personalDetailsPage.current, 3);
+    showElement(refs.personalDetailsPage.current);
   };
+
+  const handleChangePhone = (e) => {
+    setFormData({
+      ...formData,
+      phone: e.target.value,
+    });
+  };
+
   const getToConfirmPage = () => {
     const firstName = refs.personalDetailsPage.current.querySelector(
       "#onboarding-input-firstname"
@@ -125,6 +167,7 @@ const HiddenShowPageFunction = (ReactProp) => {
     hideElement(refs.confirmPage.current);
     showElement(refs.successPage.current);
   };
+
   const getToStarterPage = () => {
     hideElement(refs.successPage.current);
     showElement(refs.starterPage.current);
@@ -150,16 +193,45 @@ const HiddenShowPageFunction = (ReactProp) => {
     }
   }, [formData.email, isValidated]);
 
+  React.useEffect(() => {
+    // validate the phone step
+    if (isValidated && !formData.phone) {
+      refs.inputPhoneErrMsg.current.innerHTML =
+        "Phone number field is required";
+      showElement(inputPhoneErrMsg.current);
+    } else if (isValidated && isValidPhoneNumber(formData.phone)) {
+      refs.inputPhoneErrMsg.current.innerHTML = "Invalid phone number";
+      showElement(refs.inputPhoneErrMsg.current);
+    } else {
+      hideElement(refs.inputPhoneErrMsg.current);
+    }
+  }, [formData.phone, isValidated]);
+
   // attach events
-  useEventListener([
-    { ref: refs.input, event: "click", handler: getToEmailPage },
-    { ref: refs.input2, event: "click", handler: getToPhonePage },
-    { ref: refs.input3, event: "click", handler: getToPersonalDetailsPage },
-    { ref: refs.input4, event: "click", handler: getToConfirmPage },
-    { ref: refs.input5, event: "click", handler: getToSuccessPage },
-    { ref: refs.input6, event: "click", handler: getToStarterPage },
-    { ref: refs.inputEmail, event: "input", handler: handleChangeEmail }
-  ], [formData], React);
+  useEventListener(
+    [
+      { ref: refs.input, event: "click", handler: getToEmailPage },
+      { ref: refs.input2, event: "click", handler: getToPhonePage },
+      { ref: refs.input3, event: "click", handler: getToPersonalDetailsPage },
+      { ref: refs.input4, event: "click", handler: getToConfirmPage },
+      { ref: refs.input5, event: "click", handler: getToSuccessPage },
+      { ref: refs.input6, event: "click", handler: getToStarterPage },
+      { ref: refs.inputEmail, event: "input", handler: handleChangeEmail },
+      { ref: refs.inputPhone, event: "input", handler: handleChangePhone },
+      {
+        ref: refs.backButtonOnboarding1,
+        event: "click",
+        handler: onBackButtonPrev,
+      },
+      {
+        ref: refs.backButtonOnboarding2,
+        event: "click",
+        handler: onBackButtonPrev,
+      },
+    ],
+    [formData],
+    React
+  );
 
   // return no HTML code
   return null;
