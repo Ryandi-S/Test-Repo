@@ -98,7 +98,7 @@ const HiddenShowPageFunction = (ReactProp) => {
   };
 
   const getToPersonalDetailsPage = () => {
-    const phoneValue = refs.inputPhone.current?.value.trim();
+    const phoneValue = refs.inputPhone.current.value.trim();
 
     if (!phoneValue) {
       refs.inputPhoneErrMsg.current.innerHTML = "Phone number is required";
