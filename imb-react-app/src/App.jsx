@@ -1,6 +1,6 @@
 import "./App.css";
 import React from "react";
-import Stepper from "./components/Stepper";
+// import Stepper from "./components/Stepper";
 import GetStartedPage from "./pages/StarterPage";
 import ContactPage from "./pages/ContactPage";
 import PersonalDetailsPage from "./pages/PersonalDetailPage";

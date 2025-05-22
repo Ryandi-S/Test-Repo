@@ -1,6 +1,8 @@
 import React from "react";
 import "./moduleFunction.jsx"; // page module
 import "./function.jsx"; // page main script
+import "../../components/Stepper/index.jsx";
+import "./function.jsx";
 
 const HiddenShowPage = () => {
   /* eslint-disable-next-line no-undef */ // ? function is defined globally
