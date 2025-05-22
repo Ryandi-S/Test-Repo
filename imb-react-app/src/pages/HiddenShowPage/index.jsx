@@ -5,7 +5,7 @@ import "../../components/Stepper/index.jsx";
 
 const HiddenShowPage = () => {
   /* eslint-disable-next-line no-undef */ // ? function is defined globally
-  HiddenShowPageFunction(React);
+  HiddenShowPageFunction({ ReactProp: React });
 
   return (
     <div className="w-layout-blockcontainer imb-container w-container">
