@@ -1,5 +1,6 @@
 import React from "react";
-import "./function.jsx";
+import "./moduleFunction.jsx"; // page module
+import "./function.jsx"; // page main script
 
 const HiddenShowPage = () => {
   /* eslint-disable-next-line no-undef */ // ? function is defined globally

@@ -2,6 +2,9 @@
 const HiddenShowPageFunction = (ReactProp) => {
   const React = window.React || ReactProp;
 
+  // tes manggil fungsi dari module
+  moduleFunction();
+
   // page elements
   const refs = useElementRefs(
     [
