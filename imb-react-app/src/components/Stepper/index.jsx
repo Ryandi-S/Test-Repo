@@ -1,4 +1,4 @@
-import React from "react";
+// import React from "react";
 
 // page functions
 const handleStepper = (page, step) => {
