@@ -1,28 +1,14 @@
 import React from "react";
 
-function Stepper({ step, maxStep, className }) {
-  console.log("--- components / Stepper ---");
-  const renderItems = () => {
-    const elements = [];
-    for (let i = 0; i < maxStep; i++) {
-      elements.push(
-        <div
-          key={i}
-          className={`sm:w-12 w-full h-1 rounded-lg mr-1
-                      ${
-                        i < step
-                          ? "bg-fg-highlight-neutral"
-                          : "bg-bg-greyscale-subtle"
-                      }`}
-        />
-      );
-    }
-    return elements;
-  };
+// page functions
+const handleStepper = (page, step) => {
+  const stepper = page.querySelectorAll(".imb-stepper-step-block");
+  //set i max to step
+  for (let i = 0; i < step; i++) {
+    stepper[i].classList.add("imb-stepper-step-active");
+  }
+};
 
-  return <div className={`flex flex-row ${className}`}>{renderItems()}</div>;
-}
-// Attach to window so Webflow can access it
-window.Stepper = Stepper;
+window.handleStepper = handleStepper;
 
-export default Stepper;
+// export default handleStepper;

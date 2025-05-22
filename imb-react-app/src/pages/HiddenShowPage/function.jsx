@@ -8,7 +8,10 @@ const HiddenShowPageFunction = (ReactProp) => {
       { refName: "starterPage", id: "#onboarding-section-0" },
       { refName: "emailPage", id: "#onboarding-section-1" },
       { refName: "phonePage", id: "#onboarding-section-2" },
-      { refName: "personalDetailsPage", id: "#onboarding-section-3" },
+      {
+        refName: "personalDetailsPage",
+        id: "#onboarding-section-3",
+      },
       { refName: "confirmPage", id: "#onboarding-section-4" },
       { refName: "successPage", id: "#onboarding-section-5" },
       { refName: "input", id: "#onboarding-0-button-signup" },
@@ -47,24 +50,49 @@ const HiddenShowPageFunction = (ReactProp) => {
     React
   );
 
-  const onBackButtonPrev1 = (current, target) => {
-    console.log("---> current : ", current)
-    console.log("---> target : ", target)
-    hideElement(refs.emailPage.current);
-    showElement(refs.starterPage.current);
-  };
+  const handleNavigation = (currentPage, targetPage, countStep) => {
+    const indexPagesAndSteps = [
+      {
+        ref: refs.starterPage.current,
+        step: 0,
+      },
+      {
+        ref: refs.emailPage.current,
+        step: 1,
+      },
+      {
+        ref: refs.phonePage.current,
+        step: 2,
+      },
+      {
+        ref: refs.personalDetailsPage.current,
+        step: 3,
+      },
+      {
+        ref: refs.confirmPage.current,
+        step: 4,
+      },
+      {
+        ref: refs.successPage.current,
+        step: 5,
+      },
+    ];
 
-  const onBackButtonPrev2 = () => {
-    hideElement(refs.phonePage.current);
-    showElement(refs.emailPage.current);
+    hideElement(indexPagesAndSteps[currentPage].ref);
+    // handleStepper((indexPagesAndSteps[targetPage].ref, countStep));
+    if (countStep > 0) {
+      handleStepper(indexPagesAndSteps[targetPage].ref, countStep - 1);
+    }
+    showElement(indexPagesAndSteps[targetPage].ref);
+    return;
+    // back to the previous page
   };
 
   // page states
   const [isValidated, setIsValidated] = React.useState(false);
-  const [currentPage, setCurrentPage] = React.useState(
-    refs.starterPage.current
-  );
-  console.log("currentPage", currentPage);
+  // const [currentPage, setCurrentPage] = React.useState(
+  //   refs.starterPage.current
+  // );
   const [formData, setFormData] = React.useState({
     email: "",
     phone: "",
@@ -72,16 +100,6 @@ const HiddenShowPageFunction = (ReactProp) => {
     middleName: "",
     lastName: "",
   });
-
-  // page functions
-  const handleStepper = (page, step) => {
-    console.log("handleStepper", page, step);
-    const stepper = page.querySelectorAll(".imb-stepper-step-block");
-    //set i max to step
-    for (let i = 0; i < step; i++) {
-      stepper[i].classList.add("imb-stepper-step-active");
-    }
-  };
 
   const getToEmailPage = () => {
     hideElement(refs.starterPage.current);
@@ -164,7 +182,6 @@ const HiddenShowPageFunction = (ReactProp) => {
       hideElement(errorLastNameElement);
       hideElement(refs.personalDetailsPage.current);
       // handleStepper(refs.confirmPage.current, 4);
-      setCurrentPage("confirmPage");
       return showElement(refs.confirmPage.current);
     }
   };
@@ -226,12 +243,30 @@ const HiddenShowPageFunction = (ReactProp) => {
       {
         ref: refs.backButtonOnboarding1,
         event: "click",
-        handler: () => { onBackButtonPrev1(1, 0) },
+        handler: () => {
+          handleNavigation(1, 0, 0);
+        },
       },
       {
         ref: refs.backButtonOnboarding2,
         event: "click",
-        handler: onBackButtonPrev2,
+        handler: () => {
+          handleNavigation(2, 1, 1);
+        },
+      },
+      {
+        ref: refs.backButtonOnboarding3,
+        event: "click",
+        handler: () => {
+          handleNavigation(3, 2, 2);
+        },
+      },
+      {
+        ref: refs.backButtonOnboarding4,
+        event: "click",
+        handler: () => {
+          handleNavigation(4, 3, 3);
+        },
       },
     ],
     [formData],
