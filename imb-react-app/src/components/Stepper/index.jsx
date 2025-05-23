@@ -4,19 +4,51 @@ const InitiateStepper = ({ ReactProp, stepperConfig }) => {
   console.log("React : ", React);
   console.log("stepperConfig : ", stepperConfig);
 
-  const handleStepper = (page, step) => {
-    const stepper = page.querySelectorAll(".imb-stepper-step-block");
-    //set i max to step
-    for (let i = 0; i < step; i++) {
-      stepper[i].classList.add("imb-stepper-step-active");
+  function renderStepper(stepperConfig) {
+    const container = document.querySelector(".imb-stepper");
+    container.innerHTML = "";
+
+    for (let i = 0; i < stepperConfig; i++) {
+      const stepWrapper = document.createElement("div");
+      stepWrapper.className = "imb-stepper-step";
+
+      const stepBlock = document.createElement("div");
+      stepBlock.className = "imb-stepper-step-block";
+
+      stepWrapper.appendChild(stepBlock);
+      container.appendChild(stepWrapper);
+    }
+  }
+
+  const handleStepper = (step, countStep) => {
+    renderStepper(step);
+
+    const stepperElements = document.querySelectorAll(
+      ".imb-stepper-step-block"
+    );
+
+    stepperElements.forEach((el) => {
+      el.classList.remove("imb-stepper-step-active");
+    });
+
+    for (let i = 0; i < countStep; i++) {
+      if (stepperElements[i]) {
+        stepperElements[i].classList.add("imb-stepper-step-active");
+      }
     }
   };
+
   window.handleStepper = handleStepper;
 
   const handleNavigation = (currentPage, targetPage, countStep) => {
+    const stepper = document.querySelector(".imb-stepper");
     hideElement(currentPage);
-    if (countStep > 0) {
-      handleStepper(targetPage, countStep);
+    if (countStep === 0) {
+      stepper.style.display = "none";
+    } else {
+      stepper.style.display = "flex";
+      const filtered = stepperConfig.filter((item) => item.stepperIndex > 0);
+      handleStepper(filtered.length, countStep);
     }
     showElement(targetPage);
   };
