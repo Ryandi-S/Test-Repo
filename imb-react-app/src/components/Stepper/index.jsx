@@ -21,6 +21,58 @@ const InitiateStepper = ({ ReactProp, stepperConfig }) => {
     showElement(targetPage);
   };
 
+  function generateRefData(stepperConfig) {
+    const refData = [];
+    const seen = new Set(); // To avoid duplicates
+  
+    stepperConfig.forEach(item => {
+      ['section', 'prevButton', 'nextButton'].forEach(key => {
+        const value = item[key];
+        if (value && !seen.has(value)) {
+          refData.push({
+            refName: value.replace(/-/g, '_'),
+            id: `#${value}`
+          });
+          seen.add(value);
+        }
+      });
+    });
+  
+    return refData;
+  }
+  console.log("======", generateRefData(stepperConfig));
+
+  function generateEventConfig(stepperConfig) {
+    const eventConfig = [];
+  
+    stepperConfig.forEach((step, i) => {
+      const currentRef = step.section.replace(/-/g, '_');
+  
+      // Handle nextButton
+      if (step.nextButton && stepperConfig[i + 1]) {
+        eventConfig.push({
+          button: `refs[${step.nextButton.replace(/-/g, '_')}]`,
+          currentPage: `refs[${currentRef}]`,
+          targetPage: `refs[${stepperConfig[i + 1].section.replace(/-/g, '_')}]`,
+          index: stepperConfig[i + 1].stepperIndex
+        });
+      }
+  
+      // Handle prevButton
+      if (step.prevButton && stepperConfig[i - 1]) {
+        eventConfig.push({
+          button: `refs[${step.prevButton.replace(/-/g, '_')}]`,
+          currentPage: `refs[${currentRef}]`,
+          targetPage: `refs[${stepperConfig[i - 1].section.replace(/-/g, '_')}]`,
+          index: stepperConfig[i - 1].stepperIndex
+        });
+      }
+    });
+  
+    return eventConfig;
+  }
+  console.log("------", generateEventConfig(stepperConfig));
+
   // hasil loop stepperConfig #1
   const refData = [
     { refName: "onboarding_section_0", id: "#onboarding-section-0" },
