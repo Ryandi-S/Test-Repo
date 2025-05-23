@@ -21,6 +21,7 @@ window.useElementRefs = useElementRefs;
 const useEventListener = (config = [], dependency = [], ReactProp) => {
   return ReactProp.useEffect(() => {
     config.forEach(({ ref, event, handler }) => {
+      console.log("useEventListener test : ", ref);
       ref.current.addEventListener(event, handler);
     });
     // Clean up to prevent memory leaks
