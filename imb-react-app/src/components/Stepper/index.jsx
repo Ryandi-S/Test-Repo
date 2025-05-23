@@ -4,22 +4,6 @@ const InitiateStepper = ({ ReactProp, stepperConfig }) => {
   console.log("React : ", React);
   console.log("stepperConfig : ", stepperConfig);
 
-  function renderStepper(stepperConfig) {
-    const container = document.querySelector(".imb-stepper");
-    container.innerHTML = "";
-
-    for (let i = 0; i < stepperConfig; i++) {
-      const stepWrapper = document.createElement("div");
-      stepWrapper.className = "imb-stepper-step";
-
-      const stepBlock = document.createElement("div");
-      stepBlock.className = "imb-stepper-step-block";
-
-      stepWrapper.appendChild(stepBlock);
-      container.appendChild(stepWrapper);
-    }
-  }
-
   const handleStepper = (step, countStep) => {
     renderStepper(step);
 
