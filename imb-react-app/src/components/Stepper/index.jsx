@@ -50,9 +50,9 @@ const InitiateStepper = ({ ReactProp, stepperConfig }) => {
       // Handle nextButton
       if (step.nextButton && stepperConfig[i + 1]) {
         eventConfig.push({
-          button: `refs[${step.nextButton.replace(/-/g, '_')}]`,
-          currentPage: `refs[${currentRef}]`,
-          targetPage: `refs[${stepperConfig[i + 1].section.replace(/-/g, '_')}]`,
+          button: refs[`${step.nextButton.replace(/-/g, '_')}`],
+          currentPage: refs[`${currentRef}`],
+          targetPage: refs[`${stepperConfig[i + 1].section.replace(/-/g, '_')}`],
           index: stepperConfig[i + 1].stepperIndex
         });
       }
@@ -60,9 +60,9 @@ const InitiateStepper = ({ ReactProp, stepperConfig }) => {
       // Handle prevButton
       if (step.prevButton && stepperConfig[i - 1]) {
         eventConfig.push({
-          button: `refs[${step.prevButton.replace(/-/g, '_')}]`,
-          currentPage: `refs[${currentRef}]`,
-          targetPage: `refs[${stepperConfig[i - 1].section.replace(/-/g, '_')}]`,
+          button: refs[`${step.prevButton.replace(/-/g, '_')}`],
+          currentPage: refs[`${currentRef}`],
+          targetPage: refs[`${stepperConfig[i - 1].section.replace(/-/g, '_')}`],
           index: stepperConfig[i - 1].stepperIndex
         });
       }
@@ -82,7 +82,7 @@ const InitiateStepper = ({ ReactProp, stepperConfig }) => {
   // hasil loop stepperConfig #2
   const eventConfig = generateEventConfig(stepperConfig);
 
-  console.log("---> generateRefData : ", refData);
+  console.log("---> generateRefData : ", refs);
   console.log("---> generateEventConfig : ", eventConfig);
 
   // hasil loop eventConfig
