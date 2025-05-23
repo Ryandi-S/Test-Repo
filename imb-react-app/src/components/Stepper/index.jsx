@@ -40,7 +40,6 @@ const InitiateStepper = ({ ReactProp, stepperConfig }) => {
   
     return refData;
   }
-  console.log("======", generateRefData(stepperConfig));
 
   function generateEventConfig(stepperConfig) {
     const eventConfig = [];
@@ -71,15 +70,9 @@ const InitiateStepper = ({ ReactProp, stepperConfig }) => {
   
     return eventConfig;
   }
-  console.log("------", generateEventConfig(stepperConfig));
 
   // hasil loop stepperConfig #1
-  const refData = [
-    { refName: "onboarding_section_0", id: "#onboarding-section-0" },
-    { refName: "onboarding_section_1", id: "#onboarding-section-1" },
-    { refName: "onboarding_0_button_signup", id: "#onboarding-0-button-signup" },
-    { refName: "onboarding_1_button_back", id: "#onboarding-1-button-back" },
-  ]
+  const refData = generateRefData(stepperConfig);
 
   const refs = useElementRefs(
     refData,
@@ -87,31 +80,27 @@ const InitiateStepper = ({ ReactProp, stepperConfig }) => {
   );
 
   // hasil loop stepperConfig #2
-  // const eventConfig = [
-  //   {
-  //     button: refs[onboarding_0_button_signup],
-  //     currentPage: refs[onboarding_section_0],
-  //     targetPage: refs[onboarding_section_1],
-  //     index: 1
-  //   }
-  // ]
+  const eventConfig = generateEventConfig(stepperConfig);
+
+  console.log("---> generateRefData : ", refData);
+  console.log("---> generateEventConfig : ", eventConfig);
 
   // hasil loop eventConfig
   const eventData = [
-    { 
-      ref: refs.onboarding_0_button_signup, 
-      event: "click", 
-      handler: () => {
-        handleNavigation(refs.onboarding_section_0.current, refs.onboarding_section_1.current, 1);
-      },
-    },
-    {
-      ref: refs.onboarding_1_button_back,
-      event: "click",
-      handler: () => {
-        handleNavigation(refs.onboarding_section_1.current, refs.onboarding_section_0.current, 0);
-      },
-    },
+    // { 
+    //   ref: refs.onboarding_0_button_signup, 
+    //   event: "click", 
+    //   handler: () => {
+    //     handleNavigation(refs.onboarding_section_0.current, refs.onboarding_section_1.current, 1);
+    //   },
+    // },
+    // {
+    //   ref: refs.onboarding_1_button_back,
+    //   event: "click",
+    //   handler: () => {
+    //     handleNavigation(refs.onboarding_section_1.current, refs.onboarding_section_0.current, 0);
+    //   },
+    // },
   ]
 
   useEventListener(
