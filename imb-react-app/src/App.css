@@ -8,7 +8,7 @@
 
 .imb-multistep > div:nth-child(2)
 .imb-multistep > .imb-stepper {
-  display: none;
+  display: none !important;
 }
 
 .imb-display-none {
