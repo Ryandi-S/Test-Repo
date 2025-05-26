@@ -6,7 +6,7 @@
   display: none;
 }
 
-.imb-multistep > div:nth-child(2)
+.imb-multistep > div:nth-child(2),
 .imb-multistep > .imb-stepper {
   display: none !important;
 }
