@@ -1,8 +1,16 @@
 /* eslint-disable no-undef */ // ? some function are defined globally in utils
 const HiddenShowPageFunction = ({ ReactProp, stepperConfig }) => {
+  console.log("HiddenShowPageFunction : ", stepperConfig);
   const React = window.React || ReactProp;
 
-  InitiateStepper({ ReactProp: React, stepperConfig })
+  stepperConfig.forEach((item) => {
+    InitiateStepper({
+      ReactProp: React,
+      stepperConfig: item.stepperPage,
+    });
+  });
+
+  // InitiateStepper({ ReactProp: React, stepperConfig })
 
   // return no HTML code
   return null;

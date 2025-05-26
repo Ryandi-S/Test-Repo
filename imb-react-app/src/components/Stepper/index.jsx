@@ -62,7 +62,6 @@ const InitiateStepper = ({ ReactProp, stepperConfig }) => {
 
     stepperConfig.forEach((step, i) => {
       const currentRef = step.section.replace(/-/g, "_");
-
       // Handle nextButton
       if (step.nextButton && stepperConfig[i + 1]) {
         eventConfig.push({
