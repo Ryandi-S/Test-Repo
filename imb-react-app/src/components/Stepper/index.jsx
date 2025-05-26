@@ -1,24 +1,7 @@
 /* eslint-disable no-undef */ // ? some function are defined globally in utils
 const InitiateStepper = ({ ReactProp, stepperConfig }) => {
   const React = window.React || ReactProp;
-  console.log("React : ", React);
   console.log("stepperConfig : ", stepperConfig);
-
-  function renderStepper(stepperConfig) {
-    const container = document.querySelector(".imb-stepper");
-    container.innerHTML = "";
-
-    for (let i = 0; i < stepperConfig; i++) {
-      const stepWrapper = document.createElement("div");
-      stepWrapper.className = "imb-stepper-step";
-
-      const stepBlock = document.createElement("div");
-      stepBlock.className = "imb-stepper-step-block";
-
-      stepWrapper.appendChild(stepBlock);
-      container.appendChild(stepWrapper);
-    }
-  }
 
   const handleStepper = (step, countStep) => {
     renderStepper(step);

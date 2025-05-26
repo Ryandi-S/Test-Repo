@@ -6,12 +6,8 @@
   display: none;
 }
 
-#onboarding-section-1,
-#onboarding-section-2,
-#onboarding-section-3,
-#onboarding-section-4,
-#onboarding-section-5,
-.imb-stepper {
+.imb-multistep > div:not(:nth-child(2)),
+.imb-multistep > .imb-stepper {
   display: none;
 }
 
