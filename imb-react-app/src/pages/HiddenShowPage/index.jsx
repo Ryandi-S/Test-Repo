@@ -5,41 +5,75 @@ import "../../components/Stepper/index.jsx";
 const HiddenShowPage = () => {
   const stepperConfig = [
     {
-      section: "onboarding-section-0",
-      prevButton: "",
-      nextButton: "onboarding-0-button-signup",
-      stepperIndex: 0,
+      stepperId: "multistep-container-1",
+      stepperPage: [
+        {
+          section: "onboarding-section-0",
+          prevButton: "",
+          nextButton: "onboarding-0-button-signup",
+          stepperIndex: 0,
+        },
+        {
+          section: "onboarding-section-1",
+          prevButton: "onboarding-1-button-back",
+          nextButton: "onboarding-1-button-next",
+          stepperIndex: 1,
+        },
+        {
+          section: "onboarding-section-2",
+          prevButton: "onboarding-2-button-back",
+          nextButton: "onboarding-2-button-next",
+          stepperIndex: 2,
+        },
+        {
+          section: "onboarding-section-3",
+          prevButton: "onboarding-3-button-back",
+          nextButton: "onboarding-3-button-next",
+          stepperIndex: 3,
+        },
+        {
+          section: "onboarding-section-4",
+          prevButton: "onboarding-4-button-back",
+          nextButton: "onboarding-4-button-next",
+          stepperIndex: 4,
+        },
+        {
+          section: "onboarding-section-5",
+          prevButton: "onboarding-success-button-begin",
+          nextButton: "",
+          stepperIndex: 0,
+        },
+      ]
     },
     {
-      section: "onboarding-section-1",
-      prevButton: "onboarding-1-button-back",
-      nextButton: "onboarding-1-button-next",
-      stepperIndex: 1,
-    },
-    {
-      section: "onboarding-section-2",
-      prevButton: "onboarding-2-button-back",
-      nextButton: "onboarding-2-button-next",
-      stepperIndex: 2,
-    },
-    {
-      section: "onboarding-section-3",
-      prevButton: "onboarding-3-button-back",
-      nextButton: "onboarding-3-button-next",
-      stepperIndex: 3,
-    },
-    {
-      section: "onboarding-section-4",
-      prevButton: "onboarding-4-button-back",
-      nextButton: "onboarding-4-button-next",
-      stepperIndex: 4,
-    },
-    {
-      section: "onboarding-section-5",
-      prevButton: "onboarding-success-button-begin",
-      nextButton: "",
-      stepperIndex: 0,
-    },
+      stepperId: "multistep-container-2",
+      stepperPage: [
+        {
+          section: "onboarding-section2-0",
+          prevButton: "",
+          nextButton: "onboarding-0-button-signup2",
+          stepperIndex: 0,
+        },
+        {
+          section: "onboarding-section2-1",
+          prevButton: "onboarding-1-button-back2",
+          nextButton: "onboarding-1-button-next2",
+          stepperIndex: 1,
+        },
+        {
+          section: "onboarding-section2-2",
+          prevButton: "onboarding-2-button-back2",
+          nextButton: "onboarding-2-button-next2",
+          stepperIndex: 2,
+        },
+        {
+          section: "onboarding-section2-3",
+          prevButton: "onboarding-success-button-begin2",
+          nextButton: "",
+          stepperIndex: 0,
+        },
+      ]
+    }
   ];
   /* eslint-disable-next-line no-undef */ // ? function is defined globally
   HiddenShowPageFunction({ ReactProp: React, stepperConfig });
