@@ -1,6 +1,7 @@
 /* eslint-disable no-undef */ // ? some function are defined globally in utils
 const InitiateStepper = ({ ReactProp, stepperConfig }) => {
   const React = window.React || ReactProp;
+  console.log("React : ", React);
   console.log("stepperConfig : ", stepperConfig);
 
   const handleStepper = (step, countStep) => {
