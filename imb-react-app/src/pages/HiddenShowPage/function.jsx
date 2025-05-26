@@ -3,14 +3,11 @@ const HiddenShowPageFunction = ({ ReactProp, stepperConfig }) => {
   console.log("HiddenShowPageFunction : ", stepperConfig);
   const React = window.React || ReactProp;
 
-  stepperConfig.forEach((item) => {
-    InitiateStepper({
-      ReactProp: React,
-      stepperConfig: item.stepperPage,
-    });
-  });
+  // stepperConfig.map((item) => {
+  //   InitiateStepper({ ReactProp: React, stepperPage: item.stepperPage });
+  // });
 
-  // InitiateStepper({ ReactProp: React, stepperConfig })
+  InitiateStepper({ ReactProp: React, stepperConfig });
 
   // return no HTML code
   return null;
