@@ -44,7 +44,7 @@ const useEventListener = (config = [], dependency = [], ReactProp) => {
     // Clean up to prevent memory leaks
     return () => {
       config.forEach(({ ref, event, handler }) => {
-        ref.current.removeEventListener(event, handler);
+        if (ref.current) ref.current.removeEventListener(event, handler);
       });
     };
   }, dependency);
