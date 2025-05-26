@@ -18,27 +18,10 @@ const useElementRefs = (configs, ReactProp) => {
 };
 window.useElementRefs = useElementRefs;
 
-const renderStepper = (stepperConfig) => {
-  const container = document.querySelector(".imb-stepper");
-  container.innerHTML = "";
-
-  for (let i = 0; i < stepperConfig; i++) {
-    const stepWrapper = document.createElement("div");
-    stepWrapper.className = "imb-stepper-step";
-
-    const stepBlock = document.createElement("div");
-    stepBlock.className = "imb-stepper-step-block";
-
-    stepWrapper.appendChild(stepBlock);
-    container.appendChild(stepWrapper);
-  }
-};
-window.renderStepper = renderStepper;
-
 const useEventListener = (config = [], dependency = [], ReactProp) => {
   return ReactProp.useEffect(() => {
     config.forEach(({ ref, event, handler }) => {
-      console.log("useEventListener test : ", ref);
+      // console.log("useEventListener test : ", ref);
       if (ref.current) ref.current.addEventListener(event, handler);
     });
     // Clean up to prevent memory leaks
