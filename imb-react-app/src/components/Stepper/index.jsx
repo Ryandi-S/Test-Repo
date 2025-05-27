@@ -8,6 +8,7 @@ const InitiateStepper = ({ ReactProp, stepperConfig }) => {
       stepper.stepperPage.map((page) => ({
         ...page,
         stepperId: stepper.stepperId,
+        clickable: stepper.clickable,
         nextDisabled: false,
         prevDisabled: false,
       }))
@@ -69,39 +70,56 @@ const InitiateStepper = ({ ReactProp, stepperConfig }) => {
   }
 
   // ----- STEPPER COMPONENT FUNCTIONS
-  const renderStepper = (stepperConfig, stepperId) => {
+  const renderStepper = (stepperConfig, item) => {
+    const stepperId = item.stepperId;
+    const clickable = item.clickable;
+    const currentPage = item.currentPage;
+  
     const container = document.querySelector(`#${stepperId} .imb-stepper`);
     container.innerHTML = "";
-  
+
     for (let i = 0; i < stepperConfig.length; i++) {
       const stepWrapper = document.createElement("div");
       stepWrapper.className = "imb-stepper-step";
   
       const stepBlock = document.createElement("div");
-      stepBlock.className = "imb-stepper-step-block";
+      stepBlock.className = `imb-stepper-step-block ${i <= item.currentIndex-1 ? "imb-stepper-step-active" : ""} ${clickable ? "imb-clickable" : ""}`;
+
+      if (clickable){
+        // stepBlock.setAttribute("data-target-id", stepperId);
+        // stepBlock.setAttribute("data-target-index", stepperConfig[i].stepperIndex);
+        stepBlock.onclick = () => {
+          handleNavigation({
+            currentPage: refs[currentPage.replace(/-/g, "_")],
+            targetPage: refs[stepperConfig[i].section.replace(/-/g, "_")],
+            index: stepperConfig[i].stepperIndex,
+            stepperId: stepperId,
+          }, true);
+        };
+      }
   
       stepWrapper.appendChild(stepBlock);
       container.appendChild(stepWrapper);
     }
   };
 
-  const handleStepper = (countStep, stepperId) => {
-    const stepperElements = document.querySelectorAll(
-      `#${stepperId} .imb-stepper-step-block`
-    );
+  // const handleStepper = (countStep, stepperId) => {
+  //   const stepperElements = document.querySelectorAll(
+  //     `#${stepperId} .imb-stepper-step-block`
+  //   );
 
-    stepperElements.forEach((el) => {
-      el.classList.remove(`imb-stepper-step-active`);
-    });
+  //   stepperElements.forEach((el) => {
+  //     el.classList.remove(`imb-stepper-step-active`);
+  //   });
 
-    for (let i = 0; i < countStep; i++) {
-      if (stepperElements[i]) {
-        stepperElements[i].classList.add(
-          `imb-stepper-step-active`
-        );
-      }
-    }
-  };
+  //   for (let i = 0; i < countStep; i++) {
+  //     if (stepperElements[i]) {
+  //       stepperElements[i].classList.add(
+  //         `imb-stepper-step-active`
+  //       );
+  //     }
+  //   }
+  // };
 
   const handleNavigation = (item, isValid) => {
     if (isValid){
@@ -110,22 +128,37 @@ const InitiateStepper = ({ ReactProp, stepperConfig }) => {
       const countStep = item.index;
       const stepperId = item.stepperId;
 
+      // update new current page & index into the state
+      setStepperState(prevData =>
+        prevData.map(stepper => {
+          if (stepper.stepperId === stepperId) {
+            return {
+              ...stepper,
+              currentPage: targetPage.id,
+              currentIndex: countStep
+            };
+          }
+          return stepper;
+        })
+      );
+      // ------------------------
+
       const stepper = document.querySelector(`#${stepperId} .imb-stepper`);
       hideElement(currentPage);
       if (countStep === 0) {
         stepper.style.display = "none";
       } else {
         stepper.style.display = "flex";
-        handleStepper(countStep, stepperId);
+        /* stepper active class handled in renderStepper(),
+           trigerred via setStepperState() rerender */
+        // handleStepper(countStep, stepperId);
       }
       showElement(targetPage);
     }
   };
 
   // ----- COMPONENT STATES
-  const flatStepperConfig = generateFlatStepperConfig(stepperConfig);
-  const [stepperState, setStepperState] = React.useState(flatStepperConfig);
-  console.log("---> stepperState : ", stepperState)
+  const [stepperState, setStepperState] = React.useState(stepperConfig);
   React.useEffect(() => {
     window.stepperData = () => {
       return {
@@ -137,12 +170,13 @@ const InitiateStepper = ({ ReactProp, stepperConfig }) => {
 
 
   // ----- START INITIATE THE STEPPER
-  stepperConfig.forEach((item) => {
+  stepperState.forEach((item) => {
     setTimeout(() => {
-      renderStepper(item.stepperPage.filter((item) => item.stepperIndex > 0), item.stepperId);
+      renderStepper(item.stepperPage.filter((item) => item.stepperIndex > 0), item);
     }, 100)
   })
 
+  const flatStepperConfig = generateFlatStepperConfig(stepperConfig);
   const refData = generateRefData(flatStepperConfig);
   const refs = useElementRefs(refData, React);
 

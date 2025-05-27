@@ -18,3 +18,7 @@
 .imb-display-block {
   display: block !important;
 }
+
+.imb-clickable {
+  cursor: pointer;
+}
