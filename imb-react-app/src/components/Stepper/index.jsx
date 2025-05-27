@@ -137,6 +137,12 @@ const InitiateStepper = ({ ReactProp, stepperConfig }) => {
 
 
   // ----- START INITIATE THE STEPPER
+  stepperConfig.forEach((item) => {
+    setTimeout(() => {
+      renderStepper(item.stepperPage.filter((item) => item.stepperIndex > 0), item.stepperId);
+    }, 100)
+  })
+
   const refData = generateRefData(flatStepperConfig);
   const refs = useElementRefs(refData, React);
 
