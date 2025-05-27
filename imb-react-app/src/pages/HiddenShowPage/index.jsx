@@ -14,6 +14,9 @@ const HiddenShowPage = () => {
   const stepperConfig = [
     {
       stepperId: "multistep-container-1",
+      clickable: true,
+      currentPage: "onboarding-section-0", // ? add in stepper initialize function
+      currentIndex: 0, // ? add in stepper initialize function
       stepperPage: [
         {
           section: "onboarding-section-0",
@@ -55,6 +58,9 @@ const HiddenShowPage = () => {
     },
     {
       stepperId: "multistep-container-2",
+      clickable: true,
+      currentPage: "onboarding-section2-0", // ? add in stepper initialize function
+      currentIndex: 0, // ? add in stepper initialize function
       stepperPage: [
         {
           section: "onboarding-section2-0",
