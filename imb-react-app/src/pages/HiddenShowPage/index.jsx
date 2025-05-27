@@ -3,6 +3,14 @@ import "./function.jsx"; // page main script
 import "../../components/Stepper/index.jsx";
 
 const HiddenShowPage = () => {
+  const inputConfig = [
+    {
+      inputId: "onboarding-input-email",
+    },
+    {
+      inputId: "onboarding-input-phone",
+    },
+  ]
   const stepperConfig = [
     {
       stepperId: "multistep-container-1",
@@ -76,7 +84,7 @@ const HiddenShowPage = () => {
     }
   ];
   /* eslint-disable-next-line no-undef */ // ? function is defined globally
-  HiddenShowPageFunction({ ReactProp: React, stepperConfig });
+  HiddenShowPageFunction({ ReactProp: React, stepperConfig, inputConfig });
 
   return (
     <div className="w-layout-blockcontainer imb-container w-container">
