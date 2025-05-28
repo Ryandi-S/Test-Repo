@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-undef */
-const InitiateStepper = ({ ReactProp, stepperConfig, inputConfig }) => {
+const InitiateStepper = ({ ReactProp, stepperConfig, inputConfig, updatePage }) => {
   const React = window.React || ReactProp;
 
   const [stepperState, setStepperState] = React.useState(stepperConfig);
@@ -211,12 +211,17 @@ const InitiateStepper = ({ ReactProp, stepperConfig, inputConfig }) => {
   };
 
   React.useEffect(() => {
+    console.log("component / Input / stepperState : ", stepperState);
     stepperState.forEach((item) => {
       renderStepper(
         item.stepperPage.filter((p) => p.stepperIndex > 0),
         item
       );
     });
+    if (updatePage){
+      // tell parent page to update states
+      updatePage(true);
+    }
   }, [stepperState]);
 
   const eventConfig = generateEventConfig(flatStepperConfig);

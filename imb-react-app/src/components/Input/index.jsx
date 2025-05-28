@@ -1,11 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-undef */
-const InitiateInput = ({ ReactProp, inputConfig }) => {
+const InitiateInput = ({ ReactProp, inputConfig, updatePage }) => {
   const React = window.React || ReactProp;
 
   const [inputState, setInputState] = React.useState(inputConfig);
 
   React.useEffect(() => {
+    window.inputState = inputState;
     window.inputData = () => ({
       getData: () => inputState,
       setData: (fn) => setInputState(fn),
@@ -22,6 +23,10 @@ const InitiateInput = ({ ReactProp, inputConfig }) => {
     //     item
     //   );
     // });
+    if (updatePage){
+      // tell parent page to update states
+      updatePage(true);
+    }
   }, [inputState]);
 
   // useEventListener(eventData, [eventData], React);
