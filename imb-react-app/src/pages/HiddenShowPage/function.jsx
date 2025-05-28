@@ -2,6 +2,7 @@
 const HiddenShowPageFunction = ({ ReactProp, stepperConfig, inputConfig }) => {
   const React = window.React || ReactProp;
 
+  InitiateInput({ ReactProp: React, inputConfig });
   InitiateStepper({ ReactProp: React, stepperConfig, inputConfig });
 
   return null;
