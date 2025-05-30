@@ -1,35 +1,43 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-undef */
+
 const InitiateComponent = ({ ReactProp, compConfig, updatePage }) => {
   const React = window.React || ReactProp;
 
   const [compState, setCompState] = React.useState(compConfig);
+  const [compState2, setCompState2] = React.useState(); // dummy
 
   React.useEffect(() => {
     window.compState = compState;
-    window.inputData = () => ({
+    window.inputFieldData = () => ({
       getData: () => compState,
       setData: (fn) => setCompState(fn),
     });
-  }, [compState, setCompState]);
+    window.inputFieldDataDummy = () => ({
+      getData: () => compState2,
+    });
+  }, [compState, setCompState, compState2]);
 
-  // const refs = useElementRefs(refData, React);
+  const refs = useElementRefs(compConfig, React, ["inputId"]);
 
   React.useEffect(() => {
-    console.log("component / Input / compState : ", compState);
-    // compState.forEach((item) => {
-    //   renderStepper(
-    //     item.stepperPage.filter((p) => p.stepperIndex > 0),
-    //     item
-    //   );
-    // });
     if (updatePage){
       // tell parent page to update states
       updatePage(true);
     }
-  }, [compState]);
+  }, [compState, compState2]);
 
-  // useEventListener(eventData, [eventData], React);
+  const eventData = compConfig.map((item) => ({
+    ref: refs[`${item.inputId.replace(/-/g, "_")}`],
+    event: "input",
+    handler: (e) => {
+      console.log("============")
+      console.log("compState : ", compState)
+      console.log("value / "+item.inputId+" : ", e.target.value)
+      setCompState2(e.target.value);
+    },
+  }));
+  useEventListener(eventData, [eventData], React, "input");
 
   return null;
 };
