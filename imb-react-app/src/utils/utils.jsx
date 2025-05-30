@@ -42,16 +42,30 @@ const useElementRefs = (configs, ReactProp, keys) => {
 };
 window.useElementRefs = useElementRefs;
 
-const useEventListener = (config = [], dependency = [], ReactProp) => {
+const useEventListener = (config = [], dependency = [], ReactProp, selector) => {
   return ReactProp.useEffect(() => {
     config.forEach(({ ref, event, handler }) => {
       // console.log("useEventListener test : ", ref);
-      if (ref.current) ref.current.addEventListener(event, handler);
+      if (ref.current) {
+        if (selector){
+          ref.current.querySelector(selector).addEventListener(event, handler);
+        }
+        else {
+          ref.current.addEventListener(event, handler);
+        }
+      }
     });
     // Clean up to prevent memory leaks
     return () => {
       config.forEach(({ ref, event, handler }) => {
-        if (ref.current) ref.current.removeEventListener(event, handler);
+        if (ref.current) {
+          if (selector){
+            ref.current.querySelector(selector).removeEventListener(event, handler);
+          }
+          else {
+            ref.current.removeEventListener(event, handler);
+          }
+        }
       });
     };
   }, dependency);

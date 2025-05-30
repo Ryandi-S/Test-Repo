@@ -893,7 +893,7 @@ const HiddenShowPage = () => {
                       data-turnstile-sitekey="0x4AAAAAAAQTptj2So4dx43e"
                       aria-label="Email Form"
                     >
-                      <div id="onboarding-input-email" className="imb-input">
+                      <div id="onboarding2-input-email" className="imb-input">
                         <label htmlFor="field" className="imb-input-label">
                           Email
                         </label>
@@ -1012,7 +1012,7 @@ const HiddenShowPage = () => {
                       >
                         <div className="w-layout-cell">
                           <div
-                            id="onboarding-input-firstname"
+                            id="onboarding2-input-firstname"
                             className="imb-input"
                           >
                             <label htmlFor="field" className="imb-input-label">
@@ -1035,7 +1035,7 @@ const HiddenShowPage = () => {
                         </div>
                         <div className="w-layout-cell">
                           <div
-                            id="onboarding-input-middlename"
+                            id="onboarding2-input-middlename"
                             className="imb-input"
                           >
                             <label htmlFor="field" className="imb-input-label">
@@ -1058,7 +1058,7 @@ const HiddenShowPage = () => {
                         </div>
                         <div className="w-layout-cell">
                           <div
-                            id="onboarding-input-lastname"
+                            id="onboarding2-input-lastname"
                             className="imb-input"
                           >
                             <label htmlFor="field" className="imb-input-label">
