@@ -190,7 +190,7 @@ const InitiateStepper = ({ ReactProp, stepperConfig, inputConfig, updatePage }) 
   };
 
   React.useEffect(() => {
-    console.log("component / Input / stepperState : ", stepperState);
+    console.log("component / Stepper / stepperState : ", stepperState);
     stepperState.forEach((item) => {
       renderStepper(
         item.stepperPage.filter((p) => p.stepperIndex > 0),
