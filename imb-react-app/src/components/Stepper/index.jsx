@@ -153,11 +153,26 @@ const InitiateStepper = ({
     item.stepperPage.forEach((page) => {
       // disable next button
       if (page.nextButton){
+        const button = refs[`${page.nextButton.replace(/-/g, "_")}`].current;
+        const buttonText = button.querySelector(".imb-button-text");
+        const buttonIcon = button.querySelector(".imb-button-icon");
         if (page.isValid === false){
           refs[`${page.nextButton.replace(/-/g, "_")}`].current.classList.add("imb-button-disabled");
+          if (buttonText){
+            buttonText.classList.add("imb-button-text-disabled");
+          }
+          if (buttonIcon){
+            buttonIcon.classList.add("imb-button-icon-disabled");
+          }
         }
         else {
           refs[`${page.nextButton.replace(/-/g, "_")}`].current.classList.remove("imb-button-disabled");
+          if (buttonText){
+            buttonText.classList.remove("imb-button-text-disabled");
+          }
+          if (buttonIcon){
+            buttonIcon.classList.remove("imb-button-icon-disabled");
+          }
         }
       }
 
