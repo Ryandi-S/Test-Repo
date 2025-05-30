@@ -7,56 +7,38 @@ const HiddenShowPage = () => {
   const inputConfig = [
     {
       inputId: "onboarding-input-email",
-      stepperId: "multistep-container-1",
-      stepIndex: 1,
       type: "email",
     },
     {
       inputId: "onboarding-input-phone",
-      stepperId: "multistep-container-1",
-      stepIndex: 2,
       type: "phone",
     },
     {
       inputId: "onboarding-input-firstname",
-      stepperId: "multistep-container-1",
-      stepIndex: 3,
       type: "text",
     },
     {
       inputId: "onboarding-input-middlename",
-      stepperId: "multistep-container-1",
-      stepIndex: 3,
       type: "text",
     },
     {
       inputId: "onboarding-input-lastname",
-      stepperId: "multistep-container-1",
-      stepIndex: 3,
       type: "text",
     },
     {
       inputId: "onboarding2-input-email",
-      stepperId: "multistep-container-2",
-      stepIndex: 1,
       type: "email",
     },
     {
       inputId: "onboarding2-input-firstname",
-      stepperId: "multistep-container-2",
-      stepIndex: 2,
       type: "text",
     },
     {
       inputId: "onboarding2-input-middlename",
-      stepperId: "multistep-container-2",
-      stepIndex: 2,
       type: "text",
     },
     {
       inputId: "onboarding2-input-lastname",
-      stepperId: "multistep-container-2",
-      stepIndex: 2,
       type: "text",
     },
   ];

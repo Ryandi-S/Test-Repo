@@ -76,7 +76,7 @@ const InitiateStepper = ({
     const currentStepIndex = currentStep.stepperIndex;
     const currentStepperId = item.stepperId;
 
-    const isBack = item.button.current.id.includes("back");
+    const isBack = !item.button ? true : item.button.current.id.includes("back");
 
     if (!isBack) {
       const isValid = validateInputs(
@@ -150,51 +150,64 @@ const InitiateStepper = ({
     const container = document.querySelector(`#${stepperId} .imb-stepper`);
     container.innerHTML = "";
 
-    stepperPages.forEach((page) => {
-      const stepWrapper = document.createElement("div");
-      stepWrapper.className = "imb-stepper-step";
-
-      const stepBlock = document.createElement("div");
-      stepBlock.className = `imb-stepper-step-block ${
-        page.stepperIndex <= currentIndex ? "imb-stepper-step-active" : ""
-      } ${clickable ? "imb-clickable" : ""}`;
-
-      if (clickable) {
-        stepBlock.onclick = () => {
-          const stepperDataApi = window.stepperData();
-          const currentState = stepperDataApi
-            .getData()
-            .find((s) => s.stepperId === stepperId);
-
-          const currentStep = currentState.stepperPage.find(
-            (p) => p.section === currentPage
-          );
-
-          const currentStepIndex = currentStep.stepperIndex;
-
-          if (page.stepperIndex > currentStepIndex) {
-            const isValid = validateInputs(
-              stepperId,
-              currentStepIndex,
-              inputConfig
-            );
-            if (!isValid) return;
-          }
-
-          handleNavigation(
-            {
-              currentPage: refs[currentPage.replace(/-/g, "_")],
-              targetPage: refs[page.section.replace(/-/g, "_")],
-              index: page.stepperIndex,
-              stepperId,
-            },
-            true
-          );
-        };
+    item.stepperPage.forEach((page) => {
+      // disable next button
+      if (page.nextButton){
+        if (page.isValid === false){
+          refs[`${page.nextButton.replace(/-/g, "_")}`].current.classList.add("imb-button-disabled");
+        }
+        else {
+          refs[`${page.nextButton.replace(/-/g, "_")}`].current.classList.remove("imb-button-disabled");
+        }
       }
 
-      stepWrapper.appendChild(stepBlock);
-      container.appendChild(stepWrapper);
+      // set stepper indicator
+      if (page.stepperIndex > 0){
+        const stepWrapper = document.createElement("div");
+        stepWrapper.className = "imb-stepper-step";
+  
+        const stepBlock = document.createElement("div");
+        stepBlock.className = `imb-stepper-step-block ${
+          page.stepperIndex <= currentIndex ? "imb-stepper-step-active" : ""
+        } ${clickable ? "imb-clickable" : ""}`;
+  
+        if (clickable) {
+          stepBlock.onclick = () => {
+            const stepperDataApi = window.stepperData();
+            const currentState = stepperDataApi
+              .getData()
+              .find((s) => s.stepperId === stepperId);
+  
+            const currentStep = currentState.stepperPage.find(
+              (p) => p.section === currentPage
+            );
+  
+            const currentStepIndex = currentStep.stepperIndex;
+  
+            if (page.stepperIndex > currentStepIndex) {
+              const isValid = validateInputs(
+                stepperId,
+                currentStepIndex,
+                inputConfig
+              );
+              if (!isValid) return;
+            }
+  
+            handleNavigation(
+              {
+                currentPage: refs[currentPage.replace(/-/g, "_")],
+                targetPage: refs[page.section.replace(/-/g, "_")],
+                index: page.stepperIndex,
+                stepperId,
+              },
+              true
+            );
+          };
+        }
+  
+        stepWrapper.appendChild(stepBlock);
+        container.appendChild(stepWrapper);
+      }
     });
   };
 
