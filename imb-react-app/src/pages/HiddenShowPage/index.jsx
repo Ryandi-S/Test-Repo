@@ -139,10 +139,9 @@ const HiddenShowPage = () => {
       ],
     },
   ];
-  /* eslint-disable-next-line no-undef */ // ? function is defined globally
-  HiddenShowPageFunction({ ReactProp: React, stepperConfig, inputConfig });
 
   return (
+    <>
     <div className="w-layout-blockcontainer imb-container w-container">
       <div
         id="multistep-container-1"
@@ -1205,6 +1204,8 @@ const HiddenShowPage = () => {
         </div>
       </div>
     </div>
+    <HiddenShowPageFunction ReactProp={React} stepperConfig={stepperConfig} inputConfig={inputConfig} />
+    </>
   );
 };
 
