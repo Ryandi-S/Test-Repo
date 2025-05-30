@@ -8,7 +8,7 @@ const HiddenShowPageFunction = ({ ReactProp, stepperConfig, inputConfig }) => {
 
   React.useEffect(() => {
     if (state === true){
-      console.log("page / inputData : ", inputData().getData());
+      console.log("page / inputData : ", inputFieldData().getData());
       // stepperData.setValidationPass();
       setState(false);
     }
