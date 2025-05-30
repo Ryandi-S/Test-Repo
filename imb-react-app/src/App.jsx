@@ -6,7 +6,7 @@ const pages = import.meta.glob('./pages/**/index.jsx', { eager: true });
 const routes = Object.entries(pages).map(([filePath, module]) => {
   // Example filePath: './pages/about/index.jsx'
   const match = filePath.match(/\.\/pages\/(.*?)\/index\.jsx$/);
-  const routeName = match?.[1] || '';
+  const routeName = match[1] || '';
   const routePath = routeName === 'home' ? '/' : `/${routeName}`;
 
   return (
