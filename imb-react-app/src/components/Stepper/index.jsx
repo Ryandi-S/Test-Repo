@@ -23,26 +23,6 @@ const InitiateStepper = ({ ReactProp, stepperConfig, inputConfig, updatePage }) 
       }))
     );
 
-  const generateRefData = (stepperConfig) => {
-    const refData = [];
-    const seen = new Set();
-
-    stepperConfig.forEach((item) => {
-      ["section", "prevButton", "nextButton"].forEach((key) => {
-        const value = item[key];
-        if (value && !seen.has(value)) {
-          refData.push({
-            refName: value.replace(/-/g, "_"),
-            id: `#${value}`,
-          });
-          seen.add(value);
-        }
-      });
-    });
-
-    return refData;
-  };
-
   const validateInputs = (stepperId, stepIndex, inputConfig) => {
     const inputsToCheck =
       inputConfig?.filter(
@@ -122,8 +102,7 @@ const InitiateStepper = ({ ReactProp, stepperConfig, inputConfig, updatePage }) 
   };
 
   const flatStepperConfig = generateFlatStepperConfig(stepperConfig);
-  const refData = generateRefData(flatStepperConfig);
-  const refs = useElementRefs(refData, React);
+  const refs = useElementRefs(flatStepperConfig, React, ["section", "prevButton", "nextButton"]);
 
   const generateEventConfig = (stepperConfig) => {
     const eventConfig = [];
