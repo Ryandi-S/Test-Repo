@@ -1,14 +1,38 @@
-const useElementRefs = (configs, ReactProp) => {
+const generateRefData = (stepperConfig, keys) => {
+  const refData = [];
+  const seen = new Set();
+
+  stepperConfig.forEach((item) => {
+    keys.forEach((key) => {
+      const value = item[key];
+      if (value && !seen.has(value)) {
+        refData.push({
+          refName: value.replace(/-/g, "_"),
+          id: `#${value}`,
+        });
+        seen.add(value);
+      }
+    });
+  });
+
+  return refData;
+};
+
+const useElementRefs = (configs, ReactProp, keys) => {
+  let refConfig = configs;
+  if (keys){
+    refConfig = generateRefData(configs, keys)
+  }
   const refs = ReactProp.useMemo(() => {
     const refObj = {};
-    configs.forEach(({ refName }) => {
+    refConfig.forEach(({ refName }) => {
       refObj[refName] = ReactProp.createRef();
     });
     return refObj;
   }, []);
 
   ReactProp.useEffect(() => {
-    configs.forEach(({ refName, id }) => {
+    refConfig.forEach(({ refName, id }) => {
       const el = document.querySelector(id);
       refs[refName].current = el;
     });

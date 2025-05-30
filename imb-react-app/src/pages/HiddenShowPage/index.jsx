@@ -1,5 +1,6 @@
 import React from "react";
 import "./function.jsx"; // page main script
+import "../../components/Input/index.jsx";
 import "../../components/Stepper/index.jsx";
 
 const HiddenShowPage = () => {

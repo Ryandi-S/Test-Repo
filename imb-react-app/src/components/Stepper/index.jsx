@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-undef */
-const InitiateStepper = ({ ReactProp, stepperConfig, inputConfig }) => {
+const InitiateStepper = ({ ReactProp, stepperConfig, inputConfig, updatePage }) => {
   const React = window.React || ReactProp;
 
   const [stepperState, setStepperState] = React.useState(stepperConfig);
@@ -22,26 +22,6 @@ const InitiateStepper = ({ ReactProp, stepperConfig, inputConfig }) => {
         prevDisabled: false,
       }))
     );
-
-  const generateRefData = (stepperConfig) => {
-    const refData = [];
-    const seen = new Set();
-
-    stepperConfig.forEach((item) => {
-      ["section", "prevButton", "nextButton"].forEach((key) => {
-        const value = item[key];
-        if (value && !seen.has(value)) {
-          refData.push({
-            refName: value.replace(/-/g, "_"),
-            id: `#${value}`,
-          });
-          seen.add(value);
-        }
-      });
-    });
-
-    return refData;
-  };
 
   const validateInputs = (stepperId, stepIndex, inputConfig) => {
     const inputsToCheck =
@@ -122,8 +102,7 @@ const InitiateStepper = ({ ReactProp, stepperConfig, inputConfig }) => {
   };
 
   const flatStepperConfig = generateFlatStepperConfig(stepperConfig);
-  const refData = generateRefData(flatStepperConfig);
-  const refs = useElementRefs(refData, React);
+  const refs = useElementRefs(flatStepperConfig, React, ["section", "prevButton", "nextButton"]);
 
   const generateEventConfig = (stepperConfig) => {
     const eventConfig = [];
@@ -211,12 +190,17 @@ const InitiateStepper = ({ ReactProp, stepperConfig, inputConfig }) => {
   };
 
   React.useEffect(() => {
+    console.log("component / Input / stepperState : ", stepperState);
     stepperState.forEach((item) => {
       renderStepper(
         item.stepperPage.filter((p) => p.stepperIndex > 0),
         item
       );
     });
+    if (updatePage){
+      // tell parent page to update states
+      updatePage(true);
+    }
   }, [stepperState]);
 
   const eventConfig = generateEventConfig(flatStepperConfig);
