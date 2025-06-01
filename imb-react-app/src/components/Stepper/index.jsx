@@ -1,6 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-undef */
-const InitiateStepper = ({ ReactProp, stepperConfig, inputConfig, updatePage }) => {
+const InitiateStepper = ({
+  ReactProp,
+  stepperConfig,
+  inputConfig,
+  updatePage,
+}) => {
   const React = window.React || ReactProp;
 
   const [stepperState, setStepperState] = React.useState(stepperConfig);
@@ -25,7 +30,7 @@ const InitiateStepper = ({ ReactProp, stepperConfig, inputConfig, updatePage }) 
 
   const validateInputs = (stepperId, stepIndex, inputConfig) => {
     const inputsToCheck =
-      inputConfig?.filter(
+      inputConfig.filter(
         (i) => i.stepperId === stepperId && i.stepIndex === stepIndex
       ) || [];
 
@@ -36,7 +41,7 @@ const InitiateStepper = ({ ReactProp, stepperConfig, inputConfig, updatePage }) 
       const errorEl = document.querySelector(
         `#${inputId} .imb-input-error-message`
       );
-      const value = inputEl?.value?.trim();
+      const value = inputEl.value.trim();
 
       if (!inputEl || !errorEl) return;
 
@@ -61,17 +66,17 @@ const InitiateStepper = ({ ReactProp, stepperConfig, inputConfig, updatePage }) 
   };
 
   const handleNavigation = (item, skipValidation = false) => {
-    const stepperDataApi = window.stepperData?.();
-    const stepperState = stepperDataApi?.getData?.();
+    const stepperDataApi = window.stepperData();
+    const stepperState = stepperDataApi.getData();
 
     const currentStep = stepperState
-      ?.find((s) => s.stepperId === item.stepperId)
-      ?.stepperPage.find((p) => p.section === item.currentPage.current?.id);
+      .find((s) => s.stepperId === item.stepperId)
+      .stepperPage.find((p) => p.section === item.currentPage.current.id);
 
-    const currentStepIndex = currentStep?.stepperIndex;
+    const currentStepIndex = currentStep.stepperIndex;
     const currentStepperId = item.stepperId;
 
-    const isBack = item.button?.current?.id?.includes("back");
+    const isBack = !item.button ? true : item.button.current.id.includes("back");
 
     if (!isBack) {
       const isValid = validateInputs(
@@ -87,7 +92,7 @@ const InitiateStepper = ({ ReactProp, stepperConfig, inputConfig, updatePage }) 
     const countStep = item.index;
     const stepperId = item.stepperId;
 
-    stepperDataApi?.setData?.((prev) =>
+    stepperDataApi.setData((prev) =>
       prev.map((s) =>
         s.stepperId === stepperId
           ? { ...s, currentPage: targetPage.id, currentIndex: countStep }
@@ -102,7 +107,11 @@ const InitiateStepper = ({ ReactProp, stepperConfig, inputConfig, updatePage }) 
   };
 
   const flatStepperConfig = generateFlatStepperConfig(stepperConfig);
-  const refs = useElementRefs(flatStepperConfig, React, ["section", "prevButton", "nextButton"]);
+  const refs = useElementRefs(flatStepperConfig, React, [
+    "section",
+    "prevButton",
+    "nextButton",
+  ]);
 
   const generateEventConfig = (stepperConfig) => {
     const eventConfig = [];
@@ -141,51 +150,79 @@ const InitiateStepper = ({ ReactProp, stepperConfig, inputConfig, updatePage }) 
     const container = document.querySelector(`#${stepperId} .imb-stepper`);
     container.innerHTML = "";
 
-    stepperPages.forEach((page) => {
-      const stepWrapper = document.createElement("div");
-      stepWrapper.className = "imb-stepper-step";
-
-      const stepBlock = document.createElement("div");
-      stepBlock.className = `imb-stepper-step-block ${
-        page.stepperIndex <= currentIndex ? "imb-stepper-step-active" : ""
-      } ${clickable ? "imb-clickable" : ""}`;
-
-      if (clickable) {
-        stepBlock.onclick = () => {
-          const stepperDataApi = window.stepperData?.();
-          const currentState = stepperDataApi
-            ?.getData?.()
-            ?.find((s) => s.stepperId === stepperId);
-
-          const currentStep = currentState?.stepperPage.find(
-            (p) => p.section === currentPage
-          );
-
-          const currentStepIndex = currentStep?.stepperIndex;
-
-          if (page.stepperIndex > currentStepIndex) {
-            const isValid = validateInputs(
-              stepperId,
-              currentStepIndex,
-              inputConfig
-            );
-            if (!isValid) return;
+    item.stepperPage.forEach((page) => {
+      // disable next button
+      if (page.nextButton){
+        const button = refs[`${page.nextButton.replace(/-/g, "_")}`].current;
+        const buttonText = button.querySelector(".imb-button-text");
+        const buttonIcon = button.querySelector(".imb-button-icon");
+        if (page.isValid === false){
+          refs[`${page.nextButton.replace(/-/g, "_")}`].current.classList.add("imb-button-disabled");
+          if (buttonText){
+            buttonText.classList.add("imb-button-text-disabled");
           }
-
-          handleNavigation(
-            {
-              currentPage: refs[currentPage.replace(/-/g, "_")],
-              targetPage: refs[page.section.replace(/-/g, "_")],
-              index: page.stepperIndex,
-              stepperId,
-            },
-            true
-          );
-        };
+          if (buttonIcon){
+            buttonIcon.classList.add("imb-button-icon-disabled");
+          }
+        }
+        else {
+          refs[`${page.nextButton.replace(/-/g, "_")}`].current.classList.remove("imb-button-disabled");
+          if (buttonText){
+            buttonText.classList.remove("imb-button-text-disabled");
+          }
+          if (buttonIcon){
+            buttonIcon.classList.remove("imb-button-icon-disabled");
+          }
+        }
       }
 
-      stepWrapper.appendChild(stepBlock);
-      container.appendChild(stepWrapper);
+      // set stepper indicator
+      if (page.stepperIndex > 0){
+        const stepWrapper = document.createElement("div");
+        stepWrapper.className = "imb-stepper-step";
+  
+        const stepBlock = document.createElement("div");
+        stepBlock.className = `imb-stepper-step-block ${
+          page.stepperIndex <= currentIndex ? "imb-stepper-step-active" : ""
+        } ${clickable ? "imb-clickable" : ""}`;
+  
+        if (clickable) {
+          stepBlock.onclick = () => {
+            const stepperDataApi = window.stepperData();
+            const currentState = stepperDataApi
+              .getData()
+              .find((s) => s.stepperId === stepperId);
+  
+            const currentStep = currentState.stepperPage.find(
+              (p) => p.section === currentPage
+            );
+  
+            const currentStepIndex = currentStep.stepperIndex;
+  
+            if (page.stepperIndex > currentStepIndex) {
+              const isValid = validateInputs(
+                stepperId,
+                currentStepIndex,
+                inputConfig
+              );
+              if (!isValid) return;
+            }
+  
+            handleNavigation(
+              {
+                currentPage: refs[currentPage.replace(/-/g, "_")],
+                targetPage: refs[page.section.replace(/-/g, "_")],
+                index: page.stepperIndex,
+                stepperId,
+              },
+              true
+            );
+          };
+        }
+  
+        stepWrapper.appendChild(stepBlock);
+        container.appendChild(stepWrapper);
+      }
     });
   };
 
@@ -197,7 +234,7 @@ const InitiateStepper = ({ ReactProp, stepperConfig, inputConfig, updatePage }) 
         item
       );
     });
-    if (updatePage){
+    if (updatePage) {
       // tell parent page to update states
       updatePage(true);
     }
@@ -207,7 +244,8 @@ const InitiateStepper = ({ ReactProp, stepperConfig, inputConfig, updatePage }) 
   const eventData = eventConfig.map((item) => ({
     ref: item.button,
     event: "click",
-    handler: () => handleNavigation(item, item.button?.id?.includes("back")),
+    handler: () =>
+      handleNavigation(item, handleNullable(item.button.id).includes("back")),
   }));
 
   useEventListener(eventData, [eventData], React);

@@ -20,8 +20,8 @@ const generateRefData = (stepperConfig, keys) => {
 
 const useElementRefs = (configs, ReactProp, keys) => {
   let refConfig = configs;
-  if (keys){
-    refConfig = generateRefData(configs, keys)
+  if (keys) {
+    refConfig = generateRefData(configs, keys);
   }
   const refs = ReactProp.useMemo(() => {
     const refObj = {};
@@ -42,15 +42,19 @@ const useElementRefs = (configs, ReactProp, keys) => {
 };
 window.useElementRefs = useElementRefs;
 
-const useEventListener = (config = [], dependency = [], ReactProp, selector) => {
+const useEventListener = (
+  config = [],
+  dependency = [],
+  ReactProp,
+  selector
+) => {
   return ReactProp.useEffect(() => {
     config.forEach(({ ref, event, handler }) => {
       // console.log("useEventListener test : ", ref);
       if (ref.current) {
-        if (selector){
+        if (selector) {
           ref.current.querySelector(selector).addEventListener(event, handler);
-        }
-        else {
+        } else {
           ref.current.addEventListener(event, handler);
         }
       }
@@ -59,10 +63,11 @@ const useEventListener = (config = [], dependency = [], ReactProp, selector) => 
     return () => {
       config.forEach(({ ref, event, handler }) => {
         if (ref.current) {
-          if (selector){
-            ref.current.querySelector(selector).removeEventListener(event, handler);
-          }
-          else {
+          if (selector) {
+            ref.current
+              .querySelector(selector)
+              .removeEventListener(event, handler);
+          } else {
             ref.current.removeEventListener(event, handler);
           }
         }
@@ -99,3 +104,9 @@ const isValidPhoneNumber = (val) => {
   return val && phoneRegex.test(val);
 };
 window.isValidPhoneNumber = isValidPhoneNumber;
+
+const handleNullable = (val) => {
+  // handle Nullable Elemet or State
+  return val ? val : "";
+};
+window.handleNullable = handleNullable;

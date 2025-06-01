@@ -3,16 +3,25 @@ const HiddenShowPageFunction = ({ ReactProp, stepperConfig, inputConfig }) => {
   const React = window.React || ReactProp;
   const [state, setState] = React.useState(false);
 
-  InitiateInput({ ReactProp: React, compConfig: inputConfig, updatePage: setState });
-  InitiateStepper({ ReactProp: React, stepperConfig, inputConfig, updatePage: setState });
+  InitiateInput({
+    ReactProp: React,
+    compConfig: inputConfig,
+    updatePage: setState,
+  });
+  InitiateStepper({
+    ReactProp: React,
+    stepperConfig,
+    inputConfig,
+    updatePage: setState,
+  });
 
   React.useEffect(() => {
-    if (state === true){
+    if (state === true) {
       console.log("page / inputData : ", inputFieldData().getData());
       // stepperData.setValidationPass();
       setState(false);
     }
-  }, [state])
+  }, [state]);
 
   return null;
 };

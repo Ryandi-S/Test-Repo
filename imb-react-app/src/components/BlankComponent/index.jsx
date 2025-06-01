@@ -16,7 +16,7 @@ const InitiateComponent = ({ ReactProp, compConfig, updatePage }) => {
     });
   }, [compState, setCompState]);
 
-  // const refs = useElementRefs(refData, React);
+  // const refs = useElementRefs(refData, React, [key_name]);
 
   React.useEffect(() => {
     console.log("component / comp_name / compState : ", compState);
